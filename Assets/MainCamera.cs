@@ -9,6 +9,6 @@ public class MainCamera : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
-        camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, camera.transform.position.z);
+        camera.transform.position = new Vector3(player.transform.position.x, -1/5+player.transform.position.y, camera.transform.position.z);
     }
 }
