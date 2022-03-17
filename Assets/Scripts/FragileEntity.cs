@@ -7,4 +7,22 @@ public class FragileEntity : MonoBehaviour
     public float hp;
 
 
+
+    public void RecieveDamage(float amount)
+    {
+        hp = hp - amount;
+
+        if (hp == 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+
+
+
 }
