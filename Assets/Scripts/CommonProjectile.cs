@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerProjectile : MonoBehaviour
+public class CommonProjectile : MonoBehaviour
 {
     public float damage;
     public float lifespan;
@@ -16,6 +16,7 @@ public class PlayerProjectile : MonoBehaviour
     }
 
 
+    // Поворот пули в полёте
     private void FixedUpdate()
     {
         Vector2 flightDir = GetComponent<Rigidbody2D>().velocity;

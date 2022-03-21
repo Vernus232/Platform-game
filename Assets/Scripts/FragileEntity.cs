@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class FragileEntity : MonoBehaviour
+public class FragileEntity : MonoBehaviour
 {
     public float hp;
-
 
 
     public void RecieveDamage(float amount)
@@ -13,9 +12,7 @@ public abstract class FragileEntity : MonoBehaviour
         hp = hp - amount;
 
         if (hp == 0)
-        {
             Die();
-        }
     }
 
     private void Die()
