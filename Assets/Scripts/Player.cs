@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Actor
+public class Player : FragileEntity
 {
     public float xSpeedLimit;
     public float xMovementForce;
