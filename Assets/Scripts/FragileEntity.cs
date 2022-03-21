@@ -13,9 +13,10 @@ public class FragileEntity : MonoBehaviour
 
         if (hp == 0)
             Die();
+
     }
 
-    private void Die()
+    public void Die()
     {
         Destroy(gameObject);
     }
