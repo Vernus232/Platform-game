@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : FragileEntity
 {
-    public HealthBar healthBar;
     public float xSpeedLimit;
     public float xMovementForce;
     public float xHoverMovementPenalty;
@@ -12,10 +11,14 @@ public class Player : FragileEntity
     [Space(10)]
     public float xJumpForce;
     public float yJumpForce;
+    public float maxGroundedAngle;
 
     private Rigidbody2D rb;
+    private HealthBar healthBar;
+
     private float targetSpeed;
-    private bool isGrounded = true;
+    public bool isGrounded = true;
+
 
 
 
@@ -71,16 +74,22 @@ public class Player : FragileEntity
 
     // Проверки на касание земли
     private void OnCollisionStay2D(Collision2D collision)
-    {        
+    {
+        // Число контактов со стороны земли 
+        int groundContacts = 0;
+        // Итерация по всем контактам
         foreach (ContactPoint2D contact in collision.contacts)
         {
+            // Считаем угол между вертикальной осью и направлением контакта
             float angle = Vector2.Angle(contact.normal, Vector2.up);
-            float maxGroundedAngle = 20;
             if (angle < maxGroundedAngle)
-                isGrounded = true;
-            else
-                isGrounded = false;
+                groundContacts += 1;
         }
+
+        if (groundContacts > 0)
+            isGrounded = true;
+        else
+            isGrounded = false;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
