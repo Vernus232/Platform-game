@@ -67,6 +67,7 @@ public class Player : FragileEntity
         }
     }
 
+    // Проверки на касание земли
     private void OnCollisionStay2D(Collision2D collision)
     {        
         foreach (ContactPoint2D contact in collision.contacts)
