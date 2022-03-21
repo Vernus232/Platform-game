@@ -298,12 +298,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  healthBar: {fileID: 0}
   xSpeedLimit: 30
   xMovementForce: 40
   xHoverMovementPenalty: 0.2
   xJumpForce: 50
   yJumpForce: 270
+  maxGroundedAngle: 20
 --- !u!1 &8153282006298624002
 GameObject:
   m_ObjectHideFlags: 0
