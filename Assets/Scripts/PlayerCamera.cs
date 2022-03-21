@@ -16,6 +16,9 @@ public class PlayerCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        playerCamera.transform.position = new Vector3(player.transform.position.x, -1/5+player.transform.position.y, playerCamera.transform.position.z);
+        if (player)
+            playerCamera.transform.position = new Vector3(player.transform.position.x, -1 / 5 + player.transform.position.y, playerCamera.transform.position.z);
+        else
+            Debug.LogError("no player");
     }
 }
