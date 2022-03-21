@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : FragileEntity
 {
+    public HealthBar healthBar;
     public float xSpeedLimit;
     public float xMovementForce;
     public float xHoverMovementPenalty;
@@ -87,6 +88,20 @@ public class Player : FragileEntity
             isGrounded = false;
     }
 
+    //При получении урона...
+    public new void RecieveDamage(float amount)
+    {
 
+        //Обновляем хп Entity
+        hp = hp - amount;
+
+        //При хп=0, умираем
+        if (hp == 0)
+            Die();
+
+        //Обновляем хпбар, если игрок
+        healthBar.UpdateHealth();
+
+    }
 
 }
