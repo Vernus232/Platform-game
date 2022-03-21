@@ -22,6 +22,7 @@ public class Player : FragileEntity
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        healthBar = FindObjectOfType<HealthBar>();
     }
 
     private void FixedUpdate()
@@ -89,19 +90,16 @@ public class Player : FragileEntity
     }
 
     //При получении урона...
-    public new void RecieveDamage(float amount)
+    // Переписываем абстрактный метод RecieveDamage
+    // Т.к. обещали его реализовать в FragileEntity
+    public override void RecieveDamage(float amount)
     {
+        hp -= amount;
 
-        //Обновляем хп Entity
-        hp = hp - amount;
-
-        //При хп=0, умираем
         if (hp == 0)
             Die();
 
-        //Обновляем хпбар, если игрок
         healthBar.UpdateHealth();
-
     }
 
 }

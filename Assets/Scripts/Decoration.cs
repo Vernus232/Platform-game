@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : FragileEntity
+public class Decoration : FragileEntity
 {
     // Переписываем абстрактный метод RecieveDamage
     // Т.к. обещали его реализовать в FragileEntity
@@ -13,5 +13,6 @@ public class Enemy : FragileEntity
         if (hp == 0)
             Die();
     }
+
 
 }

@@ -2,25 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FragileEntity : MonoBehaviour
+// Это абстрактный класс (его на сцену не поставишь, потому что самого по себе FragileEntity в природе нет)
+public abstract class FragileEntity : MonoBehaviour
 {
     public float hp;
 
-
-    public void RecieveDamage(float amount)
-    {
-        hp = hp - amount;
-
-        if (hp == 0)
-            Die();
-
-    }
-
+    // Абстрактный метод получения урона (для каждого из "детей" свой)
+    public abstract void RecieveDamage(float amount);
+    
     public void Die()
     {
         Destroy(gameObject);
     }
-
-
 
 }
