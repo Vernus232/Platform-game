@@ -10,15 +10,20 @@ public class PlayerCamera : MonoBehaviour
 
     private void Start()
     {
-        playerCamera = gameObject.GetComponent<Camera>();
+        playerCamera = Camera.main;
         player = FindObjectOfType<GameObject>();
     }
 
+    // Вызывается после всех симмуляций (как раз перед "снимком" кадра)
     void LateUpdate()
     {
-        if (player)
-            playerCamera.transform.position = new Vector3(player.transform.position.x, -1 / 5 + player.transform.position.y, playerCamera.transform.position.z);
-        else
-            Debug.LogError("no player");
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 playerPos = player.transform.position;
+        Vector3 camPos = Camera.main.transform.position;
+
+        // Двигаем камеру в точку между положением плеера и курсора
+        playerCamera.transform.position = new Vector3(  (mousePos.x + playerPos.x)/3,
+                                                        (mousePos.y + playerPos.y)/3,
+                                                        camPos.z);
     }
 }
