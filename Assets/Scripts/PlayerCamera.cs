@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public GameObject player;
-
+    private GameObject player;
     private Camera playerCamera;
 
 
     private void Start()
     {
         playerCamera = gameObject.GetComponent<Camera>();
+        player = FindObjectOfType<GameObject>();
     }
 
     void LateUpdate()

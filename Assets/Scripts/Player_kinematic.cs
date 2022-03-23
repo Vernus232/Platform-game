@@ -2,20 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : FragileEntity
+public class Player_kinematic : FragileEntity
 {
-    public float xSpeedLimit;
-    public float xMovementForce;
+    public float xSpeed;
     public float xHoverMovementPenalty;
 
     [Space(10)]
-    public float xJumpForce;
-    public float yJumpForce;
+    public float xJumpSpeed;
+    public float yJumpSpeed;
     public float maxGroundedAngle;
-
-    [Space(10)]
-    public PhysicsMaterial2D zeroFrictionMat;
-    public PhysicsMaterial2D normFrictionMat;
 
     private Rigidbody2D rb;
     private HealthBar healthBar;
@@ -38,11 +33,11 @@ public class Player : FragileEntity
         // Определяем целевую скорость        
         if (Input.GetKey(KeyCode.A))
         {
-            targetSpeed = -xSpeedLimit;
+            targetSpeed = -xSpeed;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            targetSpeed = xSpeedLimit;
+            targetSpeed = xSpeed;
         }
         else
         {
@@ -54,9 +49,8 @@ public class Player : FragileEntity
         if (!isGrounded)
             penaltyMul = xHoverMovementPenalty;
 
-        // Сообщаем силу
-        float xForce = (targetSpeed - rb.velocity.x) * penaltyMul;
-        rb.AddForce(new Vector3(xForce, 0, 0));
+        // Сообщаем скорость
+        rb.velocity = new Vector2(targetSpeed * penaltyMul, rb.velocity.y);
         #endregion
 
         if (isGrounded)
@@ -71,25 +65,9 @@ public class Player : FragileEntity
             
             // Сообщаем силу по х и у
             if (Input.GetKey(KeyCode.W))
-                rb.AddForce(new Vector2(xDir*xJumpForce, yJumpForce));
+                rb.velocity = new Vector2(xDir*xJumpSpeed, yJumpSpeed);
             #endregion
         }
-
-        #region Контроль материала
-        float Y_FRICTION_SPEED = 3f;
-        // Если скорость по У низкая..
-        if (Mathf.Abs(rb.velocity.y) < Y_FRICTION_SPEED)
-        {
-            // ..то юзаем стандартное трение
-            gameObject.GetComponent<Collider2D>().sharedMaterial = normFrictionMat;
-        }
-        else
-        {
-            // ..иначе нет трения
-            gameObject.GetComponent<Collider2D>().sharedMaterial = zeroFrictionMat;
-        }
-        #endregion
-
     }
 
     // Проверки на касание земли

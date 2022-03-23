@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Pistol : MonoBehaviour
 {
-    public Camera playerCamera;
     public Transform shootingPoint;
     public GameObject projectile;
     public float speed;
     public float betweenShotsTime;
 
     private float prevShootTime = 0;
+    private Camera playerCamera;
 
+
+    private void Start()
+    {
+        playerCamera = FindObjectOfType<Camera>();
+    }
 
     void Update()
     {

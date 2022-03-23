@@ -7,12 +7,15 @@ public class HealthBar : MonoBehaviour
     
     
     public Slider slider;
-    public Player player;
+
     private float maxHp;
+    private Player player;
 
 
     private void Start()
     {
+        player = FindObjectOfType<Player>();
+
         SetHealth(player.hp);
         maxHp = player.hp;
     }
