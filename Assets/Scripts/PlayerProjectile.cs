@@ -5,7 +5,7 @@ using UnityEngine;
 // Наследуем много чего от CommonProjectile
 public class PlayerProjectile : CommonProjectile
 {
-
+    public GameObject hitPrefab;
     // Регистрация попадания во что-либо
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -25,9 +25,18 @@ public class PlayerProjectile : CommonProjectile
                 // Сообщаем урон entity
                 entity.RecieveDamage(damage);
             }
+            
+            //размещаем (Создаем его копию) префаб системы партиклов
+            GameObject hitGameObject = Instantiate( hitPrefab, transform.position, transform.rotation );
+            
+            //Запускаем переменную ParticleSystem
+            ParticleSystem hitPartileSystem = hitGameObject.GetComponent<ParticleSystem>();
+            hitPartileSystem.Play();
 
             // Уничтожаем пулю
             Destroy(gameObject);
+
+
         }
     }
 
