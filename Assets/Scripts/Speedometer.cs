@@ -5,18 +5,20 @@ using UnityEngine.UI;
 
 public class Speedometer : MonoBehaviour
 {
-    public Rigidbody2D rb;
     public Text text;
+
+    private Rigidbody2D rb;
+
+
     private void Start()
     {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        GameObject playerObj = FindObjectOfType<Player>().gameObject;
+        rb = playerObj.GetComponent<Rigidbody2D>();
     }
     void Update()
-    {
-        
+    {        
         Vector2 v2Velocity = rb.velocity;
         float speed = rb.velocity.magnitude;
-        text.text  = "Speed " + speed.ToString("00");
-        
+        text.text  = "Speed " + speed.ToString("00");        
     }
 }
