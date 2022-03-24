@@ -36,6 +36,8 @@ public class PlayerProjectile : CommonProjectile
             // ”ничтожаем пулю
             Destroy(gameObject);
 
+            Destroy(hitGameObject, 5);
+
 
         }
     }

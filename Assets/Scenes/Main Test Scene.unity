@@ -2620,7 +2620,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516467923}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40.9088, y: -6.0279, z: 0}
+  m_LocalPosition: {x: 41.18, y: -6.0279, z: 0}
   m_LocalScale: {x: 252.4545, y: 6.335424, z: 1}
   m_Children: []
   m_Father: {fileID: 1338792487}
@@ -6744,6 +6744,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1450901638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8153282005858885679, guid: dd871c3a85e9b4d428fec78e9e88e449, type: 3}
+  m_PrefabInstance: {fileID: 1062136976}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1473883190
 GameObject:
   m_ObjectHideFlags: 0
@@ -7522,7 +7527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debc5ca13b9d24844bf685bf2eafcc73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1450901638}
   spawnPoint: {fileID: 42301853}
 --- !u!1 &1671126220
 GameObject:
