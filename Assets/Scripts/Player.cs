@@ -96,7 +96,7 @@ public class Player : FragileEntity
         if (IsGrounded)
         {
             // Если нажали пробел  И  не прыгали недавно
-            if (Input.GetKeyDown(KeyCode.Space)  &&  !firstJumpWasRecently)
+            if (Input.GetKey(KeyCode.Space)  &&  !firstJumpWasRecently)
             {
                 // Дефолтная сила прыжка
                 Vector2 force = new Vector2(0, yJumpForce);
