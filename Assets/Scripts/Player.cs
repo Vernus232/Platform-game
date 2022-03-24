@@ -18,6 +18,10 @@ public class Player : FragileEntity
 
     [Space(10)]
 
+    public float damageModifier = 1;
+
+    [Space(10)]
+
     public PhysicsMaterial2D zeroFrictionMat;
     public PhysicsMaterial2D normFrictionMat;
 

@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pistol : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     public Transform shootingPoint;
-    public GameObject projectile;
+    public GameObject projectileObj;
     public float speed;
     public float betweenShotsTime;
 
     private float prevShootTime = 0;
+
     private Camera playerCamera;
+    private Player player;
 
 
     private void Start()
     {
         playerCamera = FindObjectOfType<Camera>();
+        player = FindObjectOfType<Player>();
     }
 
     void Update()
@@ -44,7 +47,8 @@ public class Pistol : MonoBehaviour
 
     private void InstantiateProjectile()
     {
-        GameObject ball = Instantiate(projectile, shootingPoint.position, transform.rotation);
+        GameObject ball = Instantiate(projectileObj, shootingPoint.position, transform.rotation);
+        ball.GetComponent<PlayerProjectile>().damage *= player.damageModifier;
         ball.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(speed, 0, 0));
     }
 
