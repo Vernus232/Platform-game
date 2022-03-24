@@ -2691,6 +2691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654894f1b89a7124984281969656049c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  closeToPlayerCoef: 0.8
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -4916,8 +4917,16 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 347491202717601314, guid: dd871c3a85e9b4d428fec78e9e88e449, type: 3}
+      propertyPath: yJumpForce
+      value: 260
+      objectReference: {fileID: 0}
+    - target: {fileID: 347491202717601314, guid: dd871c3a85e9b4d428fec78e9e88e449, type: 3}
       propertyPath: yJumpSpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 347491202717601314, guid: dd871c3a85e9b4d428fec78e9e88e449, type: 3}
+      propertyPath: xMovementForce
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8153282005858885679, guid: dd871c3a85e9b4d428fec78e9e88e449, type: 3}
       propertyPath: m_Name

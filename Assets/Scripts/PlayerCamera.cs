@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
+    public float closeToPlayerCoef;
+
     private GameObject player;
     private Camera playerCamera;
 
@@ -22,8 +24,9 @@ public class PlayerCamera : MonoBehaviour
         Vector3 camPos = Camera.main.transform.position;
 
         // Двигаем камеру в точку между положением плеера и курсора
-        playerCamera.transform.position = new Vector3(  (mousePos.x + playerPos.x)/3,
-                                                        (mousePos.y + playerPos.y)/3,
+        float a = closeToPlayerCoef;
+        playerCamera.transform.position = new Vector3(  mousePos.x * (1-a) +  playerPos.x * a,
+                                                        mousePos.y * (1-a) +  playerPos.y * a,
                                                         camPos.z);
     }
 }
