@@ -9,8 +9,7 @@ public class EnemyRoundSpawner : MonoBehaviour
 
     public GameObject enemyPrefab;
 
-    private int resolutionProportionX = 16;
-    private int resolutionProportionY = 9;
+    private Vector2 resolutionProportion = new Vector2(16, 9);
 
 
     private void Start()
@@ -30,15 +29,22 @@ public class EnemyRoundSpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        float randomSign()
+        Vector2 getAppropriatePos()
         {
-            float randSign = Random.value < .5 ? 1 : -1;
-            return randSign;
+            float x = Random.Range(-1.5f, 1.5f);
+            float y = Random.Range(0f, 1.5f);
+
+            while (Mathf.Abs(x) < 1  &&  y < 1)
+            {
+                x = Random.Range(-1.5f, 1.5f);
+                y = Random.Range(0f, 1.5f);
+            }
+
+            return new Vector2(x, y);
         }
 
-        float xPos = resolutionProportionX * dist * randomSign() * Random.Range(1f, 1.5f);
-        float yPos = resolutionProportionY * dist *                Random.Range(0f, 1.5f);
-        Vector3 spawnPos = new Vector3(xPos, yPos, 0f);
+        Vector2 pos2D = resolutionProportion * dist * getAppropriatePos();
+        Vector3 spawnPos = new Vector3(pos2D.x, pos2D.y, 0f);
         Instantiate(enemyPrefab, spawnPos, enemyPrefab.transform.rotation);
     }
 

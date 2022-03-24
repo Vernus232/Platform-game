@@ -30,7 +30,7 @@ public class Pistol : MonoBehaviour
         #endregion
 
         #region Выстрел и задержка
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             float currTime = Time.time;
             if ((currTime - prevShootTime) > betweenShotsTime)

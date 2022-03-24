@@ -10,11 +10,14 @@ public class Player : FragileEntity
     public float xHoverMovementPenalty;
 
     [Space(10)]
+
     public float xJumpForce;
     public float yJumpForce;
+    [Range(1, 2)] public float jumpShiftBoost;
     public float maxGroundedAngle;
 
     [Space(10)]
+
     public PhysicsMaterial2D zeroFrictionMat;
     public PhysicsMaterial2D normFrictionMat;
 
@@ -22,9 +25,29 @@ public class Player : FragileEntity
     private HealthBar healthBar;
 
     private float targetSpeed;
+    private bool firstJumpWasRecently = false;
     private bool isGrounded = true;
+    public bool IsGrounded
+    {
+        get
+        {
+            return isGrounded;
+        }
 
+        set
+        {
+            bool wasGrounded = isGrounded;
+            isGrounded = value;
 
+            // Если приземлился
+            if (!wasGrounded && isGrounded)
+            {
+                hasSecondJump = true;
+            }
+        }
+    }
+
+    private bool hasSecondJump = false;
 
 
     private void Start()
@@ -61,29 +84,60 @@ public class Player : FragileEntity
 
         // Множитель нерфа движения в полёте
         float penaltyMul = 1;
-        if (!isGrounded)
+        if (!IsGrounded)
             penaltyMul = xHoverMovementPenalty;
 
         // Сообщаем силу
-        float xForce = (targetSpeed - rb.velocity.x) * penaltyMul;
+        float xForce = xMovementForce * (targetSpeed - rb.velocity.x) * penaltyMul;
         rb.AddForce(new Vector3(xForce, 0, 0));
         #endregion
 
-        if (isGrounded)
+        #region Первый прыжок
+        if (IsGrounded)
         {
-            #region Прыжок
-            // Если нажали ещё и в сторону - добавляем силу по х
-            int xDir = 0;
-            if (Input.GetKey(KeyCode.A))
-                xDir = -1;
-            if (Input.GetKey(KeyCode.D))
-                xDir = 1;
-            
-            // Сообщаем силу по х и у
-            if (Input.GetKey(KeyCode.W))
-                rb.AddForce(new Vector2(xDir*xJumpForce, yJumpForce));
-            #endregion
+            // Если нажали пробел  И  не прыгали недавно
+            if (Input.GetKeyDown(KeyCode.Space)  &&  !firstJumpWasRecently)
+            {
+                // Дефолтная сила прыжка
+                Vector2 force = new Vector2(0, yJumpForce);
+
+                // Если нажали ещё и в сторону - добавляем силу по х
+                if (Input.GetKey(KeyCode.A))
+                    force += new Vector2(-xJumpForce, 0);
+                if (Input.GetKey(KeyCode.D)) 
+                    force += new Vector2( xJumpForce, 0);
+
+                // Если нажали ещё и шифт - умножаем силу на jumpShiftBoost
+                if (Input.GetKey(KeyCode.LeftShift))
+                    force *= jumpShiftBoost;
+
+                // Наконец сообщаем силу
+                rb.AddForce(force);
+
+                // Отслеживаем, был ли недавно прыжок
+                firstJumpWasRecently = true;
+                Invoke("SetFalse_firstJumpWasRecently", 0.1f);
+            }
         }
+        #endregion
+
+        #region Второй прыжок
+        // Если плеер в полёте  И  есть второй прыжок  И  недавно не было прыжка
+        if (!IsGrounded && hasSecondJump && !firstJumpWasRecently)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                // Дефолтная сила прыжка
+                Vector2 force = new Vector2(0, yJumpForce);
+
+                // Наконец сообщаем силу
+                rb.AddForce(force);
+
+                // Ресетим второй прыжок
+                hasSecondJump = false;
+            }
+        }
+        #endregion
 
         #region Контроль материала
         float Y_FRICTION_SPEED = 3f;
@@ -99,7 +153,6 @@ public class Player : FragileEntity
             gameObject.GetComponent<Collider2D>().sharedMaterial = zeroFrictionMat;
         }
         #endregion
-
     }
 
     // Проверки на касание земли
@@ -117,15 +170,15 @@ public class Player : FragileEntity
         }
 
         if (groundContacts > 0)
-            isGrounded = true;
+            IsGrounded = true;
         else
-            isGrounded = false;
+            IsGrounded = false;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.contactCount == 0)
-            isGrounded = false;
+            IsGrounded = false;
     }
 
     //При получении урона...
@@ -141,5 +194,9 @@ public class Player : FragileEntity
         healthBar.UpdateHealth();
     }
 
+    private void SetFalse_firstJumpWasRecently()
+    {
+        firstJumpWasRecently = false;
+    }
 
 }

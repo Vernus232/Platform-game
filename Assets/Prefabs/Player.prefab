@@ -334,12 +334,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  xWalkSpeedLimit: 20
-  xRunSpeedLimit: 30
-  xMovementForce: 200
+  xWalkSpeedLimit: 10
+  xRunSpeedLimit: 15
+  xMovementForce: 2
   xHoverMovementPenalty: 0.2
-  xJumpForce: 80
+  xJumpForce: 50
   yJumpForce: 260
+  jumpShiftBoost: 1
   maxGroundedAngle: 85
   zeroFrictionMat: {fileID: 6200000, guid: 26029cd1d7736d449b36dc61b275f43a, type: 2}
   normFrictionMat: {fileID: 6200000, guid: 42b77b4819b0c394fb38ded269cd8dd8, type: 2}
