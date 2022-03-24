@@ -4926,7 +4926,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 347491202717601314, guid: dd871c3a85e9b4d428fec78e9e88e449, type: 3}
       propertyPath: xMovementForce
-      value: 150
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 347491202717601314, guid: dd871c3a85e9b4d428fec78e9e88e449, type: 3}
+      propertyPath: xRunSpeedLimit
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 347491202717601314, guid: dd871c3a85e9b4d428fec78e9e88e449, type: 3}
+      propertyPath: xWalkSpeedLimit
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8153282005858885679, guid: dd871c3a85e9b4d428fec78e9e88e449, type: 3}
       propertyPath: m_Name

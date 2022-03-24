@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player : FragileEntity
 {
-    public float xSpeedLimit;
+    public float xWalkSpeedLimit;
+    public float xRunSpeedLimit;
     public float xMovementForce;
     public float xHoverMovementPenalty;
 
@@ -38,12 +39,21 @@ public class Player : FragileEntity
         // Определяем целевую скорость        
         if (Input.GetKey(KeyCode.A))
         {
-            targetSpeed = -xSpeedLimit;
+            targetSpeed = -xWalkSpeedLimit;
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                targetSpeed = -xRunSpeedLimit;
+            }
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            targetSpeed = xSpeedLimit;
+            targetSpeed = xWalkSpeedLimit;
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                targetSpeed = xRunSpeedLimit;
+            }
         }
+
         else
         {
             targetSpeed = 0;
