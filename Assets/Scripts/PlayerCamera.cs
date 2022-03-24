@@ -13,7 +13,7 @@ public class PlayerCamera : MonoBehaviour
     private void Start()
     {
         playerCamera = Camera.main;
-        player = FindObjectOfType<GameObject>();
+        player = FindObjectOfType<Player>().gameObject;
     }
 
     // Вызывается после всех симмуляций (как раз перед "снимком" кадра)

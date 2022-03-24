@@ -5,10 +5,12 @@ using UnityEngine;
 public class EnemyRoundSpawner : MonoBehaviour
 {
     public float spawnStep;
-    public float spawnRange;
+    public float dist;
 
     public GameObject enemyPrefab;
 
+    private int resolutionProportionX = 16;
+    private int resolutionProportionY = 9;
 
 
     private void Start()
@@ -28,8 +30,15 @@ public class EnemyRoundSpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        Vector2 spawnPos2D = Random.insideUnitCircle * spawnRange;
-        Vector3 spawnPos = new Vector3(spawnPos2D.x, spawnPos2D.y, 0f);
+        float randomSign()
+        {
+            float randSign = Random.value < .5 ? 1 : -1;
+            return randSign;
+        }
+
+        float xPos = resolutionProportionX * dist * randomSign() * Random.Range(1f, 1.5f);
+        float yPos = resolutionProportionY * dist *                Random.Range(0f, 1.5f);
+        Vector3 spawnPos = new Vector3(xPos, yPos, 0f);
         Instantiate(enemyPrefab, spawnPos, enemyPrefab.transform.rotation);
     }
 

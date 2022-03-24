@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d329d5d761172e6478270241b5443f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnStep: 10
-  spawnRange: 5
+  spawnStep: 2
+  dist: 2
   enemyPrefab: {fileID: 7267947439652132932, guid: 6fbd734f705b2bf43a89fd8133a2b808, type: 3}
 --- !u!1 &8153282004574363684
 GameObject:
@@ -334,11 +334,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  xSpeedLimit: 20
-  xMovementForce: 100
+  xWalkSpeedLimit: 20
+  xRunSpeedLimit: 30
+  xMovementForce: 200
   xHoverMovementPenalty: 0.2
   xJumpForce: 80
-  yJumpForce: 300
+  yJumpForce: 260
   maxGroundedAngle: 85
   zeroFrictionMat: {fileID: 6200000, guid: 26029cd1d7736d449b36dc61b275f43a, type: 2}
   normFrictionMat: {fileID: 6200000, guid: 42b77b4819b0c394fb38ded269cd8dd8, type: 2}
