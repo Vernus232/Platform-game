@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlayerProjectile : CommonProjectile
 {
     public GameObject hitPrefab;
+    public bool destroysAnything;
+
+
     // Регистрация попадания во что-либо
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -21,15 +24,19 @@ public class PlayerProjectile : CommonProjectile
             // Пытаемся сообщить урон Fraglie Entity
             FragileEntity entity = collision.gameObject.GetComponent<FragileEntity>();
             if (entity)
-            {
-                // Сообщаем урон entity
                 entity.RecieveDamage(damage);
-            }
+
+            // Уничтожаем цель, если можем всё
+            if (destroysAnything)
+                Destroy(collision.gameObject);
+
+
+
             
-            //размещаем (Создаем его копию) префаб системы партиклов
+            // Размещаем (Создаем его копию) префаб системы партиклов
             GameObject hitGameObject = Instantiate( hitPrefab, transform.position, transform.rotation );
             
-            //Запускаем переменную ParticleSystem
+            // Запускаем переменную ParticleSystem
             ParticleSystem hitPartileSystem = hitGameObject.GetComponent<ParticleSystem>();
             hitPartileSystem.Play();
 
