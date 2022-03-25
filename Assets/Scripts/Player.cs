@@ -10,7 +10,7 @@ public class Player : FragileEntity
     public float xSpeedLimit;
     public float xMovementForce;
     public float xJumpForce;
-    public float yJumpForce;
+    public float yJumpSpeed;
 
     [Space(10)]
 
@@ -18,7 +18,7 @@ public class Player : FragileEntity
     [Header("Stats")]
 
     public float damageModifier = 1;
-    public int jumpsMax = 2;
+    public int addJumpsMax = 1;
 
     [Space(10)]
 
@@ -45,13 +45,13 @@ public class Player : FragileEntity
             isGrounded = value;
 
             if (isGrounded)
-                jumpsLeft = jumpsMax;  // reset jumps left
+                addJumpsLeft = addJumpsMax;  // reset jumps left
         }
     }
 
     [HideInInspector] public bool IsClimbPossible = false;
 
-    private int jumpsLeft;
+    private int addJumpsLeft;
 
     private Rigidbody2D rb;
     private HealthBar healthBar;
@@ -88,11 +88,11 @@ public class Player : FragileEntity
     private void Update()
     {
         #region Прыжок
-        if (jumpsLeft > 0  &&  Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)  &&  addJumpsLeft > 0)
         {
-            rb.AddForce(new Vector2(0, yJumpForce));
+            rb.velocity = new Vector2(rb.velocity.x, yJumpSpeed);
 
-            jumpsLeft -= 1;
+            addJumpsLeft -= 1;
         }
         #endregion
 
@@ -112,39 +112,36 @@ public class Player : FragileEntity
     }
 
 
-    #region Подтягивание от стены
+    #region Подтягивание на платформу
     public void OnClimbReached(Vector3 climbPos, bool isRightSide)
     {
         if (Input.GetKey(KeyCode.A)  &&  isRightSide)
-            Climb(climbPos);
+            StartCoroutine("Climb", climbPos);
 
         if (Input.GetKey(KeyCode.D)  &&  !isRightSide)
-            Climb(climbPos);
+            StartCoroutine("Climb", climbPos);
     }
 
-    private void Climb(Vector3 climbPos)
+    private IEnumerator Climb(Vector3 climbPos)
     {
-        transform.position = climbPos;
+        // Запоминаем скорость по х, чтобы потом вернуть
+        float prevVelocityX = rb.velocity.x;
+        rb.velocity = new Vector2(0, 0);
+        rb.isKinematic = true;
+
+        float EPS = 0.1f;
+        float SPEED = 10;
+        while ((climbPos - transform.position).magnitude > EPS)
+        {
+            Vector3 step = (climbPos - transform.position).normalized * Time.deltaTime * SPEED;
+
+            rb.MovePosition(transform.position + step);
+
+            yield return new WaitForFixedUpdate();
+        }
+        rb.isKinematic = false;
+        rb.velocity = new Vector2(prevVelocityX, 0);
     }
-
-    //public IEnumerator SmoothMovement(Vector2 end)
-    //{
-    //    float MOVE_TIME = 1f;
-
-    //    yield return new WaitForFixedUpdate();
-
-    //    rb.isKinematic = true;
-
-    //    while (rb.position != end)
-    //    {
-    //        rb.MovePosition(rb.position, end, 1 / MOVE_TIME);
-
-    //        yield return new WaitForFixedUpdate();
-    //    }
-
-    //    rb.position = end;
-    //    rb.isKinematic = false;
-    //}
     #endregion
 
 

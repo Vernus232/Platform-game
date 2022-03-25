@@ -45,21 +45,13 @@ public class Weapon : MonoBehaviour
         #endregion
 
         #region Поворот
-
         float curAngle = gameObject.transform.rotation.z;
 
         if (Mathf.Abs(curAngle) > 0.7)
-        {
             gameObject.GetComponent<SpriteRenderer>().flipY = true;
-            Debug.Log(curAngle);
-        }
 
         if (Mathf.Abs(curAngle) < 0.7)
-        {
             gameObject.GetComponent<SpriteRenderer>().flipY = false;
-            Debug.Log(curAngle);
-        }
-
         #endregion
     }
 

@@ -590,9 +590,9 @@ MonoBehaviour:
   xSpeedLimit: 9
   xMovementForce: 1.5
   xJumpForce: 100
-  yJumpForce: 400
+  yJumpSpeed: 10
   damageModifier: 1
-  jumpsMax: 2
+  addJumpsMax: 1
   zeroFrictionMat: {fileID: 6200000, guid: 26029cd1d7736d449b36dc61b275f43a, type: 2}
   normFrictionMat: {fileID: 6200000, guid: 42b77b4819b0c394fb38ded269cd8dd8, type: 2}
   IsClimbPossible: 0
