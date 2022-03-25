@@ -1,191 +1,154 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : FragileEntity
 {
-    public float xWalkSpeedLimit;
-    public float xRunSpeedLimit;
+    [Header("Movement")]
+
+    public float xSpeedLimit;
     public float xMovementForce;
-    public float xHoverMovementPenalty;
-
-    [Space(10)]
-
     public float xJumpForce;
     public float yJumpForce;
-    [Range(1, 2)] public float jumpShiftBoost;
-    public float maxGroundedAngle;
 
     [Space(10)]
+
+
+    [Header("Stats")]
 
     public float damageModifier = 1;
+    public int jumpsMax = 2;
 
     [Space(10)]
 
-    public PhysicsMaterial2D zeroFrictionMat;
-    public PhysicsMaterial2D normFrictionMat;
 
-    private Rigidbody2D rb;
-    private HealthBar healthBar;
+    [Header("Refs")]
 
-    private float targetSpeed;
-    private bool firstJumpWasRecently = false;
-    private bool isGrounded = true;
-    public bool IsGrounded
+    [SerializeField] private PhysicsMaterial2D zeroFrictionMat;
+    [SerializeField] private PhysicsMaterial2D normFrictionMat;
+
+    [Space(10)]
+
+
+    // Inside script
+
+    private bool isGrounded = false;
+    [HideInInspector] public bool IsGrounded
     {
         get
         {
             return isGrounded;
         }
-
         set
         {
-            bool wasGrounded = isGrounded;
             isGrounded = value;
 
-            // Если приземлился
-            if (!wasGrounded && isGrounded)
-            {
-                hasSecondJump = true;
-            }
+            if (isGrounded)
+                jumpsLeft = jumpsMax;  // reset jumps left
         }
     }
 
-    private bool hasSecondJump = false;
+    [HideInInspector] public bool IsClimbPossible = false;
+
+    private int jumpsLeft;
+
+    private Rigidbody2D rb;
+    private HealthBar healthBar;
+
+
+
+
 
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
         healthBar = FindObjectOfType<HealthBar>();
     }
 
     private void FixedUpdate()
     {
-        #region Движение по Х
-        // Определяем целевую скорость        
+        #region Ускорение по Х
+        // Определяем целевую скорость
+        float targetSpeed = 0;
+
         if (Input.GetKey(KeyCode.A))
-        {
-            targetSpeed = -xWalkSpeedLimit;
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                targetSpeed = -xRunSpeedLimit;
-            }
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            targetSpeed = xWalkSpeedLimit;
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                targetSpeed = xRunSpeedLimit;
-            }
-        }
+            targetSpeed = -xSpeedLimit;
 
-        else
-        {
-            targetSpeed = 0;
-        }
-
-        // Множитель нерфа движения в полёте
-        float penaltyMul = 1;
-        if (!IsGrounded)
-            penaltyMul = xHoverMovementPenalty;
+        if (Input.GetKey(KeyCode.D))
+            targetSpeed =  xSpeedLimit;
 
         // Сообщаем силу
-        float xForce = xMovementForce * (targetSpeed - rb.velocity.x) * penaltyMul;
+        float xForce = xMovementForce * (targetSpeed - rb.velocity.x);
         rb.AddForce(new Vector3(xForce, 0, 0));
         #endregion
+    }
 
-        #region Первый прыжок
-        if (IsGrounded)
+    private void Update()
+    {
+        #region Прыжок
+        if (jumpsLeft > 0  &&  Input.GetKeyDown(KeyCode.Space))
         {
-            // Если нажали пробел  И  не прыгали недавно
-            if (Input.GetKey(KeyCode.Space)  &&  !firstJumpWasRecently)
-            {
-                // Дефолтная сила прыжка
-                Vector2 force = new Vector2(0, yJumpForce);
+            rb.AddForce(new Vector2(0, yJumpForce));
 
-                // Если нажали ещё и в сторону - добавляем силу по х
-                if (Input.GetKey(KeyCode.A))
-                    force += new Vector2(-xJumpForce, 0);
-                if (Input.GetKey(KeyCode.D)) 
-                    force += new Vector2( xJumpForce, 0);
-
-                // Если нажали ещё и шифт - умножаем силу на jumpShiftBoost
-                if (Input.GetKey(KeyCode.LeftShift))
-                    force *= jumpShiftBoost;
-
-                // Наконец сообщаем силу
-                rb.AddForce(force);
-
-                // Отслеживаем, был ли недавно прыжок
-                firstJumpWasRecently = true;
-                Invoke("SetFalse_firstJumpWasRecently", 0.1f);
-            }
-        }
-        #endregion
-
-        #region Второй прыжок
-        // Если плеер в полёте  И  есть второй прыжок  И  недавно не было прыжка
-        if (!IsGrounded && hasSecondJump && !firstJumpWasRecently)
-        {
-            if (Input.GetKey(KeyCode.Space))
-            {
-                // Дефолтная сила прыжка
-                Vector2 force = new Vector2(0, yJumpForce);
-
-                // Наконец сообщаем силу
-                rb.AddForce(force);
-
-                // Ресетим второй прыжок
-                hasSecondJump = false;
-            }
+            jumpsLeft -= 1;
         }
         #endregion
 
         #region Контроль материала
-        float Y_FRICTION_SPEED = 3f;
-        // Если скорость по У низкая..
-        if (Mathf.Abs(rb.velocity.y) < Y_FRICTION_SPEED)
+        // Если что-то жмём...
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            // ..то юзаем стандартное трение
-            gameObject.GetComponent<Collider2D>().sharedMaterial = normFrictionMat;
+            // ..то юзаем нет трение
+            gameObject.GetComponent<Collider2D>().sharedMaterial = zeroFrictionMat;
         }
         else
         {
-            // ..иначе нет трения
-            gameObject.GetComponent<Collider2D>().sharedMaterial = zeroFrictionMat;
+            // ..иначе стандартное трения
+            gameObject.GetComponent<Collider2D>().sharedMaterial = normFrictionMat;
         }
         #endregion
     }
 
-    // Проверки на касание земли
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        // Число контактов со стороны земли 
-        int groundContacts = 0;
-        // Итерация по всем контактам
-        foreach (ContactPoint2D contact in collision.contacts)
-        {
-            // Считаем угол между вертикальной осью и направлением контакта
-            float angle = Vector2.Angle(contact.normal, Vector2.up);
-            if (angle < maxGroundedAngle)
-                groundContacts += 1;
-        }
 
-        if (groundContacts > 0)
-            IsGrounded = true;
-        else
-            IsGrounded = false;
+    #region Подтягивание от стены
+    public void OnClimbReached(Vector3 climbPos, bool isRightSide)
+    {
+        if (Input.GetKey(KeyCode.A)  &&  isRightSide)
+            Climb(climbPos);
+
+        if (Input.GetKey(KeyCode.D)  &&  !isRightSide)
+            Climb(climbPos);
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void Climb(Vector3 climbPos)
     {
-        if (collision.contactCount == 0)
-            IsGrounded = false;
+        transform.position = climbPos;
     }
 
-    //При получении урона...
+    //public IEnumerator SmoothMovement(Vector2 end)
+    //{
+    //    float MOVE_TIME = 1f;
+
+    //    yield return new WaitForFixedUpdate();
+
+    //    rb.isKinematic = true;
+
+    //    while (rb.position != end)
+    //    {
+    //        rb.MovePosition(rb.position, end, 1 / MOVE_TIME);
+
+    //        yield return new WaitForFixedUpdate();
+    //    }
+
+    //    rb.position = end;
+    //    rb.isKinematic = false;
+    //}
+    #endregion
+
+
+    // При получении урона...
     // Переписываем абстрактный метод RecieveDamage
     // Т.к. обещали его реализовать в FragileEntity
     public override void RecieveDamage(float amount)
@@ -198,9 +161,5 @@ public class Player : FragileEntity
         healthBar.UpdateHealth();
     }
 
-    private void SetFalse_firstJumpWasRecently()
-    {
-        firstJumpWasRecently = false;
-    }
 
 }
