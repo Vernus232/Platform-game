@@ -44,7 +44,8 @@ public class EnemyRoundSpawner : MonoBehaviour
         }
 
         Vector2 pos2D = resolutionProportion * dist * getAppropriatePos();
-        Vector3 spawnPos = new Vector3(pos2D.x, pos2D.y, 0f);
+        Vector3 spawnPos = transform.position + new Vector3(pos2D.x, pos2D.y, 0f);
+
         Instantiate(enemyPrefab, spawnPos, enemyPrefab.transform.rotation);
     }
 
