@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnStep: 0.7
-  dist: 2
+  dist: 1
   enemyPrefab: {fileID: 7267947439652132932, guid: 6fbd734f705b2bf43a89fd8133a2b808, type: 3}
 --- !u!1 &8403963449236236339
 GameObject:
@@ -540,8 +540,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0
+  m_AngularDrag: 0
   m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -587,8 +587,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  xSpeedLimit: 9
-  xMovementForce: 1.5
+  xSpeedLimit: 8
+  xMovementForce: 1.7
   xJumpForce: 100
   yJumpSpeed: 10
   damageModifier: 1

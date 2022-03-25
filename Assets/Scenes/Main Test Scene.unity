@@ -6038,7 +6038,7 @@ MonoBehaviour:
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
+  logPathResults: 0
   maxNearestNodeDistance: 100
   scanOnStartup: 1
   fullGetNearestSearch: 0
@@ -6901,14 +6901,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1059091950316954858, guid: dd871c3a85e9b4d428fec78e9e88e449, type: 3}
-      propertyPath: yJumpSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1059091950316954858, guid: dd871c3a85e9b4d428fec78e9e88e449, type: 3}
-      propertyPath: addJumpsMax
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3303069212584049807, guid: dd871c3a85e9b4d428fec78e9e88e449, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -6924,10 +6916,6 @@ PrefabInstance:
     - target: {fileID: 6628095847613488681, guid: dd871c3a85e9b4d428fec78e9e88e449, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6671018571734989372, guid: dd871c3a85e9b4d428fec78e9e88e449, type: 3}
-      propertyPath: dist
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8403963449236236339, guid: dd871c3a85e9b4d428fec78e9e88e449, type: 3}
       propertyPath: m_Layer
