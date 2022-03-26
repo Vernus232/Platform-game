@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponIndicator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Weapon currentWeapon;
+
+    public Text weaponNameText;
+
+
+
+    public void OnWeaponChanged(Weapon newWeapon)
     {
-        
+        currentWeapon = newWeapon;
+
+        UpdateUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateUI()
     {
-        
+        weaponNameText.text = "Current weapon - " + currentWeapon.name;
     }
+
 }

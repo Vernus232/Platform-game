@@ -8,7 +8,7 @@ public class WeaponChoose : MonoBehaviour
     public GameObject[] weaponObjects;
     public bool[] weaponUnlocks;
 
-    private int activeWeaponIndex = 0;
+    private int activeWeaponIndex;
     public int ActiveWeaponIndex
     {
         get
@@ -17,12 +17,19 @@ public class WeaponChoose : MonoBehaviour
         }
         set
         {
-            Weapon weapon = weaponObjects[activeWeaponIndex].GetComponent<Weapon>();
             activeWeaponIndex = value;
+
+            Weapon weapon = weaponObjects[activeWeaponIndex].GetComponent<Weapon>();
             indicator.OnWeaponChanged(weapon);
         }
     }
 
+
+    private void Start()
+    {
+        int DEFAULT_WEAPON_INDEX = 0;
+        TryChooseWeapon(DEFAULT_WEAPON_INDEX);
+    }
 
     private void Update()
     {
@@ -44,9 +51,9 @@ public class WeaponChoose : MonoBehaviour
 
     private void ChooseWeapon(int index)
     {
-        weaponObjects[activeWeaponIndex].SetActive(false);
+        weaponObjects[ActiveWeaponIndex].SetActive(false);
         weaponObjects[index].SetActive(true);
-        activeWeaponIndex = index;
+        ActiveWeaponIndex = index;
     }
 
 }

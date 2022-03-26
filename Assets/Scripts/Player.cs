@@ -18,7 +18,9 @@ public class Player : FragileEntity
     [Header("Stats")]
 
     public float damageModifier = 1;
-    public int addJumpsMax = 1;
+    public float recoilFromMovement;
+
+    [SerializeField] private int addJumpsMax = 1;
 
     [Space(10)]
 
@@ -52,6 +54,7 @@ public class Player : FragileEntity
     [HideInInspector] public bool IsClimbPossible = false;
 
     private int addJumpsLeft;
+    
 
     private Rigidbody2D rb;
     private HealthBar healthBar;
@@ -83,6 +86,11 @@ public class Player : FragileEntity
         float xForce = xMovementForce * (targetSpeed - rb.velocity.x);
         rb.AddForce(new Vector3(xForce, 0, 0));
         #endregion
+
+        #region Разброс от скорости
+        recoilFromMovement = rb.velocity.magnitude;
+        #endregion
+
     }
 
     private void Update()

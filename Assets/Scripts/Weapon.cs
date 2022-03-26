@@ -4,19 +4,31 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public string Name;
-    public Transform shootingPoint;
-    public GameObject projectileObj;
-    public float speed;
-    public float betweenShotsTime;
-    public float dispersion = 0;
-    public int count = 1;
+    // Постоянные параметры
+    [SerializeField] private string Name;
+    [SerializeField] private float projectilesSpeed;
+    [SerializeField] private float betweenShotsTime;
+
+    [SerializeField] private int burstCount = 1;
+    [SerializeField] private bool instantiateBurstMomentally = false;
+
+    [SerializeField] private float recoilIncreaseWithShot;
+    [SerializeField] private float recoilReductionWithTime;
+    [SerializeField] private float minWeaponRecoil;
+    [SerializeField] private float maxWeaponRecoil;
+    [SerializeField] private float projMaxSpeedDifferenceMul;
+
+    
+
+    [SerializeField] private Transform shootingPoint;
+    [SerializeField] private GameObject projectileObj;
+
 
     private float prevShootTime = 0;
+    private float recoil;
 
     private Camera playerCamera;
     private Player player;
-
 
     private void Start()
     {
@@ -41,7 +53,11 @@ public class Weapon : MonoBehaviour
             float currTime = Time.time;
             if ((currTime - prevShootTime) > betweenShotsTime)
             {
-                StartCoroutine("InstantiateProjectiles");
+                if (instantiateBurstMomentally)
+                    InstantiateProjectilesMomentally();
+                else
+                    StartCoroutine("InstantiateProjectiles");
+
                 prevShootTime = currTime;
             }
         }
@@ -58,26 +74,59 @@ public class Weapon : MonoBehaviour
         #endregion
     }
 
+    private void FixedUpdate()
+    {
+        recoil -= recoilReductionWithTime;
+
+        if (recoil < minWeaponRecoil)
+            recoil = minWeaponRecoil;
+
+        if (recoil > maxWeaponRecoil)
+            recoil = maxWeaponRecoil;
+
+        Debug.Log("======");
+        Debug.Log("weapon recoil " + recoil.ToString());
+        Debug.Log("player recoil " + player.recoilFromMovement.ToString());
+        Debug.Log("======");
+    }
+
     private IEnumerator InstantiateProjectiles()
     {
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < burstCount; i++)
         {
             InstantiateProjectile();
 
-            //yield return new WaitForSeconds(0.01f);
             yield return new WaitForEndOfFrame();
         }
     }
 
+    private void InstantiateProjectilesMomentally()
+    {
+        for (int i = 0; i < burstCount; i++)
+        {
+            InstantiateProjectile();
+        }
+    }
 
     private void InstantiateProjectile()
     {
-        float zRotationChange = Random.Range(0f, dispersion);
+        // Определили конечный разброс
+        float totalRecoil = player.recoilFromMovement + recoil;
+
+        // Определили вектор выстрела
+        float zRotationChange = Random.Range(0f, totalRecoil);
         Quaternion randomedRotation = transform.rotation * Quaternion.Euler(Vector3.forward * zRotationChange);
 
+        // Определили разность в скорости пуль
+        float projSpeedDifferenceMul = Random.Range(1f, projMaxSpeedDifferenceMul);
+
+        // Заспавнили пули
         GameObject ball = Instantiate(projectileObj, shootingPoint.position, randomedRotation);
-        ball.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(speed, 0, 0));
+        ball.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(projectilesSpeed * projSpeedDifferenceMul, 0, 0));
         ball.GetComponent<PlayerProjectile>().damage *= player.damageModifier;
+
+        // Сообщили разброс оружию
+        recoil += recoilIncreaseWithShot;
     }
 
 
