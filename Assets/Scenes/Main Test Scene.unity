@@ -715,7 +715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &214200792
 Transform:
   m_ObjectHideFlags: 0
@@ -950,14 +950,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Automatic Rifle
   projectilesSpeed: 200
-  betweenShotsTime: 0.1
+  projMaxSpeedDifferenceMul: 1.05
+  FireRate: 0.1
   burstCount: 1
   instantiateBurstMomentally: 0
+  maxWeaponRecoil: 15
+  minWeaponRecoil: 0
   recoilIncreaseWithShot: 2
   recoilReductionWithTime: 0.25
-  minWeaponRecoil: 0
-  maxWeaponRecoil: 15
-  projMaxSpeedDifferenceMul: 1.05
   shootingPoint: {fileID: 447737418}
   projectileObj: {fileID: 5526811408548887409, guid: 9d40d2f2f42cdeb4b88689628a35c451, type: 3}
 --- !u!212 &260847694
@@ -1909,10 +1909,10 @@ RectTransform:
   m_Father: {fileID: 595836266}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10, y: -10}
-  m_SizeDelta: {x: 20, y: 20}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 65, y: -0.00000011735}
+  m_SizeDelta: {x: 67.7758, y: 67.7758}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &506977122
 MonoBehaviour:
@@ -2443,10 +2443,10 @@ RectTransform:
   m_Father: {fileID: 1979024598}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 442.7, y: 274.2}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -228.27472, y: -71}
+  m_SizeDelta: {x: 357.4065, y: 71.4696}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &595836267
 MonoBehaviour:
@@ -2542,7 +2542,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.4479, y: -0.2986}
+  m_AnchoredPosition: {x: 0.44789886, y: -0.29859543}
   m_SizeDelta: {x: 0.8959, y: -0.5972}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &610622691
@@ -2783,10 +2783,10 @@ RectTransform:
   m_Father: {fileID: 1979024598}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -162.62732, y: 46.73999}
-  m_SizeDelta: {x: 246.7176, y: 52.52}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 663.3474, y: -474.24197}
+  m_SizeDelta: {x: 527.0196, y: 107.0464}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &626847551
 MonoBehaviour:
@@ -2848,7 +2848,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 0
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3193,7 +3193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &756843176
 Transform:
   m_ObjectHideFlags: 0
@@ -3257,8 +3257,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0024414062, y: 0}
-  m_SizeDelta: {x: 2.8600006, y: 1.5470009}
+  m_AnchoredPosition: {x: -1.404541, y: 1.0592041}
+  m_SizeDelta: {x: 5.6642, y: 3.6654}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &801105568
 MonoBehaviour:
@@ -3282,13 +3282,13 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 0a5aeedf9825c434fad40e4753c217f0, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &801105569
 CanvasRenderer:
@@ -3411,14 +3411,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Terrain Gun
   projectilesSpeed: 0
-  betweenShotsTime: 2
+  projMaxSpeedDifferenceMul: 0
+  FireRate: 0
   burstCount: 1
   instantiateBurstMomentally: 0
+  maxWeaponRecoil: 0
+  minWeaponRecoil: 0
   recoilIncreaseWithShot: 0
   recoilReductionWithTime: 0
-  minWeaponRecoil: 0
-  maxWeaponRecoil: 0
-  projMaxSpeedDifferenceMul: 0
   shootingPoint: {fileID: 314844769}
   projectileObj: {fileID: 5526811408548887409, guid: 3427ca663e3b1db4d9b78f37bf6c6fbd, type: 3}
 --- !u!212 &923826489
@@ -3681,7 +3681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -64.761505, y: -33.58638}
+  m_AnchoredPosition: {x: -206.48, y: -125.18}
   m_SizeDelta: {x: 364.778, y: 132.8247}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &978292886
@@ -3717,7 +3717,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sample textssss
+  m_Text: 
 --- !u!222 &978292887
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4781,14 +4781,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Railgun
   projectilesSpeed: 500
-  betweenShotsTime: 1
-  burstCount: 1
+  projMaxSpeedDifferenceMul: 1.1
+  FireRate: 1.8
+  burstCount: 10
   instantiateBurstMomentally: 0
+  maxWeaponRecoil: 0
+  minWeaponRecoil: 0
   recoilIncreaseWithShot: 0
   recoilReductionWithTime: 0
-  minWeaponRecoil: 0
-  maxWeaponRecoil: 0
-  projMaxSpeedDifferenceMul: 0
   shootingPoint: {fileID: 117614325}
   projectileObj: {fileID: 5526811408548887409, guid: e2e9566b9c7276745b0f4c45ded2736f, type: 3}
 --- !u!212 &1271790123
@@ -5044,8 +5044,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290.63037, y: 259.07605}
-  m_SizeDelta: {x: 224.7176, y: 22.745}
+  m_AnchoredPosition: {x: -572, y: 455.01}
+  m_SizeDelta: {x: 429.5983, y: 43.4822}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1335720785
 MonoBehaviour:
@@ -5071,7 +5071,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
     m_FontStyle: 2
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 120
     m_Alignment: 0
@@ -5965,15 +5965,15 @@ RectTransform:
   m_GameObject: {fileID: 1482352469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9849421, y: 0.231287, z: 1}
   m_Children: []
   m_Father: {fileID: 626847550}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -0.000091553, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1.6133}
+  m_SizeDelta: {x: 0, y: 172.0509}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1482352471
 MonoBehaviour:
@@ -6525,17 +6525,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722146655}
-  m_LocalRotation: {x: -0, y: -0, z: -0.14799419, w: 0.9889883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1835597704}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -17.021}
-  m_AnchorMin: {x: 1, y: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -103.10214, y: 0}
-  m_SizeDelta: {x: 206.20428, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1722146657
 MonoBehaviour:
@@ -6626,7 +6626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10.576004, y: 0.000011444092}
+  m_AnchoredPosition: {x: 10.575989, y: 0}
   m_SizeDelta: {x: -21.1511, y: 3.027}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1729343497
@@ -6653,10 +6653,10 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 2
-    m_MaxSize: 40
-    m_Alignment: 0
+    m_MaxSize: 300
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -7018,8 +7018,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 787, y: -427}
-  m_SizeDelta: {x: 246.85, y: 95.9}
+  m_AnchoredPosition: {x: 663.35, y: -390.79962}
+  m_SizeDelta: {x: 527.02, y: 59.8429}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1835597705
 MonoBehaviour:
@@ -7655,14 +7655,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Shotgun
   projectilesSpeed: 150
-  betweenShotsTime: 0.5
+  projMaxSpeedDifferenceMul: 1.5
+  FireRate: 1
   burstCount: 20
   instantiateBurstMomentally: 1
+  maxWeaponRecoil: 10
+  minWeaponRecoil: 5
   recoilIncreaseWithShot: 0.1
   recoilReductionWithTime: 0.25
-  minWeaponRecoil: 5
-  maxWeaponRecoil: 10
-  projMaxSpeedDifferenceMul: 1.2
   shootingPoint: {fileID: 978784048}
   projectileObj: {fileID: 5526811408548887409, guid: 420e63d1659895e4ea90e58b7205fcbd, type: 3}
 --- !u!212 &2056381524

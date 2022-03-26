@@ -6,19 +6,34 @@ public class Weapon : MonoBehaviour
 {
     // Постоянные параметры
     [SerializeField] private string Name;
-    [SerializeField] private float projectilesSpeed;
-    [SerializeField] private float betweenShotsTime;
 
+    [Space(10)]
+
+    [Header("Speed")]
+
+    [SerializeField] private float projectilesSpeed;
+    [SerializeField] private float projMaxSpeedDifferenceMul;
+
+    [Space(10)]
+
+    [Header("Burst")]
+
+    [SerializeField] private float FireRate;
     [SerializeField] private int burstCount = 1;
     [SerializeField] private bool instantiateBurstMomentally = false;
 
+    [Space(10)]
+
+    [Header("Recoil")]
+
+    [SerializeField] private float maxWeaponRecoil;
+    [SerializeField] private float minWeaponRecoil;
     [SerializeField] private float recoilIncreaseWithShot;
     [SerializeField] private float recoilReductionWithTime;
-    [SerializeField] private float minWeaponRecoil;
-    [SerializeField] private float maxWeaponRecoil;
-    [SerializeField] private float projMaxSpeedDifferenceMul;
 
-    
+    [Space(10)]
+
+    [Header("Links")]
 
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private GameObject projectileObj;
@@ -51,7 +66,7 @@ public class Weapon : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             float currTime = Time.time;
-            if ((currTime - prevShootTime) > betweenShotsTime)
+            if ((currTime - prevShootTime) > FireRate)
             {
                 if (instantiateBurstMomentally)
                     InstantiateProjectilesMomentally();
@@ -76,6 +91,7 @@ public class Weapon : MonoBehaviour
 
     private void FixedUpdate()
     {
+        #region Снижение отдачи
         recoil -= recoilReductionWithTime;
 
         if (recoil < minWeaponRecoil)
@@ -84,12 +100,14 @@ public class Weapon : MonoBehaviour
         if (recoil > maxWeaponRecoil)
             recoil = maxWeaponRecoil;
 
-        Debug.Log("======");
-        Debug.Log("weapon recoil " + recoil.ToString());
-        Debug.Log("player recoil " + player.recoilFromMovement.ToString());
-        Debug.Log("======");
+        //Debug.Log("======");
+        //Debug.Log("weapon recoil " + recoil.ToString());
+        //Debug.Log("player recoil " + player.recoilFromMovement.ToString());
+        //Debug.Log("======");
+        #endregion
     }
 
+    #region Бёрсты
     private IEnumerator InstantiateProjectiles()
     {
         for (int i = 0; i < burstCount; i++)
@@ -107,6 +125,7 @@ public class Weapon : MonoBehaviour
             InstantiateProjectile();
         }
     }
+    #endregion
 
     private void InstantiateProjectile()
     {

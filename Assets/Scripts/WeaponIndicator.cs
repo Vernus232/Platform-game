@@ -20,7 +20,7 @@ public class WeaponIndicator : MonoBehaviour
 
     private void UpdateUI()
     {
-        weaponNameText.text = "Current weapon - " + currentWeapon.name;
+        weaponNameText.text = "Current weapon:   " + currentWeapon.name;
     }
 
 }
