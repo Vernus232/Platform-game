@@ -18,6 +18,8 @@ public class WeaponChoose : MonoBehaviour
             TryChooseWeapon(1);
         if (Input.GetKeyDown(KeyCode.Alpha3))
             TryChooseWeapon(2);
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+            TryChooseWeapon(3);
     }
 
     private void TryChooseWeapon(int index)
