@@ -4,10 +4,24 @@ using UnityEngine;
 
 public class WeaponChoose : MonoBehaviour
 {
+    public WeaponIndicator indicator;
     public GameObject[] weaponObjects;
     public bool[] weaponUnlocks;
 
     private int activeWeaponIndex = 0;
+    public int ActiveWeaponIndex
+    {
+        get
+        {
+            return activeWeaponIndex;
+        }
+        set
+        {
+            Weapon weapon = weaponObjects[activeWeaponIndex].GetComponent<Weapon>();
+            activeWeaponIndex = value;
+            indicator.OnWeaponChanged(weapon);
+        }
+    }
 
 
     private void Update()

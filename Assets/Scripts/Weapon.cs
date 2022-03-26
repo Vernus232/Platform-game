@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public string Name;
     public Transform shootingPoint;
     public GameObject projectileObj;
     public float speed;
