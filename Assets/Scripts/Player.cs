@@ -152,7 +152,7 @@ public class Player : FragileEntity
     {
         hp -= amount;
 
-        if (hp == 0)
+        if (hp <= 0)
             Die();
 
         healthBar.UpdateHealth();

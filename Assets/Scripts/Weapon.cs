@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour
     public GameObject projectileObj;
     public float speed;
     public float betweenShotsTime;
+    public float dispersion = 0;
+    public int count = 1;
 
     private float prevShootTime = 0;
 
@@ -38,7 +40,7 @@ public class Weapon : MonoBehaviour
             float currTime = Time.time;
             if ((currTime - prevShootTime) > betweenShotsTime)
             {
-                InstantiateProjectile();
+                StartCoroutine("InstantiateProjectiles");
                 prevShootTime = currTime;
             }
         }
@@ -46,8 +48,8 @@ public class Weapon : MonoBehaviour
 
         #region Поворот
         float curAngle = gameObject.transform.rotation.z;
-
-        if (Mathf.Abs(curAngle) > 0.7)
+        
+        if (Mathf.Abs(curAngle) >= 0.7)
             gameObject.GetComponent<SpriteRenderer>().flipY = true;
 
         if (Mathf.Abs(curAngle) < 0.7)
@@ -55,11 +57,26 @@ public class Weapon : MonoBehaviour
         #endregion
     }
 
+    private IEnumerator InstantiateProjectiles()
+    {
+        for (int i = 0; i < count; i++)
+        {
+            InstantiateProjectile();
+
+            //yield return new WaitForSeconds(0.01f);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+
     private void InstantiateProjectile()
     {
-        GameObject ball = Instantiate(projectileObj, shootingPoint.position, transform.rotation);
-        ball.GetComponent<PlayerProjectile>().damage *= player.damageModifier;
+        float zRotationChange = Random.Range(0f, dispersion);
+        Quaternion randomedRotation = transform.rotation * Quaternion.Euler(Vector3.forward * zRotationChange);
+
+        GameObject ball = Instantiate(projectileObj, shootingPoint.position, randomedRotation);
         ball.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(speed, 0, 0));
+        ball.GetComponent<PlayerProjectile>().damage *= player.damageModifier;
     }
 
 

@@ -4,10 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - enemy
   - Obstacle
   - PlatformClimb
   - GroundDetector
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,8 +15,8 @@ TagManager:
   - Obstacle
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - PlayerProjectile
   - 
   - 
   - 

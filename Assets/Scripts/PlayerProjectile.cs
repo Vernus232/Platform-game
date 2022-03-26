@@ -6,50 +6,48 @@ using UnityEngine;
 public class PlayerProjectile : CommonProjectile
 {
     public GameObject hitPrefab;
-    public bool destroysAnything;
+    public bool destroysAnything = false;
+    //public int penetration = 0;
+
 
 
     // Регистрация попадания во что-либо
     private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Игнорим коллижн с объектом тега Player
-        if (collision.gameObject.tag == "Player")
+    {   
+        // Во врага
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            Physics2D.IgnoreCollision( collision.collider, gameObject.GetComponent<Collider2D>() );
+            // Урон цели
+            FragileEntity entity = collision.gameObject.GetComponent<FragileEntity>();
+            entity.RecieveDamage(damage);
         }
 
-        // Обрабатываем колижн не с игроком
-        else
+        // В Obstacle
+        if (collision.gameObject.layer == 3)
         {
-            // Пытаемся сообщить урон Fraglie Entity
-            FragileEntity entity = collision.gameObject.GetComponent<FragileEntity>();
-            if (entity)
-                entity.RecieveDamage(damage);
-
-            // Уничтожаем цель, если можем всё
+            // Уничтожаем Obstacle, если можем
             if (destroysAnything)
                 Destroy(collision.gameObject);
-
-
-
-            
-            // Размещаем (Создаем его копию) префаб системы партиклов
-            GameObject hitGameObject = Instantiate( hitPrefab, transform.position, transform.rotation );
-            
-            // Запускаем переменную ParticleSystem
-            ParticleSystem hitPartileSystem = hitGameObject.GetComponent<ParticleSystem>();
-            hitPartileSystem.Play();
-
-            // Уничтожаем пулю
-            Destroy(gameObject);
-
-            Destroy(hitGameObject, 5);
-
-
         }
+
+
+        #region Частицы
+        // Размещаем (Создаем его копию) префаб системы партиклов
+        GameObject hitGameObject = Instantiate( hitPrefab, transform.position, transform.rotation );
+            
+        // Запускаем переменную ParticleSystem
+        ParticleSystem hitPartileSystem = hitGameObject.GetComponent<ParticleSystem>();
+        hitPartileSystem.Play();
+
+        // Таймер на смерть
+        Destroy(hitGameObject, 3);
+        #endregion
+
+
+        Destroy(gameObject);
+
+
     }
-
-
 
 
 

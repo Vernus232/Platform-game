@@ -15,7 +15,6 @@ public class CommonProjectile : MonoBehaviour
         Destroy(gameObject, lifespan);
     }
 
-
     // Поворот пули в полёте
     private void FixedUpdate()
     {
@@ -24,22 +23,6 @@ public class CommonProjectile : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
-
-    // Регистрация попадания во что-либо
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Пытаемся сообщить урон Fraglie Entity
-        FragileEntity entity = collision.gameObject.GetComponent<FragileEntity>();
-        if (entity)
-        {
-            // Сообщаем урон entity
-            entity.RecieveDamage(damage);
-        }
-
-        // Уничтожаем пулю
-        Destroy(gameObject);
-        
-    }
 
 
 }
