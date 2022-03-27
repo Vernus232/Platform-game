@@ -30,6 +30,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float minWeaponRecoil;
     [SerializeField] private float recoilIncreaseWithShot;
     [SerializeField] private float recoilReductionWithTime;
+    [SerializeField] private float movementRecoilImportance;
+
 
     [Space(10)]
 
@@ -129,8 +131,8 @@ public class Weapon : MonoBehaviour
 
     private void InstantiateProjectile()
     {
-        // Определили конечный разброс
-        float totalRecoil = player.recoilFromMovement + recoil;
+        // Определили суммарный разброс
+        float totalRecoil = player.movementRecoil * movementRecoilImportance  +  recoil;
 
         // Определили вектор выстрела
         float zRotationChange = Random.Range(0f, totalRecoil);

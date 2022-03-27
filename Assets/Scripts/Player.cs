@@ -9,7 +9,7 @@ public class Player : FragileEntity
 
     public float xSpeedLimit;
     public float xMovementForce;
-    public float xJumpForce;
+    public float xJumpSpeed;
     public float yJumpSpeed;
 
     [Space(10)]
@@ -18,7 +18,7 @@ public class Player : FragileEntity
     [Header("Stats")]
 
     public float damageModifier = 1;
-    public float recoilFromMovement;
+    public float movementRecoil;
 
     [SerializeField] private int addJumpsMax = 1;
 
@@ -88,7 +88,7 @@ public class Player : FragileEntity
         #endregion
 
         #region Разброс от скорости
-        recoilFromMovement = rb.velocity.magnitude;
+        movementRecoil = rb.velocity.magnitude;
         #endregion
 
     }
@@ -98,7 +98,13 @@ public class Player : FragileEntity
         #region Прыжок
         if (Input.GetKeyDown(KeyCode.Space)  &&  addJumpsLeft > 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, yJumpSpeed);
+            int jumpDir = 0;
+            if (Input.GetKey(KeyCode.A))
+                jumpDir = -1;
+            if (Input.GetKey(KeyCode.D))
+                jumpDir = 1;
+
+            rb.velocity += new Vector2(xJumpSpeed * jumpDir, yJumpSpeed);
 
             addJumpsLeft -= 1;
         }
