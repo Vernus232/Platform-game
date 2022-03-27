@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 5526811408548887414}
   - component: {fileID: 420371466959084007}
   m_Layer: 7
-  m_Name: Auto Rifle Projectile
+  m_Name: Pistol Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5039,7 +5039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90560bcafcf69d145b617cfd56a2fe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 10
   lifespan: 2
   hitPrefab: {fileID: 6856103324233738395, guid: 7a92a4641b62e884fbd28a2e46ee92dc, type: 3}
   destroysAnything: 0
