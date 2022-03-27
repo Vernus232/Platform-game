@@ -5,6 +5,7 @@ using UnityEngine;
 // Наследуем много чего от CommonProjectile
 public class PlayerProjectile : CommonProjectile
 {
+    [HideInInspector] public string damageForIndicator;
     public GameObject hitPrefab;
     public bool destroysAnything = false;
     //public int penetration = 0;
@@ -12,6 +13,12 @@ public class PlayerProjectile : CommonProjectile
 
 
     // Регистрация попадания во что-либо
+
+    private void Start()
+    {
+        damageForIndicator = damage.ToString("000");
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {   
         // Во врага

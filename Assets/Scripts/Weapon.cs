@@ -26,6 +26,7 @@ public class Weapon : MonoBehaviour
 
     [Header("Recoil")]
 
+    [SerializeField] private float maxMovementRecoil;
     [SerializeField] private float maxWeaponRecoil;
     [SerializeField] private float minWeaponRecoil;
     [SerializeField] private float recoilIncreaseWithShot;
@@ -99,6 +100,8 @@ public class Weapon : MonoBehaviour
 
         if (recoil > maxWeaponRecoil)
             recoil = maxWeaponRecoil;
+        if (player.recoilFromMovement > maxMovementRecoil)
+            player.recoilFromMovement = maxMovementRecoil;
 
         //Debug.Log("======");
         //Debug.Log("weapon recoil " + recoil.ToString());
