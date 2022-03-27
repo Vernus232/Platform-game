@@ -14,6 +14,8 @@ public class ScoreSystem : MonoBehaviour
     private void FixedUpdate()
     {
         score += scoreIncreaseOverTime;
+
+        UpdateUIScore();
     }
 
     public void AddScoreForKill(float addScore)

@@ -15,5 +15,7 @@ public class Enemy : FragileEntity
     protected override void Die()
     {        
         scoreSystem.AddScoreForKill(scoreForKill);
+
+        base.Die();
     }
 }
