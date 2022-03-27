@@ -7,10 +7,16 @@ public abstract class FragileEntity : MonoBehaviour
 {
     public float hp;
 
-    // Абстрактный метод получения урона (для каждого из "детей" свой)
-    public abstract void RecieveDamage(float amount);
+    // Метод получения урона (для "детей" может дополняться)
+    public virtual void RecieveDamage(float amount)
+    {
+        hp -= amount;
+
+        if (hp <= 0)
+            Die();
+    }
     
-    public void Die()
+    protected virtual void Die()
     {
         Destroy(gameObject);
     }

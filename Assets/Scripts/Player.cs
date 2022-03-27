@@ -19,6 +19,7 @@ public class Player : FragileEntity
 
     public float damageModifier = 1;
     public float movementRecoil;
+    [SerializeField] private float maxMovementRecoil;
 
     [SerializeField] private int addJumpsMax = 1;
 
@@ -89,6 +90,9 @@ public class Player : FragileEntity
 
         #region Разброс от скорости
         movementRecoil = rb.velocity.magnitude;
+
+        if (movementRecoil > maxMovementRecoil)
+            movementRecoil = maxMovementRecoil;
         #endregion
 
     }
@@ -160,14 +164,10 @@ public class Player : FragileEntity
 
 
     // При получении урона...
-    // Переписываем абстрактный метод RecieveDamage
-    // Т.к. обещали его реализовать в FragileEntity
+    // Переписываем дополняем виртуальный метод RecieveDamage
     public override void RecieveDamage(float amount)
     {
-        hp -= amount;
-
-        if (hp <= 0)
-            Die();
+        base.RecieveDamage(amount);
 
         healthBar.UpdateHealth();
     }

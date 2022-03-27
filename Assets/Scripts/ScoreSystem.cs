@@ -5,23 +5,26 @@ using UnityEngine.UI;
 
 public class ScoreSystem : MonoBehaviour
 {
-    public Enemy enemy;
-    public float score;
-    public float scoreIncreaseOverTime;
-    public float scoreForKill;
+    [SerializeField] private float scoreIncreaseOverTime;
+    [SerializeField] private Text text;
 
-    public Text text;
+    private float score;
 
 
     private void FixedUpdate()
     {
         score += scoreIncreaseOverTime;
-
-        text.text = score.ToString("0000000");
     }
 
-    public void AddScoreForKill()
+    public void AddScoreForKill(float addScore)
     {
-        score += scoreForKill;
+        score += addScore;
+
+        UpdateUIScore();
+    }
+
+    public void UpdateUIScore()
+    {
+        text.text = score.ToString("0000000");
     }
 }

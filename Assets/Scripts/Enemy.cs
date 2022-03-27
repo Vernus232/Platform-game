@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class Enemy : FragileEntity
 {
-    public ScoreSystem score;
-    public float scoreForKill;
-    // Переписываем абстрактный метод RecieveDamage
-    // Т.к. обещали его реализовать в FragileEntity
-    public override void RecieveDamage(float amount)
-    {
-        hp -= amount;
+    [SerializeField] private float scoreForKill;
 
-        if (hp <= 0)
-            Die();
-    }
-    private void OnDestroy()
+    private ScoreSystem scoreSystem;
+    private void Awake()
     {
-        Debug.Log("lolo");
-        score.AddScoreForKill();
+        scoreSystem = FindObjectOfType<ScoreSystem>();
+    }
+
+    protected override void Die()
+    {        
+        scoreSystem.AddScoreForKill(scoreForKill);
     }
 }
