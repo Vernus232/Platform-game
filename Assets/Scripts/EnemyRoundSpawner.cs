@@ -12,9 +12,15 @@ public class EnemyRoundSpawner : MonoBehaviour
     private Vector2 resolutionProportion = new Vector2(16, 9);
 
 
-    private void Start()
+
+    private void OnEnable()
     {
         StartCoroutine("SpawnTicker");
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines(); // стопает все корутины в скрипте
     }
 
     private IEnumerator SpawnTicker()

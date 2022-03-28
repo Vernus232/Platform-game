@@ -11,6 +11,7 @@ public class Player : FragileEntity
     public float xMovementForce;
     public float xJumpSpeed;
     public float yJumpSpeed;
+    public bool isLookingRight = true;
 
     [Space(10)]
 
@@ -30,6 +31,7 @@ public class Player : FragileEntity
 
     [SerializeField] private PhysicsMaterial2D zeroFrictionMat;
     [SerializeField] private PhysicsMaterial2D normFrictionMat;
+    [SerializeField] private Transform rukiPivot;
 
     [Space(10)]
 
@@ -55,7 +57,7 @@ public class Player : FragileEntity
     [HideInInspector] public bool IsClimbPossible = false;
 
     private int addJumpsLeft;
-    
+
 
     private Rigidbody2D rb;
     private HealthBar healthBar;
@@ -95,6 +97,32 @@ public class Player : FragileEntity
             movementRecoil = maxMovementRecoil;
         #endregion
 
+        #region ѕоворот
+        Vector3 mouseScreenPos = Input.mousePosition;
+        Vector3 normalizedScreenPos = Camera.main.WorldToScreenPoint(transform.position);
+        mouseScreenPos.x -= normalizedScreenPos.x;
+        mouseScreenPos.y -= normalizedScreenPos.y;
+        float angle = Mathf.Atan2(mouseScreenPos.y, mouseScreenPos.x) * Mathf.Rad2Deg;
+
+        if (Mathf.Abs(angle) >= 90)
+        {
+            if (transform.localScale.x != -1)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+                isLookingRight = false;
+            }
+        }
+
+        if (Mathf.Abs(angle) < 90)
+        {
+            if (transform.localScale.x != 1)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                isLookingRight = true;
+            }
+        }
+
+        #endregion
     }
 
     private void Update()
@@ -108,7 +136,8 @@ public class Player : FragileEntity
             if (Input.GetKey(KeyCode.D))
                 jumpDir = 1;
 
-            rb.velocity += new Vector2(xJumpSpeed * jumpDir, yJumpSpeed);
+            rb.velocity += new Vector2(xJumpSpeed * jumpDir, 0);  // по х - прибавл€ем
+            rb.velocity =  new Vector2(rb.velocity.x, yJumpSpeed);  // по у - приравниваем
 
             addJumpsLeft -= 1;
         }
@@ -147,8 +176,8 @@ public class Player : FragileEntity
         rb.velocity = new Vector2(0, 0);
         rb.isKinematic = true;
 
-        float EPS = 0.1f;
-        float SPEED = 10;
+        float EPS = 0.05f;
+        float SPEED = 5;
         while ((climbPos - transform.position).magnitude > EPS)
         {
             Vector3 step = (climbPos - transform.position).normalized * Time.deltaTime * SPEED;

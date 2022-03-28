@@ -55,15 +55,6 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        #region Наводка
-        var mouseScreenPos = Input.mousePosition;
-        var startingScreenPos = playerCamera.WorldToScreenPoint(transform.position);
-        mouseScreenPos.x -= startingScreenPos.x;
-        mouseScreenPos.y -= startingScreenPos.y;
-        var angle = Mathf.Atan2(mouseScreenPos.y, mouseScreenPos.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        #endregion
-
         #region Выстрел и задержка
         if (Input.GetMouseButton(0))
         {
@@ -78,16 +69,6 @@ public class Weapon : MonoBehaviour
                 prevShootTime = currTime;
             }
         }
-        #endregion
-
-        #region Поворот
-        float curAngle = gameObject.transform.rotation.z;
-        
-        if (Mathf.Abs(curAngle) >= 0.7)
-            gameObject.GetComponent<SpriteRenderer>().flipY = true;
-
-        if (Mathf.Abs(curAngle) < 0.7)
-            gameObject.GetComponent<SpriteRenderer>().flipY = false;
         #endregion
     }
 
