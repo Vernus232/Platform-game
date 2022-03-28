@@ -31,7 +31,7 @@ public class Player : FragileEntity
 
     [SerializeField] private PhysicsMaterial2D zeroFrictionMat;
     [SerializeField] private PhysicsMaterial2D normFrictionMat;
-    [SerializeField] private Transform rukiPivot;
+    [SerializeField] private Transform playerSpritePivotTransform;
 
     [Space(10)]
 
@@ -106,20 +106,16 @@ public class Player : FragileEntity
 
         if (Mathf.Abs(angle) >= 90)
         {
-            if (transform.localScale.x != -1)
-            {
-                transform.localScale = new Vector3(-1, 1, 1);
-                isLookingRight = false;
-            }
+                playerSpritePivotTransform.localScale = new Vector3(-Mathf.Abs(playerSpritePivotTransform.localScale.x),
+                                                                playerSpritePivotTransform.localScale.y,
+                                                                playerSpritePivotTransform.localScale.z);
         }
 
         if (Mathf.Abs(angle) < 90)
         {
-            if (transform.localScale.x != 1)
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-                isLookingRight = true;
-            }
+            playerSpritePivotTransform.localScale = new Vector3(Mathf.Abs(playerSpritePivotTransform.localScale.x),
+                                                            playerSpritePivotTransform.localScale.y,
+                                                            playerSpritePivotTransform.localScale.z);
         }
 
         #endregion
