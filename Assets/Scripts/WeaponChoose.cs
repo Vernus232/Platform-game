@@ -41,6 +41,10 @@ public class WeaponChoose : MonoBehaviour
             TryChooseWeapon(2);
         if (Input.GetKeyDown(KeyCode.Alpha4))
             TryChooseWeapon(3);
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+            TryChooseWeapon(4);
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+            TryChooseWeapon(5);
     }
 
     private void TryChooseWeapon(int index)
