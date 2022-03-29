@@ -62,13 +62,14 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        #region Выстрел и задержка
+        #region Выстрел и задержка, Ammo
         if (!isReloading  &&  Input.GetMouseButton(0))
         {
             // Проверка Fire rate
             float currTime = Time.time;
             if ((currTime - prevShootTime) > FireRate)
             {
+                // Выстрел и задержка
                 if (instantiateBurstMomentally)
                     InstantiateProjectilesMomentally();
                 else
@@ -76,12 +77,19 @@ public class Weapon : MonoBehaviour
 
                 prevShootTime = currTime;
 
+
+                // Ammo
                 ammo -= 1;
+
+                if (ammo == 0)
+                    StartCoroutine(Reload());
 
                 weaponIndicator.OnShot();
             }
         }
         #endregion
+
+
     }
 
     private void FixedUpdate()
@@ -96,10 +104,6 @@ public class Weapon : MonoBehaviour
             recoil = maxWeaponRecoil;
         #endregion
 
-        if (ammo == 0)
-        {
-            StartCoroutine(Reload());
-        }
 
         //Debug.Log("======");
         //Debug.Log("weapon recoil " + recoil.ToString());
