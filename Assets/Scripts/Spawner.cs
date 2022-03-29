@@ -5,8 +5,6 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private float spawnStep;
-    [SerializeField] private float dist;
-
     [SerializeField] private GameObject prefab;
 
 
@@ -33,27 +31,33 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-        //Vector2 getAppropriatePos()
-        //{
-        //    float x = Random.Range(-1.5f, 1.5f);
-        //    float y = Random.Range(0f, 1.5f);
+        Collider2D collider = GetComponent<Collider2D>();
+        Bounds bounds = collider.bounds;
+        
+        Vector2 create_randomPoint_in_bounds()
+        {
+            return new Vector2( Random.Range(bounds.min.x, bounds.max.x),
+                                Random.Range(bounds.min.y, bounds.max.y));
+        }
+        
+        Vector2 randomPoint = create_randomPoint_in_bounds();
 
-        //    while (Mathf.Abs(x) < 1  &&  y < 1)
-        //    {
-        //        x = Random.Range(-1.5f, 1.5f);
-        //        y = Random.Range(0f, 1.5f);
-        //    }
+        int fails = 0;
+        while (fails < 100)
+        {
+            if (collider.OverlapPoint(randomPoint))
+            {
+                Instantiate(prefab, randomPoint, prefab.transform.rotation);
+                break;
+            }
+            else
+            {
+                randomPoint = create_randomPoint_in_bounds();
+                fails++;
+            }
+        }
 
-        //    return new Vector2(x, y);
-        //}
 
-        //Vector2 pos2D = dist * getAppropriatePos();
-        //Vector3 spawnPos = transform.position + new Vector3(pos2D.x, pos2D.y, 0f);
-
-        //Instantiate(prefab, spawnPos, prefab.transform.rotation);
-
-        Bounds bounds =  GetComponent<CompositeCollider2D>().bounds;
-        bounds.
     }
 
 
