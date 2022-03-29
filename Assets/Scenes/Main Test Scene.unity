@@ -908,7 +908,7 @@ GameObject:
   - component: {fileID: 260847693}
   m_Layer: 3
   m_Name: Automatic Rifle
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -955,6 +955,11 @@ MonoBehaviour:
   movementRecoilImportance: 0
   shootingPoint: {fileID: 447737418}
   prefabProjectile: {fileID: 5526811408548887409, guid: 9d40d2f2f42cdeb4b88689628a35c451, type: 3}
+  recoil: 0
+  isReloading: 0
+  ammo: 30
+  maxAmmo: 30
+  reloadTime: 3
 --- !u!1 &261920928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2243,6 +2248,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 978292885}
+  - {fileID: 2089807549}
+  - {fileID: 1691444450}
   m_Father: {fileID: 1979024598}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2264,6 +2271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponNameText: {fileID: 978292886}
+  currentAmmo: {fileID: 2089807550}
+  maxAmmo: {fileID: 1691444451}
 --- !u!222 &520003332
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3661,7 +3670,7 @@ GameObject:
   - component: {fileID: 923826488}
   m_Layer: 3
   m_Name: Terrain Gun
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3706,6 +3715,11 @@ MonoBehaviour:
   movementRecoilImportance: 0
   shootingPoint: {fileID: 314844769}
   prefabProjectile: {fileID: 5526811408548887409, guid: 3427ca663e3b1db4d9b78f37bf6c6fbd, type: 3}
+  recoil: 0
+  isReloading: 0
+  ammo: 0
+  maxAmmo: 0
+  reloadTime: 0
 --- !u!212 &923826489
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3878,7 +3892,7 @@ GameObject:
   - component: {fileID: 956457045}
   m_Layer: 3
   m_Name: Railgun
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3925,6 +3939,11 @@ MonoBehaviour:
   movementRecoilImportance: 0
   shootingPoint: {fileID: 1344650154}
   prefabProjectile: {fileID: 5526811408548887409, guid: e2e9566b9c7276745b0f4c45ded2736f, type: 3}
+  recoil: 0
+  isReloading: 0
+  ammo: 2
+  maxAmmo: 2
+  reloadTime: 1.5
 --- !u!1 &962320549
 GameObject:
   m_ObjectHideFlags: 0
@@ -3937,7 +3956,7 @@ GameObject:
   - component: {fileID: 962320551}
   m_Layer: 0
   m_Name: Pistol
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3984,6 +4003,11 @@ MonoBehaviour:
   movementRecoilImportance: 0
   shootingPoint: {fileID: 837276152}
   prefabProjectile: {fileID: 5526811408548887409, guid: 407bf35cd0c505a4d9b14378ae8a21eb, type: 3}
+  recoil: 0
+  isReloading: 0
+  ammo: 7
+  maxAmmo: 7
+  reloadTime: 1.3
 --- !u!1001 &973420210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4062,7 +4086,7 @@ GameObject:
   - component: {fileID: 978292887}
   - component: {fileID: 978292886}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6777,7 +6801,7 @@ GameObject:
   - component: {fileID: 1663493263}
   m_Layer: 3
   m_Name: Shotgun
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6824,6 +6848,11 @@ MonoBehaviour:
   movementRecoilImportance: 0
   shootingPoint: {fileID: 484965462}
   prefabProjectile: {fileID: 5526811408548887409, guid: 420e63d1659895e4ea90e58b7205fcbd, type: 3}
+  recoil: 0
+  isReloading: 0
+  ammo: 5
+  maxAmmo: 5
+  reloadTime: 2
 --- !u!1 &1671126220
 GameObject:
   m_ObjectHideFlags: 0
@@ -6936,6 +6965,85 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!1 &1691444449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1691444450}
+  - component: {fileID: 1691444452}
+  - component: {fileID: 1691444451}
+  m_Layer: 5
+  m_Name: Max Ammo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1691444450
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691444449}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 520003329}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 71.3, y: -170.4}
+  m_SizeDelta: {x: 39.4552, y: 29.4021}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1691444451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691444449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1691444452
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691444449}
+  m_CullTransparentMesh: 1
 --- !u!1 &1698376146
 GameObject:
   m_ObjectHideFlags: 0
@@ -8901,6 +9009,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3578908670003935899, guid: 4f177a274b1ffc74bb0e2e33d04c763c, type: 3}
   m_PrefabInstance: {fileID: 2087770416}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2089807548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2089807549}
+  - component: {fileID: 2089807551}
+  - component: {fileID: 2089807550}
+  m_Layer: 5
+  m_Name: Current Ammo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2089807549
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089807548}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 520003329}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 12.14, y: -157.9}
+  m_SizeDelta: {x: 72.462, y: 48.679}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2089807550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089807548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &2089807551
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089807548}
+  m_CullTransparentMesh: 1
 --- !u!1001 &2096890774
 PrefabInstance:
   m_ObjectHideFlags: 0

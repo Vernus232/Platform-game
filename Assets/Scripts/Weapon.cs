@@ -39,6 +39,7 @@ public class Weapon : MonoBehaviour
 
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private GameObject prefabProjectile;
+    private WeaponIndicator weaponIndicator;
 
     public float recoil;
 
@@ -55,8 +56,8 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        playerCamera = FindObjectOfType<Camera>();
         player = FindObjectOfType<Player>();
+        weaponIndicator = FindObjectOfType<WeaponIndicator>();
     }
 
     void Update()
@@ -74,6 +75,10 @@ public class Weapon : MonoBehaviour
                     StartCoroutine("InstantiateProjectiles");
 
                 prevShootTime = currTime;
+
+                ammo -= 1;
+
+                weaponIndicator.OnShot();
             }
         }
         #endregion
@@ -89,12 +94,18 @@ public class Weapon : MonoBehaviour
 
         if (recoil > maxWeaponRecoil)
             recoil = maxWeaponRecoil;
+        #endregion
+
+        if (ammo == 0)
+        {
+            StartCoroutine(Reload());
+        }
 
         //Debug.Log("======");
         //Debug.Log("weapon recoil " + recoil.ToString());
         //Debug.Log("player recoil " + player.recoilFromMovement.ToString());
         //Debug.Log("======");
-        #endregion
+
     }
 
     #region Бёрсты
@@ -124,7 +135,11 @@ public class Weapon : MonoBehaviour
 
         yield return new WaitForSeconds(reloadTime);
 
+        ammo = maxAmmo;
+
         isReloading = false;
+
+        weaponIndicator.OnShot();
     }
 
     private void InstantiateProjectile()
@@ -146,6 +161,7 @@ public class Weapon : MonoBehaviour
 
         // Сообщили разброс оружию
         recoil += recoilIncreaseWithShot;
+
     }
 
 

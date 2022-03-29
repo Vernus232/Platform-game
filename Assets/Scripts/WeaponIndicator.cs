@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class WeaponIndicator : MonoBehaviour
 {
     private Weapon currentWeapon;
-    //public PlayerProjectile projectile;
 
     public Text weaponNameText;
-    //public Text weaponDamage;
+    public Text currentAmmo;
+    public Text maxAmmo;
 
 
 
@@ -17,8 +17,11 @@ public class WeaponIndicator : MonoBehaviour
     {
         currentWeapon = newWeapon;
 
-        //UpdateProjectile();
+        UpdateUI();
+    }
 
+    public void OnShot()
+    {
         UpdateUI();
     }
 
@@ -27,11 +30,10 @@ public class WeaponIndicator : MonoBehaviour
     {
         weaponNameText.text = "Current weapon:     " + currentWeapon.name;
 
-        //weaponDamage.text = "Damage : " + projectile.damageForIndicator;
+        currentAmmo.text = currentWeapon.ammo.ToString("00");
+        maxAmmo.text = currentWeapon.maxAmmo.ToString("00");
 
-        //Debug.Log(projectile.damageForIndicator);
     }
 
-    //public void UpdateProjectile()
 
 }
