@@ -52,8 +52,8 @@ public class Spawner : MonoBehaviour
 
         //Instantiate(prefab, spawnPos, prefab.transform.rotation);
 
-        Bounds bounds =  GetComponent<CompositeCollider2D>().bounds;
-        bounds.
+        //Bounds bounds =  GetComponent<CompositeCollider2D>().bounds;
+        //bounds.
     }
 
 

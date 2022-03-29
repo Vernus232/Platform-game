@@ -81,7 +81,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.076919556
+        value: 0.048080444
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -89,7 +89,7 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.7286682
+        time: 0.18818665
         value: 0
         inSlope: 0
         outSlope: 0
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 5526811408548887414}
   - component: {fileID: 420371466959084007}
   m_Layer: 7
-  m_Name: Auto Rifle Projectile
+  m_Name: Minigun Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,8 +168,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5526811408548887409}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1018, y: 0.2403, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
+  m_LocalPosition: {x: 0.09009, y: 0.22859, z: 0}
+  m_LocalScale: {x: 0.026570495, y: 0.026570495, z: 0.53140986}
   m_Children:
   - {fileID: 3056901552730454862}
   m_Father: {fileID: 0}
@@ -5039,10 +5039,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90560bcafcf69d145b617cfd56a2fe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 1
   lifespan: 2
   damageForIndicator: 
-  hitPrefab: {fileID: 6856103324233738395, guid: 7a92a4641b62e884fbd28a2e46ee92dc, type: 3}
+  hitPrefab: {fileID: 6856103324233738395, guid: 2ccf50a56d9f4344886e0d5ac1af2baa, type: 3}
   destroysAnything: 0
 --- !u!199 &420371466959084007
 ParticleSystemRenderer:

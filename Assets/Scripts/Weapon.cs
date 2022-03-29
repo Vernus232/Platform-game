@@ -60,6 +60,14 @@ public class Weapon : MonoBehaviour
         weaponIndicator = FindObjectOfType<WeaponIndicator>();
     }
 
+    private void OnEnable()
+    {
+        if (ammo <= 0)
+        {
+            StartCoroutine(Reload());
+        }
+    }
+
     void Update()
     {
         #region Выстрел и задержка, Ammo
@@ -89,7 +97,8 @@ public class Weapon : MonoBehaviour
         }
         #endregion
 
-
+        if (Input.GetKeyDown(KeyCode.R) && ammo != maxAmmo)
+            StartCoroutine(Reload());
     }
 
     private void FixedUpdate()
@@ -133,7 +142,7 @@ public class Weapon : MonoBehaviour
     #endregion
 
 
-    private IEnumerator Reload()
+    public IEnumerator Reload()
     {
         isReloading = true;
 
@@ -152,7 +161,7 @@ public class Weapon : MonoBehaviour
         float totalRecoil = player.movementRecoil * movementRecoilImportance  +  recoil;
 
         // Определили вектор выстрела
-        float zRotationChange = Random.Range(0f, totalRecoil);
+        float zRotationChange = Random.Range(-totalRecoil, totalRecoil);
         Quaternion randomedRotation = transform.rotation * Quaternion.Euler(Vector3.forward * zRotationChange);
 
         // Определили разность в скорости пуль
