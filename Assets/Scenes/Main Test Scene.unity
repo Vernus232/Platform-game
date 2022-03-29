@@ -954,7 +954,7 @@ MonoBehaviour:
   recoilReductionWithTime: 0.25
   movementRecoilImportance: 0
   shootingPoint: {fileID: 447737418}
-  projectileObj: {fileID: 5526811408548887409, guid: 9d40d2f2f42cdeb4b88689628a35c451, type: 3}
+  prefabProjectile: {fileID: 5526811408548887409, guid: 9d40d2f2f42cdeb4b88689628a35c451, type: 3}
 --- !u!1 &261920928
 GameObject:
   m_ObjectHideFlags: 0
@@ -3187,7 +3187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d329d5d761172e6478270241b5443f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnStep: 1
+  spawnStep: 0.5
   dist: 1
   enemyPrefab: {fileID: 7267947439652132932, guid: 6fbd734f705b2bf43a89fd8133a2b808, type: 3}
 --- !u!1 &766518173
@@ -3705,7 +3705,7 @@ MonoBehaviour:
   recoilReductionWithTime: 0
   movementRecoilImportance: 0
   shootingPoint: {fileID: 314844769}
-  projectileObj: {fileID: 5526811408548887409, guid: 3427ca663e3b1db4d9b78f37bf6c6fbd, type: 3}
+  prefabProjectile: {fileID: 5526811408548887409, guid: 3427ca663e3b1db4d9b78f37bf6c6fbd, type: 3}
 --- !u!212 &923826489
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3924,7 +3924,7 @@ MonoBehaviour:
   recoilReductionWithTime: 0
   movementRecoilImportance: 0
   shootingPoint: {fileID: 1344650154}
-  projectileObj: {fileID: 5526811408548887409, guid: e2e9566b9c7276745b0f4c45ded2736f, type: 3}
+  prefabProjectile: {fileID: 5526811408548887409, guid: e2e9566b9c7276745b0f4c45ded2736f, type: 3}
 --- !u!1 &962320549
 GameObject:
   m_ObjectHideFlags: 0
@@ -3983,7 +3983,7 @@ MonoBehaviour:
   recoilReductionWithTime: 0.05
   movementRecoilImportance: 0
   shootingPoint: {fileID: 837276152}
-  projectileObj: {fileID: 5526811408548887409, guid: 407bf35cd0c505a4d9b14378ae8a21eb, type: 3}
+  prefabProjectile: {fileID: 5526811408548887409, guid: 407bf35cd0c505a4d9b14378ae8a21eb, type: 3}
 --- !u!1001 &973420210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6823,7 +6823,7 @@ MonoBehaviour:
   recoilReductionWithTime: 0.25
   movementRecoilImportance: 0
   shootingPoint: {fileID: 484965462}
-  projectileObj: {fileID: 5526811408548887409, guid: 420e63d1659895e4ea90e58b7205fcbd, type: 3}
+  prefabProjectile: {fileID: 5526811408548887409, guid: 420e63d1659895e4ea90e58b7205fcbd, type: 3}
 --- !u!1 &1671126220
 GameObject:
   m_ObjectHideFlags: 0

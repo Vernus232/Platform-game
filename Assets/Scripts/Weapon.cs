@@ -38,14 +38,20 @@ public class Weapon : MonoBehaviour
     [Header("Links")]
 
     [SerializeField] private Transform shootingPoint;
-    [SerializeField] private GameObject projectileObj;
+    [SerializeField] private GameObject prefabProjectile;
 
+    public float recoil;
+
+    public bool isReloading;
+    public int ammo;
+    public int maxAmmo;
+    public float reloadTime;
 
     private float prevShootTime = 0;
-    private float recoil;
 
-    private Camera playerCamera;
     private Player player;
+
+
 
     private void Start()
     {
@@ -56,8 +62,9 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         #region Выстрел и задержка
-        if (Input.GetMouseButton(0))
+        if (!isReloading  &&  Input.GetMouseButton(0))
         {
+            // Проверка Fire rate
             float currTime = Time.time;
             if ((currTime - prevShootTime) > FireRate)
             {
@@ -110,6 +117,16 @@ public class Weapon : MonoBehaviour
     }
     #endregion
 
+
+    private IEnumerator Reload()
+    {
+        isReloading = true;
+
+        yield return new WaitForSeconds(reloadTime);
+
+        isReloading = false;
+    }
+
     private void InstantiateProjectile()
     {
         // Определили суммарный разброс
@@ -123,9 +140,9 @@ public class Weapon : MonoBehaviour
         float projSpeedDifferenceMul = Random.Range(1f, projMaxSpeedDifferenceMul);
 
         // Заспавнили пули
-        GameObject ball = Instantiate(projectileObj, shootingPoint.position, randomedRotation);
-        ball.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(projectilesSpeed * projSpeedDifferenceMul, 0, 0));
-        ball.GetComponent<PlayerProjectile>().damage *= player.damageModifier;
+        GameObject instantiatedProjectile = Instantiate(prefabProjectile, shootingPoint.position, randomedRotation);
+        instantiatedProjectile.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(projectilesSpeed * projSpeedDifferenceMul, 0));
+        instantiatedProjectile.GetComponent<PlayerProjectile>().damage *= player.damageModifier;
 
         // Сообщили разброс оружию
         recoil += recoilIncreaseWithShot;
