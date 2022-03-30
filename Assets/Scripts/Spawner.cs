@@ -47,7 +47,8 @@ public class Spawner : MonoBehaviour
         {
             if (collider.OverlapPoint(randomPoint))
             {
-                Instantiate(prefab, randomPoint, prefab.transform.rotation);
+                GameObject instantiatedObj = Instantiate(prefab, randomPoint, prefab.transform.rotation);
+                instantiatedObj.SetActive(true);
                 break;
             }
             else
@@ -56,9 +57,9 @@ public class Spawner : MonoBehaviour
                 fails++;
             }
         }
-
-
     }
+
+    
 
 
 }
