@@ -29,6 +29,14 @@ public class PlayerProjectile : CommonProjectile
             entity.RecieveDamage(damage);
         }
 
+        // В декорации
+        if (collision.gameObject.CompareTag("Decoration"))
+        {
+            // Урон цели
+            FragileEntity entity = collision.gameObject.GetComponent<FragileEntity>();
+            entity.RecieveDamage(damage);
+        }
+
         // В Obstacle
         if (collision.gameObject.layer == 3)
         {
