@@ -66,13 +66,14 @@ public class Player : FragileEntity
 
 
 
-
+    //На старте
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         healthBar = FindObjectOfType<HealthBar>();
     }
 
+    //Обновляется в фпс физики (50 fps)
     private void FixedUpdate()
     {
         #region Ускорение по Х
@@ -121,6 +122,7 @@ public class Player : FragileEntity
         #endregion
     }
 
+    //Обновляется в фпс играющего
     private void Update()
     {
         #region Прыжок
