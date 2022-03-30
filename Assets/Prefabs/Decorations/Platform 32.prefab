@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 8137465380199079027}
   m_Layer: 3
   m_Name: Right Player Climb Pos
-  m_TagString: Untagged
+  m_TagString: PlatformClimb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 3578908670409747510}
   m_Layer: 3
   m_Name: Left Player Climb Pos
-  m_TagString: Untagged
+  m_TagString: PlatformClimb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 1830875140958984317}
   m_Layer: 3
   m_Name: Left Climb Detector
-  m_TagString: PlatformClimb
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
