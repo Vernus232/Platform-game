@@ -3,11 +3,11 @@ using System.Collections;
 
 public class CursorChanger : MonoBehaviour
 {
-    public Texture2D cursorTexture;
-    public CursorMode cursorMode = CursorMode.Auto;
-    public Vector2 hotSpot = Vector2.zero;
+    [SerializeField] private Texture2D cursorTexture;
+
+
     void Start()
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
     }
 }

@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class GroundDetector : MonoBehaviour
 {
-    [SerializeField] private Player player;
-
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        player.IsGrounded = true;
+        Player.main.IsGrounded = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        player.IsGrounded = false;
+        Player.main.IsGrounded = false;
     }
 
 }

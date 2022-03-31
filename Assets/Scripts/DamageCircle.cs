@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DamageCircle : MonoBehaviour
 {
-    public float betweenHitsTime;
-    public float damage;
+    [SerializeField] private float damage;
+    [SerializeField] private float betweenHitsTime;
 
     private float prevHitTime = 0;
 

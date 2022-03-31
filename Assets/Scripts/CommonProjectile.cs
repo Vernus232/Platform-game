@@ -5,7 +5,7 @@ using UnityEngine;
 public class CommonProjectile : MonoBehaviour
 {
     public float damage;
-    public float lifespan;
+    [Tooltip("Как скоро пуля исчезнет (сек).")] [SerializeField] private float lifespan;
 
 
 

@@ -60,8 +60,8 @@ public class Player : FragileEntity
 
 
     private Rigidbody2D rb;
-    private HealthBar healthBar;
-    [HideInInspector] public static Player mainPlayer;
+    private HpView healthBar;
+    [HideInInspector] public static Player main;
 
 
 
@@ -70,9 +70,9 @@ public class Player : FragileEntity
     //На старте
     private void Start()
     {
-        mainPlayer = this;
+        main = this;
         rb = gameObject.GetComponent<Rigidbody2D>();
-        healthBar = FindObjectOfType<HealthBar>();
+        healthBar = FindObjectOfType<HpView>();
     }
 
     //Обновляется в фпс физики (50 fps)

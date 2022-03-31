@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class CheatManager : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject spawnPoint;
+    private GameObject respawn;
+
+
+    private void Start()
+    {
+        respawn = GameObject.FindGameObjectWithTag("Respawn");
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            player.transform.position = spawnPoint.transform.position;
+            Player.main.transform.position = respawn.transform.position;
         }
     }
 }

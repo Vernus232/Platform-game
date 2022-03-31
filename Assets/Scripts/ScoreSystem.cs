@@ -1,32 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ScoreSystem : MonoBehaviour
 {
     [SerializeField] private float scoreIncreaseOverTime;
-    [SerializeField] private Text text;
+
+    [HideInInspector] public static ScoreSystem main;
 
     private float score;
+    public float Score
+    {
+        get
+        {
+            return score;
+        }
+        set
+        {
+            score = value;
+            ScoreView.main.UpdateUIScore(score);
+        }
+    }
+
+
+    private void Start()
+    {
+        main = this;
+    }
 
 
     private void FixedUpdate()
     {
-        score += scoreIncreaseOverTime;
-
-        UpdateUIScore();
+        Score += scoreIncreaseOverTime;
     }
 
     public void AddScoreForKill(float addScore)
     {
-        score += addScore;
-
-        UpdateUIScore();
+        Score += addScore;
     }
 
-    public void UpdateUIScore()
-    {
-        text.text = score.ToString("0000000");
-    }
 }

@@ -7,15 +7,15 @@ public class BurstWeapon : Weapon
     [Header("Speed")]
 
     [SerializeField] private float projectilesSpeed;
-    [SerializeField] private float projMaxSpeedDifferenceMul;
-
+    [Tooltip("Makes speed random in range [speed*(1-x), speed*x].")] [SerializeField] private float projMaxSpeedDifferenceMul;
+    
 
     [Space(10)]
     [Header("Burst")]
 
-    [SerializeField] private float fireRate;
-    [SerializeField] private int burstCount = 1;
-    [SerializeField] private bool instantiateBurstMomentally = false;
+    [Tooltip("In bursts-per-minute.")] [SerializeField] private float fireRate;
+    [SerializeField] private int projectilesInBurstCount = 1;
+    [Tooltip("Whether to .")] [SerializeField] private bool instantiateBurstMomentally = true;
 
 
     [Space(10)]
@@ -42,15 +42,12 @@ public class BurstWeapon : Weapon
     [SerializeField] private GameObject prefabProjectile;
 
 
-
     [Space(10)]
     [Header("Debug")]
 
-    [HideInInspector] public float recoil;
-
+    public float recoil;
     [HideInInspector] public bool isReloading;
     [HideInInspector] public int ammo;
-
     private float prevShootTime = 0;
 
 
@@ -115,7 +112,7 @@ public class BurstWeapon : Weapon
     #region Бёрсты
     private IEnumerator InstantiateProjectiles()
     {
-        for (int i = 0; i < burstCount; i++)
+        for (int i = 0; i < projectilesInBurstCount; i++)
         {
             InstantiateProjectile();
 
@@ -125,7 +122,7 @@ public class BurstWeapon : Weapon
 
     private void InstantiateProjectilesMomentally()
     {
-        for (int i = 0; i < burstCount; i++)
+        for (int i = 0; i < projectilesInBurstCount; i++)
         {
             InstantiateProjectile();
         }
@@ -134,7 +131,7 @@ public class BurstWeapon : Weapon
     private void InstantiateProjectile()
     {
         // Определили суммарный разброс
-        float totalRecoil = Player.mainPlayer.movementRecoil * movementRecoilImportance + recoil;
+        float totalRecoil = Player.main.movementRecoil * movementRecoilImportance + recoil;
 
         // Определили вектор выстрела
         float zRotationChange = Random.Range(-totalRecoil, totalRecoil);
@@ -146,7 +143,7 @@ public class BurstWeapon : Weapon
         // Заспавнили пули
         GameObject instantiatedProjectile = Instantiate(prefabProjectile, shootingPoint.position, randomedRotation);
         instantiatedProjectile.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(projectilesSpeed * projSpeedDifferenceMul, 0));
-        instantiatedProjectile.GetComponent<PlayerProjectile>().damage *= Player.mainPlayer.damageModifier;
+        instantiatedProjectile.GetComponent<PlayerProjectile>().damage *= Player.main.damageModifier;
 
         // Сообщили разброс оружию
         recoil += recoilIncreaseWithShot;
@@ -161,9 +158,7 @@ public class BurstWeapon : Weapon
         yield return new WaitForSeconds(reloadTime);
 
         ammo = maxAmmo;
-
         isReloading = false;
-
         WeaponIndicator.mainInstance.OnShot();
     }
 
