@@ -11,6 +11,13 @@ public class MeleeWeapon : Weapon
     private float prevHitTime = 0;
 
 
+
+    private void Start()
+    {
+        damagingObject.GetComponent<DamageCircle>().damage = meleeDamage;
+        damagingObject.GetComponent<DamageCircle>().betweenHitsTime = betweenHitsTime;
+    }
+
     private void Update()
     {
         if (Input.GetMouseButton(0))
@@ -28,23 +35,10 @@ public class MeleeWeapon : Weapon
     {
         damagingObject.SetActive(true);
 
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.05f);
 
         damagingObject.SetActive(false);
     }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!collision.CompareTag("Player"))
-        {
-            FragileEntity entity = collision.gameObject.GetComponent<FragileEntity>();
-        
-            if (entity)
-                entity.RecieveDamage(meleeDamage);
-        }
-    }
-
 
 
 

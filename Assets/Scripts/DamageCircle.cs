@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DamageCircle : MonoBehaviour
 {
-    [SerializeField] private float damage;
-    [SerializeField] private float betweenHitsTime;
+    public float damage;
+    public float betweenHitsTime;
+    [SerializeField] private List<string> vulnerableTags;
 
     private float prevHitTime = 0;
 
@@ -14,8 +15,8 @@ public class DamageCircle : MonoBehaviour
     // ѕри попадании в collision...
     private void OnTriggerStay2D(Collider2D other)
     {
-        //..игрока...
-        if (other.gameObject.tag == "Player")
+        //..одного из тегов...
+        if (vulnerableTags.Contains(other.tag))
         {
             //...чекаем когда последний раз мы его били, и если это было давнее betweenHitsTime - бьЄм снова * сына
             float currTime = Time.time;

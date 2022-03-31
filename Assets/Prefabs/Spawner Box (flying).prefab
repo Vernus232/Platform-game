@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9206364253550060154}
   - component: {fileID: 9206364253550060153}
   - component: {fileID: 9206364253550060156}
-  - component: {fileID: 9206364253550060152}
+  - component: {fileID: 6862819789712545274}
   - component: {fileID: 9206364253550060151}
   m_Layer: 0
   m_Name: Spawner Box (flying)
@@ -133,7 +133,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &9206364253550060152
+--- !u!114 &6862819789712545274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,10 +142,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 9206364253550060150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f172fca1aaead6d4484b6baa8438ce3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 052e30416c3e63d43a3a675b3cb22813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  maxHp: 10
+  hp: 0
+  scoreForKill: 200
 --- !u!114 &9206364253550060151
 MonoBehaviour:
   m_ObjectHideFlags: 0
