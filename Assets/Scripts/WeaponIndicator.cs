@@ -5,13 +5,19 @@ using UnityEngine.UI;
 
 public class WeaponIndicator : MonoBehaviour
 {
+    [SerializeField] private Text weaponNameText;
+    [SerializeField] private Text currentAmmo;
+    [SerializeField] private Text maxAmmo;
+
+    [HideInInspector] public static WeaponIndicator mainInstance;
+
     private Weapon currentWeapon;
 
-    public Text weaponNameText;
-    public Text currentAmmo;
-    public Text maxAmmo;
 
-
+    private void Start()
+    {
+        mainInstance = this;
+    }
 
     public void OnWeaponChanged(Weapon newWeapon)
     {
@@ -28,10 +34,20 @@ public class WeaponIndicator : MonoBehaviour
 
     private void UpdateUI()
     {
-        weaponNameText.text = "Current weapon:     " + currentWeapon.name;
+        weaponNameText.text = "Current weapon:     " + currentWeapon.weaponName;
 
-        currentAmmo.text = currentWeapon.ammo.ToString("00");
-        maxAmmo.text = currentWeapon.maxAmmo.ToString("00");
+        if (currentWeapon.type == WeaponType.Burst)
+        {
+            BurstWeapon burstWeapon = currentWeapon.GetComponent<BurstWeapon>();
+
+            currentAmmo.text = burstWeapon.ammo.ToString("00");
+            maxAmmo.text = burstWeapon.maxAmmo.ToString("00");
+        }
+        if (currentWeapon.type == WeaponType.Melee)
+        {
+            currentAmmo.text = "--";
+            maxAmmo.text = "--";
+        }
 
     }
 

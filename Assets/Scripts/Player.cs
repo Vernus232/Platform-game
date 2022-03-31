@@ -61,6 +61,7 @@ public class Player : FragileEntity
 
     private Rigidbody2D rb;
     private HealthBar healthBar;
+    [HideInInspector] public static Player mainPlayer;
 
 
 
@@ -69,6 +70,7 @@ public class Player : FragileEntity
     //На старте
     private void Start()
     {
+        mainPlayer = this;
         rb = gameObject.GetComponent<Rigidbody2D>();
         healthBar = FindObjectOfType<HealthBar>();
     }

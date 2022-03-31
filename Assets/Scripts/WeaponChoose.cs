@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class WeaponChoose : MonoBehaviour
 {
-    public WeaponIndicator indicator;
     public GameObject[] weaponObjects;
     public bool[] weaponUnlocks;
+
+    [SerializeField] private int fastButtonWeaponIdx = 0;
+    
+
+    private int weaponIdx_beforeFastButton;
 
     private int activeWeaponIndex;
     public int ActiveWeaponIndex
@@ -20,31 +24,40 @@ public class WeaponChoose : MonoBehaviour
             activeWeaponIndex = value;
 
             Weapon weapon = weaponObjects[activeWeaponIndex].GetComponent<Weapon>();
-            indicator.OnWeaponChanged(weapon);
+            WeaponIndicator.mainInstance.OnWeaponChanged(weapon);
         }
     }
 
 
+
     private void Start()
     {
-        int DEFAULT_WEAPON_INDEX = 0;
+        int DEFAULT_WEAPON_INDEX = 1;
         TryChooseWeapon(DEFAULT_WEAPON_INDEX);
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            weaponIdx_beforeFastButton = ActiveWeaponIndex;
+            TryChooseWeapon(fastButtonWeaponIdx);
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+            TryChooseWeapon(weaponIdx_beforeFastButton);
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
-            TryChooseWeapon(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
             TryChooseWeapon(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
             TryChooseWeapon(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
             TryChooseWeapon(3);
-        if (Input.GetKeyDown(KeyCode.Alpha5))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
             TryChooseWeapon(4);
-        if (Input.GetKeyDown(KeyCode.Alpha6))
+        if (Input.GetKeyDown(KeyCode.Alpha5))
             TryChooseWeapon(5);
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+            TryChooseWeapon(6);
     }
 
     private void TryChooseWeapon(int index)
