@@ -11,15 +11,17 @@ public class SpeedView : MonoBehaviour
 
 
 
+
     private void Start()
     {
-        playerRb = Player.main.GetComponent<Rigidbody2D>();
+        playerRb = FindObjectOfType<Player>().GetComponent<Rigidbody2D>();
     }
+
 
     private void Update()
     {
         Vector2 vel = playerRb.velocity;
-        text.text  = "Speed  X: " + vel.x.ToString("00") + "Y: " + vel.y.ToString("00");        
+        text.text = "Speed  X: " + Mathf.Abs(vel.x).ToString("00") + " Y: " + Mathf.Abs(vel.y).ToString("00");
     }
 
 

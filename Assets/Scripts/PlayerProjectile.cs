@@ -5,20 +5,14 @@ using UnityEngine;
 // Наследуем много чего от CommonProjectile
 public class PlayerProjectile : CommonProjectile
 {
-    [HideInInspector] public string damageForIndicator;
-    public GameObject hitPrefab;
-    public bool destroysAnything = false;
-    //public int penetration = 0;
+        [Tooltip("Объект партикл системы при попадании")]
+    [SerializeField] private GameObject hitPrefab;
+        [Tooltip("Уничтожает ли пуля любой объкт")]
+    [SerializeField] private bool destroysAnything = false;
 
 
 
     // Регистрация попадания во что-либо
-
-    private void Start()
-    {
-        damageForIndicator = damage.ToString("000");
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {   
         // Во врага
@@ -60,8 +54,6 @@ public class PlayerProjectile : CommonProjectile
 
 
         Destroy(gameObject);
-
-
     }
 
 

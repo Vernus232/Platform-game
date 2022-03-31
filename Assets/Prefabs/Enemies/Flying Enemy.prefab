@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e79da1748b19b2a42b59ff42df4a4c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  betweenHitsTime: 0.5
   damage: 10
+  betweenHitsTime: 0.5
 --- !u!1 &7267947439652132932
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,5 +328,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052e30416c3e63d43a3a675b3cb22813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 50
   hp: 20
   scoreForKill: 100

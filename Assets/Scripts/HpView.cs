@@ -7,21 +7,25 @@ public class HpView : MonoBehaviour
 {
     [SerializeField] private Slider slider;
 
+    private Player player;
+
 
 
     private void Start()
     {
-        SetViewHp(Player.main.maxHp);
+        player = FindObjectOfType<Player>();
+
+        SetViewHp(player.maxHp);
     }
 
     public void SetViewHp(float health)
     {
-        slider.value =  health / Player.main.maxHp * 100;
+        slider.value =  health / player.maxHp * 100;
     }
     
     public void UpdateHealth()
     {
-        SetViewHp(Player.main.hp);
+        SetViewHp(player.hp);
     }
 
 

@@ -66,7 +66,6 @@ public class Player : FragileEntity
 
 
 
-
     //На старте
     private void Start()
     {

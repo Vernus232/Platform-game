@@ -4,32 +4,31 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public float closeToPlayerCoef;
-    [Range(2, 10)] public float unzoomMultiplier;
-    [Range(0, 1)] public float unzoomMinDist;
+    [Tooltip("Как сильно смещается камера к игроку (0; 1)")] 
+        [SerializeField] private float closeToPlayerCoef;
+    [Tooltip("Сила отдаления")]
+        [Range(2, 10)]  [SerializeField] private float unzoomMultiplier;
+    [Tooltip("С какой дистации от края экрана начинается анзум")]
+        [Range(0, 1)]  [SerializeField] private float unzoomMinDist;
 
-    private GameObject player;
-    private Camera playerCamera;
     private float defaultOrthographicSize;
 
 
     private void Start()
     {
-        playerCamera = Camera.main;
-        player = FindObjectOfType<Player>().gameObject;
-        defaultOrthographicSize = playerCamera.orthographicSize;
+        defaultOrthographicSize = Camera.main.orthographicSize;
     }
 
     // Вызывается после всех симмуляций (как раз перед "снимком" кадра)
     void LateUpdate()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 playerPos = player.transform.position;
+        Vector3 playerPos = Player.main.transform.position;
         Vector3 camPos = Camera.main.transform.position;
 
         // Двигаем камеру в точку между положением плеера и курсора
         float a = closeToPlayerCoef;
-        playerCamera.transform.position = new Vector3(  mousePos.x * (1-a) +  playerPos.x * a,
+        Camera.main.transform.position = new Vector3(  mousePos.x * (1-a) +  playerPos.x * a,
                                                         mousePos.y * (1-a) +  playerPos.y * a,
                                                         camPos.z);
 
@@ -51,7 +50,7 @@ public class PlayerCamera : MonoBehaviour
         }
         float zoom = GetZoom(maxDistFromCenter, unzoomMinDist, 2, unzoomMultiplier);
 
-        playerCamera.orthographicSize = defaultOrthographicSize * zoom;
+        Camera.main.orthographicSize = defaultOrthographicSize * zoom;
 
 
     }
