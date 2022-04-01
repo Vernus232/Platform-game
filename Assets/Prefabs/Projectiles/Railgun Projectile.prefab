@@ -194,7 +194,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5041,7 +5041,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 100
   lifespan: 1
-  damageForIndicator: 
   hitPrefab: {fileID: 6856103324233738395, guid: f063bb74fab721841b5275b0f2bb071f, type: 3}
   destroysAnything: 0
 --- !u!199 &420371466959084007
@@ -5064,7 +5063,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

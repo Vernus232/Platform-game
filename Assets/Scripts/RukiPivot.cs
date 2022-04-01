@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class RukiPivot : MonoBehaviour
 {
+    [SerializeField] private Transform lightPivotTransform;
+
+
 
     private void Update()
     {
@@ -16,9 +19,15 @@ public class RukiPivot : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
         if (Mathf.Abs(angle) >= 90)
+        {
             transform.localScale = new Vector3(transform.localScale.x, -1, transform.localScale.z);
+            lightPivotTransform.localScale = new Vector3(transform.localScale.x, -1, transform.localScale.z);
+        }
         else
+        {
             transform.localScale = new Vector3(transform.localScale.x,  1, transform.localScale.z);
+            lightPivotTransform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);
+        }
         #endregion
     }
 }
