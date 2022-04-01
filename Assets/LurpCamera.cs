@@ -6,19 +6,20 @@ public class LurpCamera : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private float camMoveSpeed;
-    [SerializeField] private float offsetChangeSpeed;
-    [SerializeField] private float maxOffset;
+    [SerializeField] private float walkingOffsetChangeSpeed;
+    [SerializeField] private float maxWalkingOffset;
+    [Space(5)]
     [SerializeField] private float mouseOffset;
+    [SerializeField] private float closeToPlayerCoef;
 
-    [Space (5)]
-    [Header("Пиво)")]
-    [SerializeField] private Transform playerPivoTransform;
+    [Space (10)]
+    [Header("Refs")]
+    [SerializeField] private Transform playerPivotTransform;
+
+    private float walkingOffset;
+
     private new Camera camera;
     private Player player;
-    private float offset;
-    
-
-
 
     void Start()
     {
@@ -27,38 +28,34 @@ public class LurpCamera : MonoBehaviour
     }
 
 
-    void Update()
+    void LateUpdate()
     {
-        #region Попа какаято
-        if (Input.GetKey(KeyCode.D))
-        {
-            offset += offsetChangeSpeed * Time.deltaTime;
-        }
+        // Оффсет от ходьбы
+        //float walkingOffset
         if (Input.GetKey(KeyCode.A))
-        {
-            offset -= offsetChangeSpeed * Time.deltaTime;
-        }
-        if (offset > maxOffset)
-        {
-            offset = maxOffset;
-        }
-        if (offset < -maxOffset)
-        {
-            offset = -maxOffset;
-        }
-        #endregion
+            walkingOffset -= walkingOffsetChangeSpeed * Time.deltaTime;
+        if (Input.GetKey(KeyCode.D))
+            walkingOffset += walkingOffsetChangeSpeed * Time.deltaTime;
 
-        float additionalOffset = 0;
-        if (playerPivoTransform.localScale.x == 1)
-        {
-            additionalOffset = mouseOffset;
-        }
+        if (walkingOffset > maxWalkingOffset)
+            walkingOffset = maxWalkingOffset;
+        if (walkingOffset < -maxWalkingOffset)
+            walkingOffset = -maxWalkingOffset;
 
-        if (playerPivoTransform.localScale.x == -1)
-        {
-            additionalOffset = -mouseOffset;
-        }
-        Vector3 targetPos = new Vector3(player.transform.position.x + offset + additionalOffset, player.transform.position.y, camera.transform.position.z);
+
+        // Оффсет от курсора
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 playerPos = Player.main.transform.position;
+
+        float a = closeToPlayerCoef;
+        Vector2 mouseOffset = new Vector3(  mousePos.x * (1 - a) + playerPos.x * a,
+                                            mousePos.y * (1 - a) + playerPos.y * a);
+
+       
+        // Лёрп в плеера + оффсеты
+        Vector3 targetPos = new Vector3(player.transform.position.x + mouseOffset.x + walkingOffset, 
+                                        player.transform.position.y + mouseOffset.y, 
+                                        camera.transform.position.z);
         camera.transform.position = Vector3.Lerp(camera.transform.position, targetPos, camMoveSpeed * Time.deltaTime);
 
 
