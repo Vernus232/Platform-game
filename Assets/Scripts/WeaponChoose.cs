@@ -11,8 +11,9 @@ public class WeaponChoose : MonoBehaviour
     
 
     private int weaponIdx_beforeFastButton;
+    private WeaponView weaponView;
 
-    private int activeWeaponIndex;
+    private int activeWeaponIndex = 1;
     public int ActiveWeaponIndex
     {
         get
@@ -24,7 +25,7 @@ public class WeaponChoose : MonoBehaviour
             activeWeaponIndex = value;
 
             Weapon weapon = weaponObjects[activeWeaponIndex].GetComponent<Weapon>();
-            WeaponIndicator.mainInstance.OnWeaponChanged(weapon);
+            weaponView.OnWeaponChanged(weapon);
         }
     }
 
@@ -32,8 +33,10 @@ public class WeaponChoose : MonoBehaviour
 
     private void Start()
     {
-        int DEFAULT_WEAPON_INDEX = 1;
-        TryChooseWeapon(DEFAULT_WEAPON_INDEX);
+        weaponView = FindObjectOfType<WeaponView>();
+
+        int STARTING_WEAPON_IDX = 1;
+        TryChooseWeapon(STARTING_WEAPON_IDX);
     }
 
     private void Update()
@@ -63,14 +66,19 @@ public class WeaponChoose : MonoBehaviour
     private void TryChooseWeapon(int index)
     {
         if (weaponUnlocks[index])
+        {
             ChooseWeapon(index);
+        }
     }
 
     private void ChooseWeapon(int index)
     {
-        weaponObjects[ActiveWeaponIndex].SetActive(false);
-        weaponObjects[index].SetActive(true);
-        ActiveWeaponIndex = index;
+        if (ActiveWeaponIndex != index)
+        {
+            weaponObjects[ActiveWeaponIndex].SetActive(false);
+            weaponObjects[index].SetActive(true);
+            ActiveWeaponIndex = index;
+        }
     }
 
 }

@@ -26,7 +26,9 @@ public class MeleeWeapon : Weapon
             if ((currTime - prevHitTime) > betweenHitsTime)
             {
                 StartCoroutine(Hit());
+
                 prevHitTime = currTime;
+                WeaponView.main.OnWeaponReloadStarted(betweenHitsTime);
             }
         }
     }

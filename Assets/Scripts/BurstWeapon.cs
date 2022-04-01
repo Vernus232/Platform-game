@@ -47,15 +47,36 @@ public class BurstWeapon : Weapon
 
     public float recoil;
     [HideInInspector] public bool isReloading;
-    [HideInInspector] public int ammo;
+    private int ammo = 1;
+    [HideInInspector] public int Ammo
+    {
+        get
+        {
+            return ammo;
+        }
+        set
+        {
+            ammo = value;
+
+            weaponView.OnAmmoChanged();
+        }
+    }
     private float prevShootTime = 0;
+    private WeaponView weaponView;
 
 
+
+    private void Start()
+    {
+        weaponView = FindObjectOfType<WeaponView>();
+
+        Ammo = maxAmmo;
+    }
 
 
     private void OnEnable()
     {
-        if (ammo <= 0)
+        if (Ammo <= 0)
         {
             StartCoroutine(Reload());
         }
@@ -81,19 +102,21 @@ public class BurstWeapon : Weapon
 
 
                 // Ammo
-                ammo -= 1;
+                Ammo -= 1;
 
-                if (ammo == 0)
+                if (Ammo == 0)
                     StartCoroutine(Reload());
 
-                WeaponIndicator.mainInstance.OnShot();
+                WeaponView.main.UpdateUI();
             }
         }
         #endregion
 
         // Перезарядка на R
-        if (Input.GetKeyDown(KeyCode.R) && ammo != maxAmmo)
+        if (Input.GetKeyDown(KeyCode.R) && Ammo != maxAmmo)
+        {
             StartCoroutine(Reload());
+        }
     }
 
     private void FixedUpdate()
@@ -153,13 +176,14 @@ public class BurstWeapon : Weapon
 
     public IEnumerator Reload()
     {
+        weaponView.OnWeaponReloadStarted(reloadTime);
+
         isReloading = true;
 
         yield return new WaitForSeconds(reloadTime);
 
-        ammo = maxAmmo;
+        Ammo = maxAmmo;
         isReloading = false;
-        WeaponIndicator.mainInstance.OnShot();
     }
 
     

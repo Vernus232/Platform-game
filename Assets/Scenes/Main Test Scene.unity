@@ -321,7 +321,6 @@ GameObject:
   m_Component:
   - component: {fileID: 78064376}
   - component: {fileID: 78064378}
-  - component: {fileID: 78064377}
   m_Layer: 5
   m_Name: Reload
   m_TagString: Untagged
@@ -350,19 +349,6 @@ RectTransform:
   m_AnchoredPosition: {x: 334.65, y: 30.395}
   m_SizeDelta: {x: 108.43, y: 17.456}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &78064377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 78064375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ced903b029865c3438eaef01929dd9de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 78064378}
 --- !u!114 &78064378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1316,7 +1302,6 @@ MonoBehaviour:
   prefabProjectile: {fileID: 5526811408548887409, guid: 9d40d2f2f42cdeb4b88689628a35c451, type: 3}
   recoil: 0
   isReloading: 0
-  ammo: 0
 --- !u!4 &266182289 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3578908670003935899, guid: 7bc5afe664e0065439784fce06b3b6dc, type: 3}
@@ -2033,12 +2018,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 520003328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c407b139132cccd41a3e97025f536cca, type: 3}
+  m_Script: {fileID: 11500000, guid: b2f2fe8ca7f02414ea1519a689eb847f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponNameText: {fileID: 978292886}
   currentAmmo: {fileID: 2089807550}
   maxAmmo: {fileID: 1691444451}
+  slider: {fileID: 78064378}
+  currentWeapon: {fileID: 962320551}
 --- !u!114 &520003331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3747,7 +3734,6 @@ MonoBehaviour:
   prefabProjectile: {fileID: 0}
   recoil: 0
   isReloading: 0
-  ammo: 0
 --- !u!212 &923826489
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3960,7 +3946,6 @@ MonoBehaviour:
   prefabProjectile: {fileID: 5526811408548887409, guid: e2e9566b9c7276745b0f4c45ded2736f, type: 3}
   recoil: 0
   isReloading: 0
-  ammo: 0
 --- !u!1 &962320549
 GameObject:
   m_ObjectHideFlags: 0
@@ -4025,7 +4010,6 @@ MonoBehaviour:
   prefabProjectile: {fileID: 5526811408548887409, guid: 407bf35cd0c505a4d9b14378ae8a21eb, type: 3}
   recoil: 0
   isReloading: 0
-  ammo: 0
 --- !u!1001 &968339870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5950,7 +5934,6 @@ MonoBehaviour:
   prefabProjectile: {fileID: 5526811408548887409, guid: 420e63d1659895e4ea90e58b7205fcbd, type: 3}
   recoil: 0
   isReloading: 0
-  ammo: 0
 --- !u!1 &1668084598
 GameObject:
   m_ObjectHideFlags: 0
@@ -6539,7 +6522,6 @@ MonoBehaviour:
   prefabProjectile: {fileID: 5526811408548887409, guid: 3829983f091e24449ba6f6d1a94d9733, type: 3}
   recoil: 0
   isReloading: 0
-  ammo: 0
 --- !u!1 &1781967164
 GameObject:
   m_ObjectHideFlags: 0
