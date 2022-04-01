@@ -51,7 +51,10 @@ public class PlayerCamera : MonoBehaviour
         float zoom = GetZoom(maxDistFromCenter, unzoomMinDist, 2, unzoomMultiplier);
 
         Camera.main.orthographicSize = defaultOrthographicSize * zoom;
-
-
+       
     }
+
+    
+
+
 }
