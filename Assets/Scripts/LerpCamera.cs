@@ -51,7 +51,7 @@ public class LerpCamera : MonoBehaviour
         Vector3 mouseScreenPos = Input.mousePosition;
         Vector3 camScreenPos = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 camToMouseDir = mouseScreenPos - camScreenPos;
-        float DOWNSCALE = 10;
+        float DOWNSCALE = 50;
         mouseOffset = camToMouseDir * new Vector2(xMouseOffsetMul, yMouseOffsetMul) / DOWNSCALE;
 
         // ֻ¸נן ג (ןכוונא + מפפסועû)

@@ -8,7 +8,7 @@ public class ScoreSystem : MonoBehaviour
 
     [HideInInspector] public static ScoreSystem main;
 
-    private float score;
+    private float score = 0;
     public float Score
     {
         get
@@ -19,6 +19,7 @@ public class ScoreSystem : MonoBehaviour
         {
             score = value;
             ScoreView.main.UpdateUIScore(score);
+            SpawnManager.main.OnScoreChanged();
         }
     }
 

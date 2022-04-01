@@ -6,7 +6,7 @@ public class DashAbility : MonoBehaviour
 {
     [SerializeField] private float refreshTime;
     [SerializeField] private float dashSpeed;
-    [SerializeField] private float dashTimeLength;
+    [SerializeField] private float maxDashDist;
     [SerializeField] private int maxCharges;
 
     [SerializeField] private GameObject trailObj;
@@ -54,18 +54,26 @@ public class DashAbility : MonoBehaviour
         Vector2 playerPos = transform.position;
         Vector2 dashDirection = (mousePos - playerPos).normalized;
 
-        Player.main.GetComponent<Rigidbody2D>().velocity = dashSpeed * dashDirection;
+        playerRb.velocity = dashSpeed * dashDirection;
 
-        StopCoroutine(NoClip());
-        StartCoroutine(NoClip());
-        IEnumerator NoClip()
+
+        float dashDist = (mousePos - playerPos).magnitude;
+
+        if (dashDist > maxDashDist)
+            dashDist = maxDashDist;
+
+        float dashTime = dashDist / dashSpeed;
+
+        StopCoroutine(NoClipDamagingTransition(dashTime));
+        StartCoroutine(NoClipDamagingTransition(dashTime));
+        IEnumerator NoClipDamagingTransition(float dashTime)
         {
             playerCollider.enabled = false;
             float tmpGravScale = playerRb.gravityScale;
             playerRb.gravityScale = 0;
             trailObj.SetActive(true);
 
-            yield return new WaitForSeconds(dashTimeLength);
+            yield return new WaitForSeconds(dashTime);
 
             playerCollider.enabled = true;
             playerRb.gravityScale = tmpGravScale;

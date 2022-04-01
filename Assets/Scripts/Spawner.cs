@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private float spawnStep;
+    public float spawnStep;
+
     [SerializeField] private GameObject prefab;
 
 
