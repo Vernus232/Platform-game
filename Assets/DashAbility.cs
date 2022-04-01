@@ -13,9 +13,9 @@ public class DashAbility : MonoBehaviour
 
     private int charges;
     private bool isReady = true;
+
     private Collider2D playerCollider;
     private Rigidbody2D playerRb;
-
 
 
     private void Start()
@@ -29,7 +29,7 @@ public class DashAbility : MonoBehaviour
 
     private void Update()
     {
-        if (isReady && Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && WeaponChoose.main.currentWeapon.weaponName == "Katana" && isReady)
         {
             ActivateDash();
 

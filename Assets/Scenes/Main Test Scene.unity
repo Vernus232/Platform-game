@@ -1798,7 +1798,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Player Camera
@@ -1815,21 +1814,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
---- !u!114 &519420030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 654894f1b89a7124984281969656049c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  closeToPlayerCoef: 0.85
-  unzoomMultiplier: 2
-  unzoomMinDist: 0.598
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1899,11 +1883,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e128e06f54a0df4d99ca29876ace2d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camMoveSpeed: 6
-  offsetChangeSpeed: 5
-  maxOffset: 2
-  mouseOffset: 5
-  playerPivoTransform: {fileID: 817825660}
+  camLerpSpeed: 5
+  movementOffsetMul: {x: 0.5, y: 0.2}
+  maxMovementOffset: {x: 10, y: 10}
+  mouseOffsetMul: {x: 0.2, y: 0.4}
 --- !u!1001 &519875368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2462,6 +2445,7 @@ MonoBehaviour:
   - {fileID: 923826486}
   weaponUnlocks: 01010101010100
   fastButtonWeaponIdx: 0
+  currentWeapon: {fileID: 0}
 --- !u!1 &626847549
 GameObject:
   m_ObjectHideFlags: 0

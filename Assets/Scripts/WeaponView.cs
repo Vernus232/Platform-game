@@ -21,11 +21,11 @@ public class WeaponView : MonoBehaviour
         main = this;
     }
 
-    public void OnWeaponChanged(Weapon newWeapon)
+    public void OnWeaponChanged()
     {
         StopAllCoroutines();
 
-        currentWeapon = newWeapon;
+        currentWeapon = WeaponChoose.main.currentWeapon;
 
         UpdateUI();
     }

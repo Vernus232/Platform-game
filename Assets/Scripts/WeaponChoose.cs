@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class WeaponChoose : MonoBehaviour
 {
-    public GameObject[] weaponObjects;
-    public bool[] weaponUnlocks;
-
+    [SerializeField] private GameObject[] weaponObjects;
+    [SerializeField] private bool[] weaponUnlocks;
     [SerializeField] private int fastButtonWeaponIdx = 0;
     
+
+    [HideInInspector] public Weapon currentWeapon;
+    [HideInInspector] public static WeaponChoose main;
+
 
     private int weaponIdx_beforeFastButton;
     private WeaponView weaponView;
@@ -25,7 +28,8 @@ public class WeaponChoose : MonoBehaviour
             activeWeaponIndex = value;
 
             Weapon weapon = weaponObjects[activeWeaponIndex].GetComponent<Weapon>();
-            weaponView.OnWeaponChanged(weapon);
+            currentWeapon = weapon;
+            weaponView.OnWeaponChanged();
         }
     }
 
@@ -33,6 +37,7 @@ public class WeaponChoose : MonoBehaviour
 
     private void Start()
     {
+        main = this;
         weaponView = FindObjectOfType<WeaponView>();
 
         int STARTING_WEAPON_IDX = 1;

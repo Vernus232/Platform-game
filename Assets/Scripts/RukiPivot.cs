@@ -9,10 +9,9 @@ public class RukiPivot : MonoBehaviour
     {
         #region Наводка
         Vector3 mouseScreenPos = Input.mousePosition;
-        Vector3 normalizedScreenPos = Camera.main.WorldToScreenPoint(transform.position);
-        mouseScreenPos.x -= normalizedScreenPos.x;
-        mouseScreenPos.y -= normalizedScreenPos.y;
-        float angle = Mathf.Atan2(mouseScreenPos.y, mouseScreenPos.x) * Mathf.Rad2Deg;
+        Vector3 camScreenPos = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 camToMouseDir = mouseScreenPos - camScreenPos;
+        float angle = Mathf.Atan2(camToMouseDir.y, camToMouseDir.x) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
