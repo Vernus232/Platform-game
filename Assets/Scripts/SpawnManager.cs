@@ -23,11 +23,19 @@ public class SpawnManager : MonoBehaviour
         scoreSystem = FindObjectOfType<ScoreSystem>();
     }
 
+    private void OnEnable()
+    {
+        foreach (Spawner spawner in spawners)
+        {
+            spawner.gameObject.SetActive(true);
+        }
+    }
+
     private void OnDisable()
     {
         foreach (Spawner spawner in spawners)
         {
-            spawner.spawnStep = 0;
+            spawner.gameObject.SetActive(false);
         }
     }
 
