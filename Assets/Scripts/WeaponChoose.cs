@@ -66,6 +66,62 @@ public class WeaponChoose : MonoBehaviour
             TryChooseWeapon(5);
         if (Input.GetKeyDown(KeyCode.Alpha6))
             TryChooseWeapon(6);
+
+        if (Input.mouseScrollDelta.y > 0)
+            ChooseNextUnlockedWeapon();
+
+        if (Input.mouseScrollDelta.y < 0)
+            ChoosePrevUnlockedWeapon();
+    }
+
+    private void ChooseNextUnlockedWeapon()
+    {
+        // От текущего до последнего
+        for (int index = ActiveWeaponIndex + 1; index < weaponUnlocks.Length; index++)
+        {
+            if (weaponUnlocks[index])
+            {
+                ChooseWeapon(index);
+
+                return;
+            }
+        }
+
+        //От первого до текущего
+        for (int index = 0; index <= ActiveWeaponIndex; index++)
+        {
+            if (weaponUnlocks[index])
+            {
+                ChooseWeapon(index);
+
+                return;
+            }
+        }
+    }
+
+    private void ChoosePrevUnlockedWeapon()
+    {
+        // От текущего до первого
+        for (int index = ActiveWeaponIndex - 1; index >= 0; index--)
+        {
+            if (weaponUnlocks[index])
+            {
+                ChooseWeapon(index);
+
+                return;
+            }
+        }
+
+        //От первого до текущего
+        for (int index = weaponUnlocks.Length - 1; index >= ActiveWeaponIndex; index--)
+        {
+            if (weaponUnlocks[index])
+            {
+                ChooseWeapon(index);
+
+                return;
+            }
+        }
     }
 
     private void TryChooseWeapon(int index)
