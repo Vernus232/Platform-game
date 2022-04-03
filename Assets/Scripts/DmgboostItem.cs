@@ -9,6 +9,6 @@ public class DmgboostItem : Item
 
     protected override void DoActionOnPlayer()
     {
-        Player.main.damageModifier += damageAddup;
+        Player.main.DamageModifier += damageAddup;
     }
 }

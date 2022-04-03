@@ -191,8 +191,8 @@ public class Player : FragileEntity
         rb.velocity = new Vector2(0, 0);
         rb.isKinematic = true;
 
-        float EPS = 0.05f;
-        float SPEED = 5;
+        float EPS = 0.1f;
+        float SPEED = 6f;
         while ((climbPos - transform.position).magnitude > EPS)
         {
             Vector3 step = (climbPos - transform.position).normalized * Time.deltaTime * SPEED;
