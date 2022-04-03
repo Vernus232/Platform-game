@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1489779446622340504}
   - component: {fileID: 5641606989442333380}
   - component: {fileID: 1489779446622340505}
-  m_Layer: 3
+  m_Layer: 1
   m_Name: Spawner Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,8 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d329d5d761172e6478270241b5443f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnStep: 1
-  prefab: {fileID: 0}
+  spawnStep: 10
+  prefab: {fileID: 4304180936745731708, guid: a4d2b29f27ec8b64294fde32c43a1b2d, type: 3}
 --- !u!1001 &3892927940946170954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88,6 +88,14 @@ PrefabInstance:
       propertyPath: scoreForKill
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 1032487587629168958, guid: 6fbd734f705b2bf43a89fd8133a2b808, type: 3}
+      propertyPath: m_Layer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653912320116798209, guid: 6fbd734f705b2bf43a89fd8133a2b808, type: 3}
+      propertyPath: m_Layer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5165734523618582387, guid: 6fbd734f705b2bf43a89fd8133a2b808, type: 3}
       propertyPath: maxSpeed
       value: 5
@@ -95,6 +103,10 @@ PrefabInstance:
     - target: {fileID: 7267947439652132932, guid: 6fbd734f705b2bf43a89fd8133a2b808, type: 3}
       propertyPath: m_Name
       value: Flying Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267947439652132932, guid: 6fbd734f705b2bf43a89fd8133a2b808, type: 3}
+      propertyPath: m_Layer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7267947439652132939, guid: 6fbd734f705b2bf43a89fd8133a2b808, type: 3}
       propertyPath: m_RootOrder
@@ -157,6 +169,10 @@ PrefabInstance:
     - target: {fileID: 9206364253550060150, guid: e752cf0a2b5740f499cdf572d1bca38d, type: 3}
       propertyPath: m_Name
       value: Spawner Box (flying)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206364253550060150, guid: e752cf0a2b5740f499cdf572d1bca38d, type: 3}
+      propertyPath: m_Layer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9206364253550060150, guid: e752cf0a2b5740f499cdf572d1bca38d, type: 3}
       propertyPath: m_IsActive
