@@ -19,7 +19,20 @@ public class Player : FragileEntity
 
     [Header("Stats")]
 
-    public float damageModifier = 1;
+    private float damageModifier = 1;
+    public float DamageModifier
+    {
+        get
+        {
+            return damageModifier;
+        }
+        set
+        {
+            damageModifier = value;
+
+            damageMultOnUi.OnDamageModifierChanged();
+        }
+    }
     public float movementRecoil;
     [SerializeField] private float maxMovementRecoil;
 
@@ -30,6 +43,7 @@ public class Player : FragileEntity
 
     [Header("Refs")]
 
+    private DamageMult damageMultOnUi;
     [SerializeField] private PhysicsMaterial2D zeroFrictionMat;
     [SerializeField] private PhysicsMaterial2D normFrictionMat;
     [SerializeField] private Transform playerSpritePivotTransform;
@@ -73,6 +87,7 @@ public class Player : FragileEntity
         main = this;
         rb = gameObject.GetComponent<Rigidbody2D>();
         healthBar = FindObjectOfType<HpView>();
+        damageMultOnUi = FindObjectOfType<DamageMult>();
     }
 
     //Обновляется в фпс физики (50 fps)

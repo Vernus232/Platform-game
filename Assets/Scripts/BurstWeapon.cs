@@ -166,7 +166,7 @@ public class BurstWeapon : Weapon
         // Заспавнили пули
         GameObject instantiatedProjectile = Instantiate(prefabProjectile, shootingPoint.position, randomedRotation);
         instantiatedProjectile.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(projectilesSpeed * projSpeedDifferenceMul, 0));
-        instantiatedProjectile.GetComponent<PlayerProjectile>().damage *= Player.main.damageModifier;
+        instantiatedProjectile.GetComponent<PlayerProjectile>().damage *= Player.main.DamageModifier;
 
         // Сообщили разброс оружию
         recoil += recoilIncreaseWithShot;
