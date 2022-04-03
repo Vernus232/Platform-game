@@ -27,7 +27,7 @@ public class LerpCamera : MonoBehaviour
     {
         camera = FindObjectOfType<Camera>();
         player = FindObjectOfType<Player>();
-        playerRb = FindObjectOfType<Rigidbody2D>();
+        playerRb = player.GetComponent<Rigidbody2D>();
     }
 
 
