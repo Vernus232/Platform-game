@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a3971c91a5ee9648bd832ac1179900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplier: 1.1
+  damageAddup: 10
 --- !u!95 &7676825449269143110
 Animator:
   serializedVersion: 3
@@ -193,8 +193,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1
+  m_PointLightInnerRadius: 0.04
+  m_PointLightOuterRadius: 5.14
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -286,6 +286,6 @@ SpriteRenderer:
   m_Size: {x: 0.45, y: 0.22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

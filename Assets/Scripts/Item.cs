@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public float damageMultiplier;
-
-    private Player player;
+    public float damageAddup;
 
 
-    private void Start()
-    {
-        player = FindObjectOfType<Player>();
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        player.damageModifier *= damageMultiplier;
+        if (collision.CompareTag("Player"))
+        {
+            Player.main.damageModifier += damageAddup;
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 
 }
