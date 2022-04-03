@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : FragileEntity
 {
@@ -38,8 +39,8 @@ public class Player : FragileEntity
 
     // Inside script
 
-    private bool isGrounded = false;
-    [HideInInspector] public bool IsGrounded
+    [SerializeField] private bool isGrounded = false;
+    public bool IsGrounded
     {
         get
         {
@@ -200,5 +201,8 @@ public class Player : FragileEntity
         healthBar.UpdateHealth();
     }
 
-
+    private void OnDestroy()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
