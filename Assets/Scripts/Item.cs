@@ -12,7 +12,7 @@ public class Item : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Player.main.damageModifier += damageAddup;
+            Player.main.DamageModifier += damageAddup;
 
             Destroy(gameObject);
         }
