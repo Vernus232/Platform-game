@@ -5,17 +5,15 @@ using UnityEngine;
 public class HealingItem : Item
 {
     [SerializeField] private float healthAddup;
-    private HpView hpView;
+    private PlayerView hpView;
 
     private void Start()
     {
-        hpView = FindObjectOfType<HpView>();
+        hpView = FindObjectOfType<PlayerView>();
     }
 
     protected override void DoActionOnPlayer()
     {
-        Player.main.hp += healthAddup;
-
-        hpView.SetViewHp(Player.main.hp);
+        Player.main.Hp += healthAddup;
     }
 }

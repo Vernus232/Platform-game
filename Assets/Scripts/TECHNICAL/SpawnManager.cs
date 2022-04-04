@@ -35,7 +35,8 @@ public class SpawnManager : MonoBehaviour
     {
         foreach (Spawner spawner in spawners)
         {
-            spawner.gameObject.SetActive(false);
+            if (spawner)
+                spawner.gameObject.SetActive(false);
         }
     }
 

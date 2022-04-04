@@ -7,22 +7,35 @@ public abstract class FragileEntity : MonoBehaviour
 {
     public float maxHp;
 
-    [HideInInspector] public float hp;
+    [SerializeField] protected float hp;
+    public float Hp
+    {
+        get
+        {
+            return hp;
+        }
+        set
+        {
+            hp = value;
+
+            OnHpChanged();
+        }
+    }
 
     private bool isDead = false;
 
 
-    private void Start()
-    {
-        hp = maxHp;
-    }
+    //private void Start()
+    //{
+    //    Hp = maxHp; // не работает, почему?
+    //}
 
     // Метод получения урона (для "наследников" может дополняться)
     public virtual void RecieveDamage(float amount)
     {
-        hp -= amount;
+        Hp -= amount;
 
-        if (hp <= 0 && isDead == false)
+        if (Hp <= 0 && isDead == false)
         {
             Die();
             isDead = true;
@@ -34,4 +47,9 @@ public abstract class FragileEntity : MonoBehaviour
         Destroy(gameObject);
     }
 
+
+    public virtual void OnHpChanged()
+    {
+
+    }
 }

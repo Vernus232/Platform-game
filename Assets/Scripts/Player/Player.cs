@@ -30,7 +30,7 @@ public class Player : FragileEntity
         {
             damageModifier = value;
 
-            damageMultOnUi.OnDamageModifierChanged();
+            playerView.UpdateUI();
         }
     }
     public float movementRecoil;
@@ -43,7 +43,6 @@ public class Player : FragileEntity
 
     [Header("Refs")]
 
-    private DamageMult damageMultOnUi;
     [SerializeField] private PhysicsMaterial2D zeroFrictionMat;
     [SerializeField] private PhysicsMaterial2D normFrictionMat;
     [SerializeField] private Transform playerSpritePivotTransform;
@@ -75,7 +74,7 @@ public class Player : FragileEntity
 
 
     private Rigidbody2D rb;
-    private HpView healthBar;
+    private PlayerView playerView;
     [HideInInspector] public static Player main;
 
 
@@ -86,8 +85,8 @@ public class Player : FragileEntity
     {
         main = this;
         rb = gameObject.GetComponent<Rigidbody2D>();
-        healthBar = FindObjectOfType<HpView>();
-        damageMultOnUi = FindObjectOfType<DamageMult>();
+        playerView = FindObjectOfType<PlayerView>();
+        Hp = maxHp;
     }
 
     //Обновляется в фпс физики (50 fps)
@@ -206,18 +205,15 @@ public class Player : FragileEntity
     }
     #endregion
 
-
-    // При получении урона...
-    // Переписываем дополняем виртуальный метод RecieveDamage
-    public override void RecieveDamage(float amount)
-    {
-        base.RecieveDamage(amount);
-
-        healthBar.UpdateHealth();
-    }
-
     private void OnDestroy()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public override void OnHpChanged()
+    {
+        base.OnHpChanged();
+
+        playerView.UpdateUI();
     }
 }
