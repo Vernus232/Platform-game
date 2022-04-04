@@ -82,6 +82,12 @@ public class BurstWeapon : Weapon
         }
     }
 
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        isReloading = false;
+    }
+
     void Update()
     {
         #region Выстрел и задержка, Ammo

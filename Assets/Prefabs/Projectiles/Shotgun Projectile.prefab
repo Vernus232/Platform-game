@@ -5041,8 +5041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   lifespan: 2
-  hitPrefab: {fileID: 6856103324233738395, guid: d0a846b243fa9374eb2604fbb5ccbd46, type: 3}
-  destroysAnything: 0
+  particleCaster_prefab: {fileID: 6856103324233738395, guid: d0a846b243fa9374eb2604fbb5ccbd46, type: 3}
 --- !u!199 &420371466959084007
 ParticleSystemRenderer:
   serializedVersion: 6
