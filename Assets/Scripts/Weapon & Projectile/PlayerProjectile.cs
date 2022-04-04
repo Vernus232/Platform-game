@@ -10,6 +10,23 @@ public class PlayerProjectile : CommonProjectile
 
     public int penetration = 0;
 
+    private Quaternion prevRotation;
+    private Vector2 prevVelocity;
+
+
+
+    private void Start()
+    {
+        StartCoroutine(SlowUpdate());
+    }
+
+    private IEnumerator SlowUpdate()
+    {
+        yield return new WaitForFixedUpdate();
+
+        prevRotation = transform.rotation;
+        prevVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
+    }
 
 
     // Регистрация попадания во что-либо
@@ -37,15 +54,12 @@ public class PlayerProjectile : CommonProjectile
             // Пробитие
             if (penetration > 0)
             {
-                //SpawnProjectileCopy(collision); 
+                SpawnProjectileCopy(collision);
 
-                Debug.Log("Mom died");
                 Destroy(gameObject);
             }
-
-            if (penetration == 0)
+            if (penetration <= 0)
             {
-                Debug.Log("I died");
                 Destroy(gameObject);
             }
 
@@ -55,12 +69,9 @@ public class PlayerProjectile : CommonProjectile
 
     private void SpawnProjectileCopy(Collision2D collision)
     {
-        //RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 10f);
-        //Debug.Log(hit.collider.name);
-
-        GameObject newProjectile = Instantiate(gameObject, transform.position - new Vector3(0.01f, 0), transform.rotation);
+        GameObject newProjectile = Instantiate(gameObject, transform.position - new Vector3(0.01f, 0), prevRotation);
         Physics2D.IgnoreCollision(newProjectile.GetComponent<Collider2D>(), collision.collider);
-        newProjectile.GetComponent<Rigidbody2D>().velocity = gameObject.GetComponent<Rigidbody2D>().velocity;
+        newProjectile.GetComponent<Rigidbody2D>().velocity = prevVelocity;
         newProjectile.GetComponent<PlayerProjectile>().penetration = gameObject.GetComponent<PlayerProjectile>().penetration -= 1;
     }
 
