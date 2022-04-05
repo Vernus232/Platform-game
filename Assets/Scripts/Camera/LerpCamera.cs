@@ -33,6 +33,9 @@ public class LerpCamera : MonoBehaviour
 
     void LateUpdate()
     {
+        if (playerRb == null)
+            return;
+
         // ќффсет от скорости
         movementOffset = playerRb.velocity * new Vector2(xMovementOffsetMul, yMovementOffsetMul);
 

@@ -38,7 +38,8 @@ public class PlayerProjectile : CommonProjectile
             Color collisionColor = collision.gameObject.GetComponent<SpriteRenderer>().color;
             Spawn_particleCaster_withColor(collisionColor);
 
-            Destroy(gameObject);
+            // Пробитие
+            PenetrationCheck(collision);
 
             return;
         }
@@ -51,16 +52,21 @@ public class PlayerProjectile : CommonProjectile
             entity.RecieveDamage(damage);
 
             // Пробитие
-            if (penetration > 0)
-            {
-                ReplaceProjectile(collision);
-            }
-            if (penetration <= 0)
-            {
-                Destroy(gameObject);
-            }
+            PenetrationCheck(collision);
 
             return;
+        }
+    }
+
+    private void PenetrationCheck(Collision2D collision)
+    {
+        if (penetration > 0)
+        {
+            ReplaceProjectile(collision);
+        }
+        if (penetration <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 
