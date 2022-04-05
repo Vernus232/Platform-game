@@ -7,8 +7,9 @@ public class DmgboostItem : Item
     [SerializeField] private float damageAddup;
 
 
-    protected override void DoActionOnPlayer()
+    protected override bool TryDoActionOnPlayer()
     {
         Player.main.DamageModifier += damageAddup;
+        return true;
     }
 }

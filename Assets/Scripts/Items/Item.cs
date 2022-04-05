@@ -10,12 +10,17 @@ public abstract class Item : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            DoActionOnPlayer();
-
-            Destroy(gameObject);
+            if (TryDoActionOnPlayer() == true)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                // Игнорим этот типа в этом моменте типа
+            }
         }
     }
 
-    protected abstract void DoActionOnPlayer();
+    protected abstract bool TryDoActionOnPlayer();
 
 }

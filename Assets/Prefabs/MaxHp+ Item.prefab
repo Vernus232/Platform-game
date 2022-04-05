@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4304180936745731698}
   - component: {fileID: 4304180936745731696}
   - component: {fileID: 7676825449269143110}
-  - component: {fileID: -1560708129205628463}
+  - component: {fileID: -4587301620355133636}
   m_Layer: 0
-  m_Name: Heal Item
+  m_Name: MaxHp+ Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4304180936745731708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.23, y: 0.83, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4235345609702850411}
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1a9ce97166d74724c99d8ee1a10d7dac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6297aa4bce6fd314480aeacf09539ba2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -112,7 +112,7 @@ Animator:
   m_GameObject: {fileID: 4304180936745731708}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 91f261637c4b39042a556ecb534283f5, type: 2}
+  m_Controller: {fileID: 9100000, guid: cb6c02a7a98ff9c45b4f4592c8a8cd5b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -121,7 +121,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-1560708129205628463
+--- !u!114 &-4587301620355133636
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,10 +130,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4304180936745731708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4236ff52c49e104aa9712a6a9624f16, type: 3}
+  m_Script: {fileID: 11500000, guid: 45e96189b808d5f4686876fe69866bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthAddupMult: 1
+  healthAddup: 10
 --- !u!1 &4563135841993184382
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}

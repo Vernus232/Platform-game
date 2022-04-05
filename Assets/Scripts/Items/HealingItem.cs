@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealingItem : Item
 {
-    [SerializeField] private float healthAddup;
+    [SerializeField] [Range(1,100)] private int healthAddupPercent;
     private PlayerView hpView;
 
     private void Start()
@@ -12,8 +12,25 @@ public class HealingItem : Item
         hpView = FindObjectOfType<PlayerView>();
     }
 
-    protected override void DoActionOnPlayer()
+    protected override bool TryDoActionOnPlayer()
     {
-        Player.main.Hp += healthAddup;
+
+        if (Player.main.Hp == Player.main.maxHp)
+        {
+            return false;
+        }
+
+        if (Player.main.Hp < Player.main.maxHp)
+        {
+            Player.main.Hp += ((float) healthAddupPercent / 100) * Player.main.maxHp;
+            if (Player.main.Hp > Player.main.maxHp)
+            {
+                Player.main.Hp = Player.main.maxHp;
+            }
+            hpView.UpdateUI();
+            return true;
+        }
+        
+        return false;
     }
 }

@@ -7,6 +7,7 @@ public class PlayerView : MonoBehaviour
 {
     [SerializeField] private Slider hpSlider;
     [SerializeField] private Text dmgMultiplierText;
+    [SerializeField] private Text hpText;
 
     private Player player;
 
@@ -23,6 +24,7 @@ public class PlayerView : MonoBehaviour
     {
         hpSlider.value = player.Hp / player.maxHp * 100;
         dmgMultiplierText.text = "Damage : x" + player.DamageModifier.ToString("0.0");
+        hpText.text = player.Hp.ToString("000") + " / " + player.maxHp.ToString("000");
     }
 
 
