@@ -15,16 +15,8 @@ public class PlayerProjectile : CommonProjectile
 
 
 
-    private void Start()
+    public void RememberStartingSpeed()
     {
-        StartCoroutine(SlowUpdate());
-    }
-
-    private IEnumerator SlowUpdate()
-    {
-        yield return new WaitForFixedUpdate();
-
-        prevRotation = transform.rotation;
         prevVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
     }
 

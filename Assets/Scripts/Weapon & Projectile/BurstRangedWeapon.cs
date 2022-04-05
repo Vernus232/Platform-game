@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BurstWeapon : Weapon
+public class BurstRangedWeapon : Weapon
 {
     [Header("Speed")]
 
@@ -173,6 +173,13 @@ public class BurstWeapon : Weapon
         GameObject instantiatedProjectile = Instantiate(prefabProjectile, shootingPoint.position, randomedRotation);
         instantiatedProjectile.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(projectilesSpeed * projSpeedDifferenceMul, 0));
         instantiatedProjectile.GetComponent<PlayerProjectile>().damage *= Player.main.DamageModifier;
+        StartCoroutine(DoOnNextFrame());
+
+        IEnumerator DoOnNextFrame()
+        {
+            yield return new WaitForFixedUpdate();
+            instantiatedProjectile.GetComponent<PlayerProjectile>().RememberStartingSpeed();
+        }
 
         // Сообщили разброс оружию
         recoil += recoilIncreaseWithShot;

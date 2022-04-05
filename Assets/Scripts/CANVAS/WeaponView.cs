@@ -43,7 +43,7 @@ public class WeaponView : MonoBehaviour
 
         if (currentWeapon.type == WeaponType.Burst)
         {
-            BurstWeapon burstWeapon = currentWeapon.GetComponent<BurstWeapon>();
+            BurstRangedWeapon burstWeapon = currentWeapon.GetComponent<BurstRangedWeapon>();
 
             currentAmmo.text = burstWeapon.Ammo.ToString("00");
             maxAmmo.text = burstWeapon.maxAmmo.ToString("00");
