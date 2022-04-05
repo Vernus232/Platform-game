@@ -38,7 +38,6 @@ public class PlayerProjectile : CommonProjectile
             Color collisionColor = collision.gameObject.GetComponent<SpriteRenderer>().color;
             Spawn_particleCaster_withColor(collisionColor);
 
-            Debug.Log("Died to the wall");
             Destroy(gameObject);
 
             return;
@@ -54,9 +53,7 @@ public class PlayerProjectile : CommonProjectile
             // Пробитие
             if (penetration > 0)
             {
-                SpawnProjectileCopy(collision);
-
-                Destroy(gameObject);
+                ReplaceProjectile(collision);
             }
             if (penetration <= 0)
             {
@@ -67,12 +64,15 @@ public class PlayerProjectile : CommonProjectile
         }
     }
 
-    private void SpawnProjectileCopy(Collision2D collision)
+    private void ReplaceProjectile(Collision2D collision)
     {
-        GameObject newProjectile = Instantiate(gameObject, transform.position - new Vector3(0.01f, 0), prevRotation);
-        Physics2D.IgnoreCollision(newProjectile.GetComponent<Collider2D>(), collision.collider);
-        newProjectile.GetComponent<Rigidbody2D>().velocity = prevVelocity;
-        newProjectile.GetComponent<PlayerProjectile>().penetration = gameObject.GetComponent<PlayerProjectile>().penetration -= 1;
+        transform.position = transform.position - transform.right * 0.01f;
+        //transform.rotation = prevRotation;
+        gameObject.GetComponent<Rigidbody2D>().velocity = prevVelocity;
+        
+        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collision.collider);
+        
+        penetration -= 1;
     }
 
     private void Spawn_particleCaster_withColor(Color collisionColor)
