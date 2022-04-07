@@ -210,7 +210,7 @@ public class Player : FragileEntity
     private void OnDestroy()
     {
         deathscreenView.gameObject.SetActive(true);
-        Time.timeScale = 0.01f;
+        //Time.timeScale = 1;
     }
 
     public override void OnHpChanged()
