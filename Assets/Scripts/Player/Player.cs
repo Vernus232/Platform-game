@@ -73,6 +73,8 @@ public class Player : FragileEntity
     private int addJumpsLeft;
 
 
+    [SerializeField] private DeathscreenView deathscreenView;
+    
     private Rigidbody2D rb;
     private PlayerView playerView;
     [HideInInspector] public static Player main;
@@ -207,7 +209,8 @@ public class Player : FragileEntity
 
     private void OnDestroy()
     {
-        SceneManager.LoadScene(0);
+        deathscreenView.gameObject.SetActive(true);
+        Time.timeScale = 0.01f;
     }
 
     public override void OnHpChanged()
