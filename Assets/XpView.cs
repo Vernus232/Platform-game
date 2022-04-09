@@ -12,6 +12,6 @@ public class XpView : MonoBehaviour
     public void UpdateUI()
     {
         xpSlider.value = ScoreSystem.main.Score;
-        xpSlider.maxValue = 
+        
     }
 }
