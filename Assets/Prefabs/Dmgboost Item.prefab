@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0b8ee1cfce8534ab2ca0c0d5c122bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAddup: 0.1
+  damageAddup: 0.2
 --- !u!1 &4563135841993184382
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_UseNormalMap: 0
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
-  m_ShadowIntensity: 0
+  m_ShadowIntensity: 1
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
