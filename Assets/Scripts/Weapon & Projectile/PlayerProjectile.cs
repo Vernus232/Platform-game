@@ -22,6 +22,7 @@ public class PlayerProjectile : CommonProjectile
 
 
     // Регистрация попадания во что-либо
+    [System.Obsolete]
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // В Obstacle
@@ -73,6 +74,7 @@ public class PlayerProjectile : CommonProjectile
         penetration -= 1;
     }
 
+    [System.Obsolete]
     private void Spawn_particleCaster_withColor(Color collisionColor)
     {
         // Размещаем (Создаем его копию) префаб системы партиклов
