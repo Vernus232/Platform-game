@@ -16,7 +16,7 @@ public class WeaponChoose : MonoBehaviour
     private int weaponIdx_beforeFastButton;
     private WeaponView weaponView;
 
-    private int activeWeaponIndex = 1;
+    private int activeWeaponIndex;
     public int ActiveWeaponIndex
     {
         get
