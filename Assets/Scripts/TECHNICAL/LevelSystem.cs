@@ -39,8 +39,8 @@ public class LevelSystem : MonoBehaviour
             LevelUp();
         }
 
-        float fullScoreDiff = scoreForNextLvl[currentLevel + 1] - scoreForNextLvl[currentLevel];
-        float levelSliderValue = (ScoreSystem.main.Score - scoreForCurrLevel) / fullScoreDiff;
+        float levelSliderValue = (ScoreSystem.main.Score - scoreForCurrLevel) / 
+                                 (scoreForNextLvl[currentLevel] - scoreForCurrLevel);
         LevelView.main.UpdateUI(levelSliderValue);
     }
 
