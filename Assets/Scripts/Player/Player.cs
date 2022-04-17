@@ -52,7 +52,7 @@ public class Player : FragileEntity
 
     // Inside script
 
-    private bool isGrounded = false;
+    [SerializeField] private bool isGrounded = false;
     public bool IsGrounded
     {
         get
