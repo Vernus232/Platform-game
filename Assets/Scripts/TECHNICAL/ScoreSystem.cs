@@ -20,7 +20,7 @@ public class ScoreSystem : MonoBehaviour
             score = value;
             ScoreView.main.UpdateUIScore(score);
             SpawnManager.main.OnScoreChanged();
-            XpSystem.main.OnScoreChanged();
+            LevelSystem.main.OnScoreChanged();
         }
     }
 
