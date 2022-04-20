@@ -209,7 +209,8 @@ public class Player : FragileEntity
 
     private void OnDestroy()
     {
-        deathscreenView.gameObject.SetActive(true);
+        if (deathscreenView)
+            deathscreenView.gameObject.SetActive(true);
         //Time.timeScale = 1;
     }
 
