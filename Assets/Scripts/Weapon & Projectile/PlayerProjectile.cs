@@ -10,16 +10,21 @@ public class PlayerProjectile : CommonProjectile
 
     public int penetration = 0;
 
-    private Quaternion prevRotation;
-    private Vector2 prevVelocity;
+    private Vector2 prevFrameVelocity;
+    private Vector3 prevFramePosition;
 
 
-
-    public void RememberStartingSpeed()
+    public void SetParametersOnSpawn(Vector2 vel, Vector3 pos)
     {
-        prevVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
+        prevFrameVelocity = vel;
+        prevFramePosition = pos;
     }
 
+    private void Update()
+    {
+        prevFrameVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
+        prevFramePosition = transform.position;
+    }
 
     // Регистрация попадания во что-либо
     [System.Obsolete]
@@ -65,12 +70,11 @@ public class PlayerProjectile : CommonProjectile
 
     private void ReplaceProjectile(Collision2D collision)
     {
-        transform.position = transform.position - transform.right * 0.01f;
-        //transform.rotation = prevRotation;
-        gameObject.GetComponent<Rigidbody2D>().velocity = prevVelocity;
-        
+        gameObject.GetComponent<Rigidbody2D>().velocity = prevFrameVelocity;
+        transform.position = prevFramePosition;
+
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collision.collider);
-        
+
         penetration -= 1;
     }
 
