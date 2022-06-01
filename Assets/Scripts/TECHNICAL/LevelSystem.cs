@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelSystem : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class LevelSystem : MonoBehaviour
     [SerializeField] private float firstScoreForNextLvl;
     [SerializeField] private float scoreForNextLvlIncreaseCoef;
     [SerializeField] private float[] scoreForNextLvl;
+    [SerializeField] private UnityEvent[] lvlBonuses;
 
     [HideInInspector] public static LevelSystem main;
     private float scoreForCurrLevel = 0;
@@ -46,10 +48,16 @@ public class LevelSystem : MonoBehaviour
 
     private void LevelUp()
     {
+        GivePlayerLvlBonuses(currentLevel);
+
         scoreForCurrLevel = scoreForNextLvl[currentLevel];
         currentLevel++;
     }
 
+    private void GivePlayerLvlBonuses(int lvl)
+    {
+        lvlBonuses[lvl].Invoke();
+    }
 
 
 }
