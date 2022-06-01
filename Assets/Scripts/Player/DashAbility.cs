@@ -36,10 +36,10 @@ public class DashAbility : MonoBehaviour
             charges -= 1;
             if (charges <= 0)
             {
+                isReady = false;
                 StartCoroutine(SetReady());
                 IEnumerator SetReady()
                 {
-                    isReady = false;
                     yield return new WaitForSeconds(refreshTime);
                     isReady = true;
                     charges = maxCharges;
