@@ -6,8 +6,6 @@ public class ScoreSystem : MonoBehaviour
 {
     [SerializeField] private float scoreIncreaseOverTime;
 
-    [HideInInspector] public static ScoreSystem main;
-
     private float score = 0;
     public float Score
     {
@@ -23,6 +21,8 @@ public class ScoreSystem : MonoBehaviour
             LevelSystem.main.OnScoreChanged();
         }
     }
+
+    [HideInInspector] public static ScoreSystem main;
 
 
     private void Start()

@@ -8,28 +8,25 @@ public class MeleeWeapon : Weapon
     public float betweenHitsTime;
     [SerializeField] private GameObject damagingObject;
 
+    private float currTime = 999;
     private float prevHitTime = 0;
-
 
 
     private void Start()
     {
-        damagingObject.GetComponent<DamageCircle>().damage = meleeDamage;
-        damagingObject.GetComponent<DamageCircle>().betweenHitsTime = betweenHitsTime;
+        damagingObject.GetComponent<DamagingField>().damage = meleeDamage;
+        damagingObject.GetComponent<DamagingField>().betweenHitsTime = betweenHitsTime;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+        currTime = Time.time;
+        if (currTime - prevHitTime > betweenHitsTime  &&  Input.GetMouseButton(0))
         {
-            float currTime = Time.time;
-            if ((currTime - prevHitTime) > betweenHitsTime)
-            {
-                StartCoroutine(Hit());
+            StartCoroutine(Hit());
+            WeaponView.main.OnWeaponReloadStarted(betweenHitsTime);
 
-                prevHitTime = currTime;
-                WeaponView.main.OnWeaponReloadStarted(betweenHitsTime);
-            }
+            prevHitTime = currTime;
         }
     }
 

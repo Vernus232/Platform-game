@@ -8,11 +8,11 @@ public class WeaponView : MonoBehaviour
     [SerializeField] private Text weaponNameText;
     [SerializeField] private Text currentAmmo;
     [SerializeField] private Text maxAmmo;
-    [SerializeField] private Slider slider;
+    [SerializeField] private Slider ammoSlider;
 
     [HideInInspector] public static WeaponView main;
 
-    [SerializeField] private Weapon currentWeapon;
+    private Weapon currentWeapon;
 
 
 
@@ -48,7 +48,7 @@ public class WeaponView : MonoBehaviour
             currentAmmo.text = burstWeapon.Ammo.ToString("00");
             maxAmmo.text = burstWeapon.maxAmmo.ToString("00");
 
-            slider.value = (float) burstWeapon.Ammo / (float) burstWeapon.maxAmmo * 100f;
+            ammoSlider.value = (float) burstWeapon.Ammo / (float) burstWeapon.maxAmmo * 100f;
         }
 
 
@@ -57,7 +57,7 @@ public class WeaponView : MonoBehaviour
             currentAmmo.text = "--";
             maxAmmo.text = "--";
 
-            slider.value = 0;
+            ammoSlider.value = 0;
         }
     }
 
@@ -76,7 +76,7 @@ public class WeaponView : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
 
-            slider.value = timePassed / reloadTime * 100;
+            ammoSlider.value = timePassed / reloadTime * 100;
             timePassed += Time.deltaTime;
         }
     }

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerSeeker : MonoBehaviour
 {
-    private GameObject playerObj;
+    private Transform playerTransform;
 
 
     void Start()
     {
-        playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj)
-            gameObject.GetComponent<Pathfinding.AIDestinationSetter>().target = playerObj.transform;
+        playerTransform = GameObject.FindObjectOfType<Player>().transform;
+        if (playerTransform)
+            gameObject.GetComponent<Pathfinding.AIDestinationSetter>().target = playerTransform;
     }
 
 

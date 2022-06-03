@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class DeathscreenView : MonoBehaviour
 {
-    public static DeathscreenView main;
-
     [SerializeField] private Text text;
+
+    [HideInInspector] public static DeathscreenView main;
 
 
     private void Start()

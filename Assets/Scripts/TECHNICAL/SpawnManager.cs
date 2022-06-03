@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private float scoreToSpawnSpeed;
-    [SerializeField] private float hiddenInitialScore;
-
+    [SerializeField] private float scoreToSpawnStep_K;
+    [SerializeField] private float hiddenInitialSpawn;
     [SerializeField] private List<Spawner> spawners;
 
+    [SerializeField] private float currentSpawnSpeed;
     [SerializeField] private float currentSpawnStep;
-
     [HideInInspector] public static SpawnManager main;
 
-    private ScoreSystem scoreSystem;
 
 
     private void Start()
     {
         main = this;
-
-        scoreSystem = FindObjectOfType<ScoreSystem>();
     }
 
     private void OnEnable()
@@ -47,7 +43,12 @@ public class SpawnManager : MonoBehaviour
 
     private void ChangeSpawnStep()
     {
-        currentSpawnStep = scoreToSpawnSpeed / (hiddenInitialScore + scoreSystem.Score);
+        float Function(float k, float x, float b)
+        {
+            return k * x + b;
+        }
+        currentSpawnSpeed = Function(scoreToSpawnStep_K / 1000, ScoreSystem.main.Score, hiddenInitialSpawn);
+        currentSpawnStep = 1 / currentSpawnSpeed;
 
         foreach (Spawner spawner in spawners)
         {

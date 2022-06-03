@@ -18,7 +18,6 @@ public class PauseCaster : MonoBehaviour
 
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pauseScreen.SetActive(true);

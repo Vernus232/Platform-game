@@ -5,46 +5,35 @@ using UnityEngine;
 public class BurstRangedWeapon : Weapon
 {
     [Header("Speed")]
-
     [SerializeField] private float projectilesSpeed;
     [Tooltip("Makes speed random in range [speed*(1-x), speed*x].")] [SerializeField] private float projMaxSpeedDifferenceMul;
-    
-
     [Space(10)]
-    [Header("Burst")]
 
+    [Header("Burst")]
     [Tooltip("In bursts-per-minute.")] [SerializeField] private float fireRate;
     [SerializeField] private int projectilesInBurstCount = 1;
     [Tooltip("Whether to .")] [SerializeField] private bool instantiateBurstMomentally = true;
-
-
     [Space(10)]
-    [Header("Reload")]
 
+    [Header("Reload")]
     public int maxAmmo;
     public float reloadTime;
-
-
     [Space(10)]
-    [Header("Recoil")]
 
+    [Header("Recoil")]
     [SerializeField] private float maxWeaponRecoil;
     [SerializeField] private float minWeaponRecoil;
     [SerializeField] private float recoilIncreaseWithShot;
     [SerializeField] private float recoilReductionWithTime;
     [SerializeField] private float movementRecoilImportance;
-
-
     [Space(10)]
-    [Header("Links")]
 
+    [Header("Links")]
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private GameObject prefabProjectile;
-
-
     [Space(10)]
-    [Header("Debug")]
 
+    [Header("Debug")]
     public float recoil;
     [HideInInspector] public bool isReloading;
     private int ammo = 1;
@@ -100,7 +89,7 @@ public class BurstRangedWeapon : Weapon
             {
                 // Выстрел и задержка
                 if (instantiateBurstMomentally)
-                    InstantiateProjectilesMomentally();
+                    InstantiateProjectiles_momentally();
                 else
                     StartCoroutine("InstantiateProjectiles");
 
@@ -139,7 +128,7 @@ public class BurstRangedWeapon : Weapon
     }
 
     #region Бёрсты
-    private IEnumerator InstantiateProjectiles()
+    private IEnumerator InstantiateProjectiles_byFrame()
     {
         for (int i = 0; i < projectilesInBurstCount; i++)
         {
@@ -149,7 +138,7 @@ public class BurstRangedWeapon : Weapon
         }
     }
 
-    private void InstantiateProjectilesMomentally()
+    private void InstantiateProjectiles_momentally()
     {
         for (int i = 0; i < projectilesInBurstCount; i++)
         {
@@ -179,7 +168,6 @@ public class BurstRangedWeapon : Weapon
 
         if (instantiatedPlayerProjectile.penetration > 0)
         {
-            Debug.Log(projectilesSpeed * transform.right / 5);
             instantiatedPlayerProjectile.SetParametersOnSpawn(  projectilesSpeed * transform.right /5,
                                                                 instantiatedProjectile.transform.position);
         }

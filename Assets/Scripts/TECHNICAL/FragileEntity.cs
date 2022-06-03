@@ -5,19 +5,15 @@ using UnityEngine;
 // Это абстрактный класс (его на сцену не поставишь, потому что самого по себе FragileEntity в природе нет)
 public abstract class FragileEntity : MonoBehaviour
 {
-    public float maxHp;
 
-    [SerializeField] protected float hp;
+    public float maxHp;
+    protected float hp;
     public float Hp
     {
-        get
-        {
-            return hp;
-        }
+        get => hp;
         set
         {
             hp = value;
-
             OnHpChanged();
         }
     }
@@ -25,10 +21,10 @@ public abstract class FragileEntity : MonoBehaviour
     private bool isDead = false;
 
 
-    //private void Start()
-    //{
-    //    Hp = maxHp; // не работает, почему?
-    //}
+    private void Start()
+    {
+        Hp = maxHp;
+    }
 
     // Метод получения урона (для "наследников" может дополняться)
     public virtual void RecieveDamage(float amount)
@@ -52,4 +48,10 @@ public abstract class FragileEntity : MonoBehaviour
     {
 
     }
+    public virtual void OnMaxHpChanged()
+    {
+        PlayerView.main.UpdateUI();
+    }
+
+
 }

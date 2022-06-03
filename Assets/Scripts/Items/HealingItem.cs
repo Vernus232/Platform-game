@@ -5,12 +5,7 @@ using UnityEngine;
 public class HealingItem : Item
 {
     [SerializeField] [Range(1,100)] private int healthAddupPercent;
-    private PlayerView hpView;
 
-    private void Start()
-    {
-        hpView = FindObjectOfType<PlayerView>();
-    }
 
     protected override bool TryDoActionOnPlayer()
     {
@@ -27,7 +22,7 @@ public class HealingItem : Item
             {
                 Player.main.Hp = Player.main.maxHp;
             }
-            hpView.UpdateUI();
+            PlayerView.main.UpdateUI();
             return true;
         }
         

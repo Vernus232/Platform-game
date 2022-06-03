@@ -8,14 +8,6 @@ public class WeaponChoose : MonoBehaviour
     [SerializeField] private bool[] weaponUnlocks;
     [SerializeField] private int fastButtonWeaponIdx = 0;
     
-
-    [HideInInspector] public Weapon currentWeapon;
-    [HideInInspector] public static WeaponChoose main;
-
-
-    private int weaponIdx_beforeFastButton;
-    private WeaponView weaponView;
-
     private int activeWeaponIndex;
     public int ActiveWeaponIndex
     {
@@ -32,6 +24,12 @@ public class WeaponChoose : MonoBehaviour
             weaponView.OnWeaponChanged();
         }
     }
+
+    [HideInInspector] public Weapon currentWeapon;
+    [HideInInspector] public static WeaponChoose main;
+
+    private int weaponIdx_beforeFastButton;
+    private WeaponView weaponView;
 
 
 

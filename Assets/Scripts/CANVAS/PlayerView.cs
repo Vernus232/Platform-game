@@ -10,11 +10,13 @@ public class PlayerView : MonoBehaviour
     [SerializeField] private Text hpText;
 
     private Player player;
+    [HideInInspector] public static PlayerView main;
 
 
 
     private void Start()
     {
+        main = this;
         player = FindObjectOfType<Player>();
 
         UpdateUI();

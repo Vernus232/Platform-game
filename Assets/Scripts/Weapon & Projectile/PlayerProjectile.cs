@@ -22,7 +22,11 @@ public class PlayerProjectile : CommonProjectile
 
     private void Update()
     {
-        prevFrameVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
+        Vector2 currFrameVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
+        if (currFrameVelocity.magnitude >= 5)
+        {
+            prevFrameVelocity = currFrameVelocity;
+        }
         prevFramePosition = transform.position;
     }
 

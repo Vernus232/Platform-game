@@ -6,19 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class Player : FragileEntity
 {
-    [Header("Movement")]
 
+    [Header("Movement")]
     public float xSpeedLimit;
     public float xMovementForce;
     public float xJumpSpeed;
     public float yJumpSpeed;
-    public bool isLookingRight = true;
-
     [Space(10)]
 
 
     [Header("Stats")]
-
     private float damageModifier = 1;
     public float DamageModifier
     {
@@ -35,25 +32,20 @@ public class Player : FragileEntity
     }
     public float movementRecoil;
     [SerializeField] private float maxMovementRecoil;
-
     [SerializeField] private int addJumpsMax = 1;
-
     [Space(10)]
 
 
     [Header("Refs")]
-
     [SerializeField] private PhysicsMaterial2D zeroFrictionMat;
     [SerializeField] private PhysicsMaterial2D normFrictionMat;
     [SerializeField] private Transform playerSpritePivotTransform;
-
     [Space(10)]
 
 
     // Inside script
-
-    [SerializeField] private bool isGrounded = false;
-    public bool IsGrounded
+    private bool isGrounded = false;
+    [HideInInspector] public bool IsGrounded
     {
         get
         {
@@ -67,14 +59,10 @@ public class Player : FragileEntity
                 addJumpsLeft = addJumpsMax;  // reset jumps left
         }
     }
-
-    [HideInInspector] public bool IsClimbPossible = false;
-
+    [HideInInspector] public bool isClimbPossible = false;
     private int addJumpsLeft;
 
-
-    [SerializeField] private DeathscreenView deathscreenView;
-    
+    private DeathscreenView deathscreenView;
     private Rigidbody2D rb;
     private PlayerView playerView;
     [HideInInspector] public static Player main;
@@ -86,8 +74,10 @@ public class Player : FragileEntity
     private void Start()
     {
         main = this;
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         playerView = FindObjectOfType<PlayerView>();
+        deathscreenView = FindObjectOfType<DeathscreenView>();
+
         Hp = maxHp;
     }
 

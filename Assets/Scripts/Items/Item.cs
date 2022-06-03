@@ -16,7 +16,7 @@ public abstract class Item : MonoBehaviour
             }
             else
             {
-                // Игнорим этот типа в этом моменте типа
+                // Игнорим
             }
         }
     }

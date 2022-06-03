@@ -22,7 +22,7 @@ public class PlayerClimbDetector : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Player.main.IsClimbPossible = false;
+            Player.main.isClimbPossible = false;
 
         }
     }
