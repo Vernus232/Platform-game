@@ -24,9 +24,12 @@ public class PlayerView : MonoBehaviour
     
     public void UpdateUI()
     {
-        hpSlider.value = player.Hp / player.maxHp * 100;
-        dmgMultiplierText.text = "Damage : x" + player.DamageModifier.ToString("0.0");
-        hpText.text = player.Hp.ToString("0") + " / " + player.maxHp.ToString("0");
+        if (player)
+        {
+            hpSlider.value = player.Hp / player.maxHp * 100;
+            dmgMultiplierText.text = "Damage : x" + player.DamageModifier.ToString("0.0");
+            hpText.text = player.Hp.ToString("0") + " / " + player.maxHp.ToString("0");
+        }
     }
 
 

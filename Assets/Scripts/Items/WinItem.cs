@@ -7,7 +7,7 @@ public class WinItem : Item
 
     protected override bool TryDoActionOnPlayer()
     {
-        WinscreenView.main.gameObject.SetActive(true);
+        FindObjectOfType<WinscreenView>(true).gameObject.SetActive(true);
         TimeManager.main.OnWin();
         return true;
     }

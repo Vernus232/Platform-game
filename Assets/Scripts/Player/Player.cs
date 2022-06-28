@@ -76,7 +76,7 @@ public class Player : FragileEntity
         main = this;
         rb = GetComponent<Rigidbody2D>();
         playerView = FindObjectOfType<PlayerView>();
-        deathscreenView = FindObjectOfType<DeathscreenView>();
+        deathscreenView = FindObjectOfType<DeathscreenView>(true);
 
         Hp = maxHp;
     }
@@ -199,8 +199,7 @@ public class Player : FragileEntity
 
     private void OnDestroy()
     {
-        if (deathscreenView)
-            deathscreenView.gameObject.SetActive(true);
+        deathscreenView.gameObject.SetActive(true);
         //Time.timeScale = 1;
     }
 

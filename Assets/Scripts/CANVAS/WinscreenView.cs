@@ -9,14 +9,6 @@ public class WinscreenView : MonoBehaviour
     [SerializeField] private Text scoreText;
     [SerializeField] private string[] winStrings;
 
-    [HideInInspector] public static WinscreenView main;
-
-
-    private void Start()
-    {
-        main = this;
-    }
-
     private void OnEnable()
     {
         int GetRandomWinIndex()

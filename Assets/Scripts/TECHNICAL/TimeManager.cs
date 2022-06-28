@@ -23,14 +23,18 @@ public class TimeManager : MonoBehaviour
     {
         float slowdownStep = 1f / 10f / winTimescaleSlowdownTime;
 
-        while (Time.timeScale > 0.01f)
+        while (Time.timeScale - slowdownStep > 0.01f)
         {
             Time.timeScale -= slowdownStep;
-            Debug.Log(Time.timeScale);
             yield return new WaitForSecondsRealtime(0.1f);
         }
+
     }
 
+    public void ResetTime()
+    {
+        Time.timeScale = 1;
+    }
 
 
 }
