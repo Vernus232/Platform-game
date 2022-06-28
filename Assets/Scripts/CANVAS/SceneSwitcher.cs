@@ -15,4 +15,8 @@ public class SceneSwitcher : MonoBehaviour
         Application.Quit();
     }
 
+    public void RestartCurrentScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

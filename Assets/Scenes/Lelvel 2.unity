@@ -1113,7 +1113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516508877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.472, y: 1.953, z: 0}
+  m_LocalPosition: {x: 1.69, y: 1.73, z: 0}
   m_LocalScale: {x: 389.5793, y: 397.01556, z: 69.238846}
   m_Children: []
   m_Father: {fileID: 1393517909}
@@ -20603,9 +20603,37 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8537816370843488988, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 1634977341264012827, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634977341264012827, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634977341264012827, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1419712241}
+    - target: {fileID: 1634977341264012827, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 839485128}
+    - target: {fileID: 1634977341264012827, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634977341264012827, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResetTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634977341264012827, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TimeManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634977341264012827, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8537816370865122297, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -20623,14 +20651,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1419712241}
+    - target: {fileID: 8537816371559876988, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8537816371666666775, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1419712241}
-    - target: {fileID: 8537816371666666775, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
-      objectReference: {fileID: 0}
     - target: {fileID: 8537816371691124187, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -20751,10 +20779,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1419712241}
-    - target: {fileID: 8537816372419301631, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
-      objectReference: {fileID: 0}
     - target: {fileID: 8537816372529917450, guid: 4ddc19a4181123741aefd4d3455b20f4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
