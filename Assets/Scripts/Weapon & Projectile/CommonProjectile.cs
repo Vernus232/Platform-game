@@ -8,6 +8,7 @@ public class CommonProjectile : VanishingProjectile
     [SerializeField] private GameObject particleCaster_prefab;
 
     public int penetration = 0;
+    public int ricochets = 0;
     public float damage;
 
     private Vector2 prevFrameVelocity;
@@ -66,9 +67,13 @@ public class CommonProjectile : VanishingProjectile
         {
             ReplaceProjectile(collision);
         }
-        if (penetration <= 0)
+        if (penetration <= 0 && ricochets == 0)
         {
             Destroy(gameObject);
+        }
+        if (penetration <= 0 && ricochets > 0)
+        {
+            //pass)
         }
     }
 

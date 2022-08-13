@@ -7,6 +7,7 @@ public class BurstRangedWeapon : Weapon
     [Header("Speed")]
     [SerializeField] private float projectilesSpeed;
     [Tooltip("Makes speed random in range [speed*(1-x), speed*x].")] [SerializeField] private float projMaxSpeedDifferenceMul;
+    [SerializeField] private bool ricochet;
     [Space(10)]
 
     [Header("Burst")]
