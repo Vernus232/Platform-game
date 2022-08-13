@@ -2,27 +2,100 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CommonProjectile : MonoBehaviour
+public class CommonProjectile : VanishingProjectile
 {
+        [Tooltip("Объект партикл системы при попадании")]
+    [SerializeField] private GameObject particleCaster_prefab;
+
+    public int penetration = 0;
     public float damage;
-    [Tooltip("Как скоро пуля исчезнет (сек).")] [SerializeField] private float lifespan;
+
+    private Vector2 prevFrameVelocity;
+    private Vector3 prevFramePosition;
 
 
-
-    // Ставим таймер смерти пули
-    private void Awake()
+    public void SetParametersOnSpawn(Vector2 vel, Vector3 pos)
     {
-        Destroy(gameObject, lifespan);
+        prevFrameVelocity = vel;
+        prevFramePosition = pos;
     }
 
-    // Поворот пули в полёте
-    //private void FixedUpdate()
-    //{
-    //    Vector2 flightDir = GetComponent<Rigidbody2D>().velocity;
-    //    float angle = Vector2.Angle(flightDir.normalized, Vector2.left);
-    //    transform.rotation = Quaternion.Euler(0f, 0f, angle);
-    //}
+    private void Update()
+    {
+        Vector2 currFrameVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
+        if (currFrameVelocity.magnitude >= 5)
+        {
+            prevFrameVelocity = currFrameVelocity;
+        }
+        prevFramePosition = transform.position;
+    }
 
+    // Регистрация попадания во что-либо
+    [System.Obsolete]
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // В Obstacle
+        if (collision.gameObject.layer == 3)
+        {
+            Color collisionColor = collision.gameObject.GetComponent<SpriteRenderer>().color;
+            Spawn_particleCaster_withColor(collisionColor);
 
+            // Пробитие
+            PenetrationCheck(collision);
+
+            return;
+        }
+
+        // Во врага или декорации
+        if (collision.gameObject.CompareTag("Enemy")  ||  collision.gameObject.CompareTag("Decoration"))
+        {
+            // Урон цели
+            FragileEntity entity = collision.gameObject.GetComponent<FragileEntity>();
+            entity.RecieveDamage(damage);
+
+            // Пробитие
+            PenetrationCheck(collision);
+
+            return;
+        }
+    }
+
+    private void PenetrationCheck(Collision2D collision)
+    {
+        if (penetration > 0)
+        {
+            ReplaceProjectile(collision);
+        }
+        if (penetration <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void ReplaceProjectile(Collision2D collision)
+    {
+        gameObject.GetComponent<Rigidbody2D>().velocity = prevFrameVelocity;
+        transform.position = prevFramePosition;
+
+        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collision.collider);
+
+        penetration -= 1;
+    }
+
+    [System.Obsolete]
+    private void Spawn_particleCaster_withColor(Color collisionColor)
+    {
+        // Размещаем (Создаем его копию) префаб системы партиклов
+        GameObject particleCaster_gameObject = Instantiate(particleCaster_prefab, transform.position, transform.rotation);
+
+        // Запускаем анимацию выбранного инстанса(т.е. объект этого класса на сцене) партикл-системы
+        ParticleSystem particleCaster_particleSystem = particleCaster_gameObject.GetComponent<ParticleSystem>();
+        particleCaster_particleSystem.startColor = collisionColor;
+
+        particleCaster_particleSystem.Play();
+
+        // Таймер на смерть
+        Destroy(particleCaster_gameObject, 3);
+    }
 
 }

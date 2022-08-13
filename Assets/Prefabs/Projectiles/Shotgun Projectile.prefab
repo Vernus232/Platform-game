@@ -151,8 +151,8 @@ GameObject:
   - component: {fileID: 6187345206683502293}
   - component: {fileID: 2554463135048216633}
   - component: {fileID: 4583708629154961689}
-  - component: {fileID: 5526811408548887414}
   - component: {fileID: 420371466959084007}
+  - component: {fileID: 7508163842795223565}
   m_Layer: 7
   m_Name: Shotgun Projectile
   m_TagString: Untagged
@@ -5027,21 +5027,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &5526811408548887414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5526811408548887409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90560bcafcf69d145b617cfd56a2fe90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 3
-  lifespan: 2
-  particleCaster_prefab: {fileID: 6856103324233738395, guid: d0a846b243fa9374eb2604fbb5ccbd46, type: 3}
 --- !u!199 &420371466959084007
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5108,3 +5093,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &7508163842795223565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5526811408548887409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f939976b23cb7f46a0e0364b2b150f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifespan: 2
+  particleCaster_prefab: {fileID: 5526811408548887409}
+  penetration: 0
+  damage: 2

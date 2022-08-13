@@ -161,15 +161,19 @@ public class BurstRangedWeapon : Weapon
         // Заспавнили пули
         GameObject instantiatedProjectile = Instantiate(prefabProjectile, shootingPoint.position, randomedRotation);
         Rigidbody2D instantiatedProjectileRb = instantiatedProjectile.GetComponent<Rigidbody2D>();
-        PlayerProjectile instantiatedPlayerProjectile = instantiatedProjectile.GetComponent<PlayerProjectile>();
-        
         instantiatedProjectileRb.AddRelativeForce(new Vector2(projectilesSpeed * projSpeedDifferenceMul, 0));
-        instantiatedPlayerProjectile.damage *= Player.main.DamageModifier;
 
-        if (instantiatedPlayerProjectile.penetration > 0)
+
+        CommonProjectile instantiatedCommonProjectile = instantiatedProjectile.GetComponent<CommonProjectile>();
+        if (instantiatedCommonProjectile)
         {
-            instantiatedPlayerProjectile.SetParametersOnSpawn(  projectilesSpeed * transform.right /5,
-                                                                instantiatedProjectile.transform.position);
+            instantiatedCommonProjectile.damage *= Player.main.DamageModifier;
+
+            if (instantiatedCommonProjectile.penetration > 0)
+            {
+                instantiatedCommonProjectile.SetParametersOnSpawn(projectilesSpeed * transform.right / 5,
+                                                                    instantiatedProjectile.transform.position);
+            }
         }
 
 
