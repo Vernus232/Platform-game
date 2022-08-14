@@ -20,6 +20,7 @@ public class UpgradableScale : UpgradableEntity
         if (scaleX / startScaleX < maxMul)
         {
             transform.localScale *= stepMul;
+            scaleX = transform.localScale.x;
         }
     }
 }
