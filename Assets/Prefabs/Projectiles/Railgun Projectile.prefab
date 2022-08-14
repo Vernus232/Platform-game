@@ -5040,8 +5040,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifespan: 3
-  particleCaster_prefab: {fileID: 5526811408548887409}
+  particleCaster_prefab: {fileID: 6856103324233738395, guid: f063bb74fab721841b5275b0f2bb071f, type: 3}
   penetration: 10
+  ricochets: 0
   damage: 50
 --- !u!199 &420371466959084007
 ParticleSystemRenderer:
