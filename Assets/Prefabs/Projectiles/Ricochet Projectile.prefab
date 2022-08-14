@@ -132,7 +132,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 2
     shadowBias: 0.5
     generateLightingData: 1
   m_MinVertexDistance: 0.1
@@ -5042,7 +5042,7 @@ MonoBehaviour:
   lifespan: 2
   particleCaster_prefab: {fileID: 6856103324233738395, guid: 7a92a4641b62e884fbd28a2e46ee92dc, type: 3}
   penetration: 0
-  ricochets: 0
+  ricochets: 4
   damage: 20
 --- !u!199 &420371466959084007
 ParticleSystemRenderer:

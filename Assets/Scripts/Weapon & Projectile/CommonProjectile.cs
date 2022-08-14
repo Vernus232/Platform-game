@@ -73,7 +73,8 @@ public class CommonProjectile : VanishingProjectile
         }
         if (penetration <= 0 && ricochets > 0)
         {
-            //pass)
+            ricochets -= 1;
+            return;
         }
     }
 

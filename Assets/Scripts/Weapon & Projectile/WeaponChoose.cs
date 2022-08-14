@@ -64,6 +64,10 @@ public class WeaponChoose : MonoBehaviour
             TryChooseWeapon(5);
         if (Input.GetKeyDown(KeyCode.Alpha6))
             TryChooseWeapon(6);
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+            TryChooseWeapon(7);
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+            TryChooseWeapon(8);
 
         if (Input.mouseScrollDelta.y > 0)
             ChooseNextUnlockedWeapon();

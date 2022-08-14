@@ -46,10 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf57806bbfd7e34f98e7cc378e7dac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Automatic Rifle
+  weaponName: Ricochet Rifle
   type: 0
-  projectilesSpeed: 500
+  projectilesSpeed: 300
   projMaxSpeedDifferenceMul: 1.05
+  ricochet: 0
   fireRate: 150
   projectilesInBurstCount: 1
   instantiateBurstMomentally: 1
@@ -1450,6 +1451,7 @@ MonoBehaviour:
   type: 0
   projectilesSpeed: 300
   projMaxSpeedDifferenceMul: 1.5
+  ricochet: 0
   fireRate: 60
   projectilesInBurstCount: 30
   instantiateBurstMomentally: 1
@@ -1565,6 +1567,7 @@ MonoBehaviour:
   type: 0
   projectilesSpeed: 500
   projMaxSpeedDifferenceMul: 1.2
+  ricochet: 0
   fireRate: 2000
   projectilesInBurstCount: 1
   instantiateBurstMomentally: 1
@@ -2025,6 +2028,7 @@ MonoBehaviour:
   type: 0
   projectilesSpeed: 600
   projMaxSpeedDifferenceMul: 1.05
+  ricochet: 0
   fireRate: 600
   projectilesInBurstCount: 1
   instantiateBurstMomentally: 1
@@ -2314,6 +2318,7 @@ MonoBehaviour:
   type: 0
   projectilesSpeed: 1500
   projMaxSpeedDifferenceMul: 1
+  ricochet: 0
   fireRate: 60
   projectilesInBurstCount: 1
   instantiateBurstMomentally: 1
@@ -2378,6 +2383,7 @@ MonoBehaviour:
   type: 0
   projectilesSpeed: 500
   projMaxSpeedDifferenceMul: 1.05
+  ricochet: 0
   fireRate: 120
   projectilesInBurstCount: 1
   instantiateBurstMomentally: 1
@@ -2935,6 +2941,7 @@ MonoBehaviour:
   type: 0
   projectilesSpeed: 500
   projMaxSpeedDifferenceMul: 1.2
+  ricochet: 0
   fireRate: 180
   projectilesInBurstCount: 1
   instantiateBurstMomentally: 1
