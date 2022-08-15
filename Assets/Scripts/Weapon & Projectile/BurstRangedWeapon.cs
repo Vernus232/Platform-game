@@ -27,6 +27,7 @@ public class BurstRangedWeapon : Weapon
     [SerializeField] private float recoilIncreaseWithShot;
     [SerializeField] private float recoilReductionWithTime;
     [SerializeField] private float movementRecoilImportance;
+    [SerializeField] private float cameraShakeMult = 1;
     [Space(10)]
 
     [Header("Links")]
@@ -53,12 +54,13 @@ public class BurstRangedWeapon : Weapon
     }
     private float prevShootTime = 0;
     private WeaponView weaponView;
-
+    private LerpCamera lerpCamera;
 
 
     private void Start()
     {
         weaponView = FindObjectOfType<WeaponView>();
+        lerpCamera = FindObjectOfType<LerpCamera>();
 
         Ammo = maxAmmo;
     }
@@ -164,7 +166,7 @@ public class BurstRangedWeapon : Weapon
         Rigidbody2D instantiatedProjectileRb = instantiatedProjectile.GetComponent<Rigidbody2D>();
         instantiatedProjectileRb.AddRelativeForce(new Vector2(projectilesSpeed * projSpeedDifferenceMul, 0));
 
-
+        // Назначение множителя урона и пробития)
         CommonProjectile instantiatedCommonProjectile = instantiatedProjectile.GetComponent<CommonProjectile>();
         if (instantiatedCommonProjectile)
         {
@@ -180,6 +182,10 @@ public class BurstRangedWeapon : Weapon
 
         // Сообщили разброс оружию
         recoil += recoilIncreaseWithShot;
+
+        // Скриншейк.
+        lerpCamera.OnShot(cameraShakeMult);
+
     }
     #endregion
 
