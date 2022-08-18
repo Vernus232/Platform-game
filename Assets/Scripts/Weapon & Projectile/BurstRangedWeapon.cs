@@ -115,7 +115,7 @@ public class BurstRangedWeapon : Weapon
         #endregion
 
         // Перезарядка на R
-        if (Input.GetKeyDown(KeyCode.R) && Ammo != maxAmmo)
+        if (Input.GetKeyDown(KeyCode.R) && Ammo != maxAmmo && isReloading == false)
         {
             StartCoroutine(Reload());
         }
