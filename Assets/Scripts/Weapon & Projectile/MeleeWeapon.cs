@@ -7,6 +7,7 @@ public class MeleeWeapon : Weapon
     public float meleeDamage;
     public float betweenHitsTime;
     [SerializeField] private GameObject damagingObject;
+    [SerializeField] private AudioSource SwingAudio;
 
     private float currTime = 999;
     private float prevHitTime = 0;
@@ -35,6 +36,8 @@ public class MeleeWeapon : Weapon
         damagingObject.SetActive(true);
 
         yield return new WaitForSeconds(0.05f);
+
+        SwingAudio.Play();
 
         damagingObject.SetActive(false);
     }

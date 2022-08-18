@@ -89,7 +89,7 @@ public class LerpCamera : MonoBehaviour
 
     private void ShotShake(float weaponShakeMult, Vector2 direction)
     {
-        Vector2 shakeVector2 = weaponShakeMult * shakeMult * direction;
+        Vector2 shakeVector2 = weaponShakeMult * shakeMult * -direction;
         recoilOffset += shakeVector2;
     }
 }

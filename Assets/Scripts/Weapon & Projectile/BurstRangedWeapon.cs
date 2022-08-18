@@ -33,6 +33,8 @@ public class BurstRangedWeapon : Weapon
     [Header("Links")]
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private GameObject prefabProjectile;
+    [SerializeField] private AudioSource shotAudio;
+    [SerializeField] private AudioSource ReloadAudio;
     [Space(10)]
 
     [Header("Debug")]
@@ -189,6 +191,11 @@ public class BurstRangedWeapon : Weapon
         Vector2 vector2 = transform.right;
         lerpCamera.OnShot(cameraShakeMult, vector2);
 
+        if (shotAudio != null)
+        {
+            shotAudio.Play();
+        }
+
     }
     #endregion
 
@@ -198,6 +205,8 @@ public class BurstRangedWeapon : Weapon
         weaponView.OnWeaponReloadStarted(reloadTime);
 
         isReloading = true;
+
+        ReloadAudio.Play();
 
         yield return new WaitForSeconds(reloadTime);
 
