@@ -89,10 +89,10 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.2638855
+        time: 0.1527744
         value: 0
-        inSlope: 0
-        outSlope: 0
+        inSlope: Infinity
+        outSlope: Infinity
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
@@ -102,8 +102,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 0.1882353}
-      key1: {r: 1, g: 1, b: 1, a: 0}
+      key0: {r: 1, g: 0.9118239, b: 0, a: 0.43137255}
+      key1: {r: 1, g: 0.9118239, b: 0, a: 0.43137255}
       key2: {r: 0, g: 0, b: 0, a: 0.078431375}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -126,7 +126,7 @@ TrailRenderer:
       atime5: 0
       atime6: 0
       atime7: 0
-      m_Mode: 0
+      m_Mode: 1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -5109,4 +5109,4 @@ MonoBehaviour:
   particleCaster_prefab: {fileID: 6856103324233738395, guid: d0a846b243fa9374eb2604fbb5ccbd46, type: 3}
   penetration: 0
   ricochets: 0
-  damage: 5
+  damage: 7
