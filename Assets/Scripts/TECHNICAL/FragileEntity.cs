@@ -8,7 +8,10 @@ public abstract class FragileEntity : MonoBehaviour
 
     public float maxHp;
     protected float hp;
+    [SerializeField] private AudioSource soundOnDamageReceived;
+    [SerializeField] private GameObject deathParticleSystemPrefab;
     public float Hp
+    
     {
         get => hp;
         set
@@ -31,6 +34,12 @@ public abstract class FragileEntity : MonoBehaviour
     {
         Hp -= amount;
 
+        if (soundOnDamageReceived != null)
+        {
+            soundOnDamageReceived.Play();
+        }
+        
+
         if (Hp <= 0 && isDead == false)
         {
             Die();
@@ -40,6 +49,9 @@ public abstract class FragileEntity : MonoBehaviour
     
     protected virtual void Die()
     {
+        GameObject deathParticleSystemGameObject = Instantiate(deathParticleSystemPrefab, transform);
+        deathParticleSystemGameObject.GetComponent<ParticleSystem>().Play();
+        Debug.Log(deathParticleSystemGameObject);
         Destroy(gameObject);
     }
 
