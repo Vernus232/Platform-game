@@ -180,7 +180,7 @@ MonoBehaviour:
   - {x: -1, y: 1, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 58352
+  m_InstanceId: 139058
 --- !u!1 &9206364253550060150
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 2671800745315685316}
   - component: {fileID: 9206364253550060151}
   m_Layer: 0
-  m_Name: Spawner Box (walking) 1
+  m_Name: Spawner Box (dog)
   m_TagString: Decoration
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,6 +277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 20
+  damageParticleSystemPrefab: {fileID: 0}
+  deathParticleSystemPrefab: {fileID: 0}
   scoreForKill: 200
 --- !u!114 &9206364253550060151
 MonoBehaviour:
@@ -287,8 +289,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 9206364253550060150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d329d5d761172e6478270241b5443f59, type: 3}
+  m_Script: {fileID: 11500000, guid: 193b68de6e08ced4eafce0c404d5e3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnStep: 5
-  prefab: {fileID: 3660003472143816603, guid: 435bbe716c66b9149bf687236e31112d, type: 3}
+  spawnStep: 2
+  prefab: {fileID: 9206364253550060150}

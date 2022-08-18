@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private float scoreToSpawnStep_K;
     [SerializeField] private float hiddenInitialSpawn;
-    [SerializeField] private List<Spawner> spawners;
+    [SerializeField] private List<StepSpawner> spawners;
 
     [SerializeField] private float currentSpawnSpeed;
     [SerializeField] private float currentSpawnStep;
@@ -21,7 +21,7 @@ public class SpawnManager : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach (Spawner spawner in spawners)
+        foreach (StepSpawner spawner in spawners)
         {
             spawner.gameObject.SetActive(true);
         }
@@ -29,7 +29,7 @@ public class SpawnManager : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (Spawner spawner in spawners)
+        foreach (StepSpawner spawner in spawners)
         {
             if (spawner)
                 spawner.gameObject.SetActive(false);
@@ -50,7 +50,7 @@ public class SpawnManager : MonoBehaviour
         currentSpawnSpeed = Function(scoreToSpawnStep_K / 1000, ScoreSystem.main.Score, hiddenInitialSpawn);
         currentSpawnStep = 1 / currentSpawnSpeed;
 
-        foreach (Spawner spawner in spawners)
+        foreach (StepSpawner spawner in spawners)
         {
             spawner.spawnStep = currentSpawnStep;
         }

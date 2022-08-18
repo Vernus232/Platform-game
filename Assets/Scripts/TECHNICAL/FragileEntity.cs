@@ -8,7 +8,7 @@ public abstract class FragileEntity : MonoBehaviour
 
     public float maxHp;
     protected float hp;
-    [SerializeField] private AudioSource soundOnDamageReceived;
+    [SerializeField] private GameObject damageParticleSystemPrefab;
     [SerializeField] private GameObject deathParticleSystemPrefab;
     public float Hp
     
@@ -29,16 +29,26 @@ public abstract class FragileEntity : MonoBehaviour
         Hp = maxHp;
     }
 
+
+    private void Try_SpawnParticleSystemWithTimer(GameObject particleSystem_predab)
+    {
+        if (particleSystem_predab)
+            SpawnParticleSystemWithTimer(particleSystem_predab);
+    }
+
+    private void SpawnParticleSystemWithTimer(GameObject particleSystem_predab)
+    {
+        Vector2 pos2 = new Vector3(transform.position.x, transform.position.y, 0);
+        GameObject particleSystem_gameObject = Instantiate(particleSystem_predab, pos2, transform.rotation);
+        Destroy(particleSystem_gameObject, 3);
+    }
+
     // Метод получения урона (для "наследников" может дополняться)
     public virtual void RecieveDamage(float amount)
     {
-        Hp -= amount;
+        Try_SpawnParticleSystemWithTimer(damageParticleSystemPrefab);
 
-        if (soundOnDamageReceived != null)
-        {
-            soundOnDamageReceived.Play();
-        }
-        
+        Hp -= amount;        
 
         if (Hp <= 0 && isDead == false)
         {
@@ -49,9 +59,7 @@ public abstract class FragileEntity : MonoBehaviour
     
     protected virtual void Die()
     {
-        Vector2 pos2 = new Vector3(transform.position.x, transform.position.y, 0);
-        GameObject deathParticleSystemGameObject = Instantiate(deathParticleSystemPrefab, pos2, transform.rotation);
-        Destroy(deathParticleSystemGameObject, 3);
+        Try_SpawnParticleSystemWithTimer(deathParticleSystemPrefab);
 
         Destroy(gameObject);
     }

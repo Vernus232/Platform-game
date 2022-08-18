@@ -108,7 +108,7 @@ MonoBehaviour:
   - {x: -1, y: 1, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 110190
+  m_InstanceId: 32108
 --- !u!1 &8052497245776003888
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 10
-  soundOnDamageReceived: {fileID: -5470352063065629030}
+  damageParticleSystemPrefab: {fileID: 0}
   deathParticleSystemPrefab: {fileID: 6856103324233738395, guid: 31651a789f38a164ca5ed3063c002f7c, type: 3}
   scoreForKill: 200
 --- !u!114 &9206364253550060151
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9206364253550060150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d329d5d761172e6478270241b5443f59, type: 3}
+  m_Script: {fileID: 11500000, guid: 193b68de6e08ced4eafce0c404d5e3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnStep: 5
