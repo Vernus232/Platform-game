@@ -656,6 +656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   soundOnDamageReceived: {fileID: 1485474315}
+  deathParticleSystemPrefab: {fileID: 6856103324233738395, guid: 9687e27e713336d488206ad4b1d0cebc, type: 3}
   xSpeedLimit: 8
   xMovementForce: 1.7
   xJumpSpeed: 0

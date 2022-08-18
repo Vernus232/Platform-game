@@ -246,6 +246,11 @@ MonoBehaviour:
   maxMovementOffset: 10
   xMouseOffsetMul: 0.154
   yMouseOffsetMul: 0.24
+  xRecoilOffsetMul: 0
+  yRecoilOffsetMul: 0
+  shakeRecoveringMult: 0.7
+  shakeMult: 1
+  recoilOffset: {x: 0, y: 0}
   movementOffset: {x: 0, y: 0}
   mouseOffset: {x: 0, y: 0}
   targetPos2D: {x: 0, y: 0}

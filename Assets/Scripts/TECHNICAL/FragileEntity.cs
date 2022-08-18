@@ -49,12 +49,12 @@ public abstract class FragileEntity : MonoBehaviour
     
     protected virtual void Die()
     {
-        GameObject deathParticleSystemGameObject = Instantiate(deathParticleSystemPrefab, transform);
-        deathParticleSystemGameObject.GetComponent<ParticleSystem>().Play();
-        Debug.Log(deathParticleSystemGameObject);
+        Vector2 pos2 = new Vector3(transform.position.x, transform.position.y, 0);
+        GameObject deathParticleSystemGameObject = Instantiate(deathParticleSystemPrefab, pos2, transform.rotation);
+        Destroy(deathParticleSystemGameObject, 3);
+
         Destroy(gameObject);
     }
-
 
     public virtual void OnHpChanged()
     {

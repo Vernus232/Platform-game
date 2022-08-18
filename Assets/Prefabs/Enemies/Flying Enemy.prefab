@@ -333,6 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 5
   soundOnDamageReceived: {fileID: -6922319159595013887}
+  deathParticleSystemPrefab: {fileID: 6856103324233738395, guid: 9687e27e713336d488206ad4b1d0cebc, type: 3}
   scoreForKill: 100
 --- !u!82 &-6922319159595013887
 AudioSource:
