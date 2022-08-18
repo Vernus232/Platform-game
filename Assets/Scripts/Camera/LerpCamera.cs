@@ -47,7 +47,7 @@ public class LerpCamera : MonoBehaviour
             return;
 
         // ־פפסוע מע ־עהאקט
-        recoilOffset = 
+        //recoilOffset = 
 
         // ־פפסוע מע סךמנמסעט
         movementOffset = playerRb.velocity * new Vector2(xMovementOffsetMul, yMovementOffsetMul);
@@ -80,14 +80,13 @@ public class LerpCamera : MonoBehaviour
 
     }
 
-    public void OnShot(float cameraShakeMult, float rotationPiva)
+    public void OnShot(float cameraShakeMult, Vector2 rukiPivotDirection)
     {
-        Debug.Log(rotationPiva);
-        ShotShake(cameraShakeMult);
+        ShotShake(cameraShakeMult, rukiPivotDirection);
     }
 
-    private void ShotShake(float shakeMult)
+    private void ShotShake(float shakeMult, Vector2 direction)
     {
-        //recoilOffset +=  * shakeMult;
+        Vector2 shakeVector2 = shakeMult * direction;
     }
 }

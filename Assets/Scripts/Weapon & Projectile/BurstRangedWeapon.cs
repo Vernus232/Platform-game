@@ -185,8 +185,9 @@ public class BurstRangedWeapon : Weapon
         // Сообщили разброс оружию
         recoil += recoilIncreaseWithShot;
 
-        // Скриншейк.
-        lerpCamera.OnShot(cameraShakeMult, rukiPivotTransform.rotation.z);
+        // Скриншейк
+        Vector2 vector2 = transform.right;
+        lerpCamera.OnShot(cameraShakeMult, vector2);
 
     }
     #endregion
