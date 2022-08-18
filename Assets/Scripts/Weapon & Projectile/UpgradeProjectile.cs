@@ -7,7 +7,7 @@ public class UpgradeProjectile : VanishingProjectile
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        UpgradableEntity[] upgradableEntities = collision.gameObject.GetComponents<UpgradableEntity>();
+        UpgradableEntity[] upgradableEntities = collision.gameObject.GetComponentsInParent<UpgradableEntity>();
         foreach (UpgradableEntity upgradableEntity in upgradableEntities)
         {
             upgradableEntity.OnUpgradeReceived();
