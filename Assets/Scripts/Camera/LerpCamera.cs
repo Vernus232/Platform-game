@@ -38,7 +38,7 @@ public class LerpCamera : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        recoilOffset - new Vector2(xRecoilOffsetMul, yRecoilOffsetMul)
+        recoilOffset = new Vector2(xRecoilOffsetMul, yRecoilOffsetMul);
     }
 
     void LateUpdate()
@@ -71,7 +71,7 @@ public class LerpCamera : MonoBehaviour
         mouseOffset = camToMouseDir * new Vector2(xMouseOffsetMul, yMouseOffsetMul) / DOWNSCALE;
 
         // ֻ¸נן ג (ןכוונא + מפפסועû)
-        targetPos2D = (Vector2) player.transform.position  +  mouseOffset  +  movementOffset +;
+        targetPos2D = (Vector2)player.transform.position + mouseOffset + movementOffset + recoilOffset;
         Vector3 targetPos = new Vector3(targetPos2D.x,
                                         targetPos2D.y, 
                                         camera.transform.position.z);
@@ -80,13 +80,14 @@ public class LerpCamera : MonoBehaviour
 
     }
 
-    public void OnShot(float a)
+    public void OnShot(float cameraShakeMult, float rotationPiva)
     {
-        
+        Debug.Log(rotationPiva);
+        ShotShake(cameraShakeMult);
     }
 
-    private void ShotShake()
+    private void ShotShake(float shakeMult)
     {
-
+        //recoilOffset +=  * shakeMult;
     }
 }

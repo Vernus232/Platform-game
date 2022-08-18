@@ -39,6 +39,7 @@ public class BurstRangedWeapon : Weapon
     public float recoil;
     [HideInInspector] public bool isReloading;
     private int ammo = 1;
+    private Transform rukiPivotTransform;
     [HideInInspector] public int Ammo
     {
         get
@@ -61,6 +62,7 @@ public class BurstRangedWeapon : Weapon
     {
         weaponView = FindObjectOfType<WeaponView>();
         lerpCamera = FindObjectOfType<LerpCamera>();
+        rukiPivotTransform = FindObjectOfType<RukiPivot>().transform;
 
         Ammo = maxAmmo;
     }
@@ -184,7 +186,7 @@ public class BurstRangedWeapon : Weapon
         recoil += recoilIncreaseWithShot;
 
         // Скриншейк.
-        lerpCamera.OnShot(cameraShakeMult);
+        lerpCamera.OnShot(cameraShakeMult, rukiPivotTransform.rotation.z);
 
     }
     #endregion
