@@ -16,6 +16,8 @@ public class LerpCamera : MonoBehaviour
 
     [SerializeField] [Range(0, 1)] private float xRecoilOffsetMul;
     [SerializeField] [Range(0, 1)] private float yRecoilOffsetMul;
+    [SerializeField] [Range(0, 1)] private float shakeRecoveringMult;
+    [SerializeField] [Range(1, 3)] private float shakeMult;
 
 
     [Header("Debug")]
@@ -38,7 +40,7 @@ public class LerpCamera : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        recoilOffset = new Vector2(xRecoilOffsetMul, yRecoilOffsetMul);
+        recoilOffset *= shakeRecoveringMult;
     }
 
     void LateUpdate()
@@ -85,8 +87,9 @@ public class LerpCamera : MonoBehaviour
         ShotShake(cameraShakeMult, rukiPivotDirection);
     }
 
-    private void ShotShake(float shakeMult, Vector2 direction)
+    private void ShotShake(float weaponShakeMult, Vector2 direction)
     {
-        Vector2 shakeVector2 = shakeMult * direction;
+        Vector2 shakeVector2 = weaponShakeMult * shakeMult * direction;
+        recoilOffset += shakeVector2;
     }
 }
