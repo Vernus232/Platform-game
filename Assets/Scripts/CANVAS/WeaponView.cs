@@ -23,9 +23,13 @@ public class WeaponView : MonoBehaviour
 
     public void OnWeaponChanged()
     {
-        StopAllCoroutines();
-
         currentWeapon = WeaponChoose.main.currentWeapon;
+
+        BurstRangedWeapon burstRangedWeapon = currentWeapon.GetComponent<BurstRangedWeapon>();
+        if (burstRangedWeapon && burstRangedWeapon.Ammo > 0)
+            StopAllCoroutines();
+        if (burstRangedWeapon == null)
+            StopAllCoroutines();
 
         UpdateUI();
     }
@@ -57,16 +61,16 @@ public class WeaponView : MonoBehaviour
             currentAmmo.text = "--";
             maxAmmo.text = "--";
 
-            ammoSlider.value = 0;
+            ammoSlider.value = 100;
         }
     }
 
 
     public void OnWeaponReloadStarted(float reloadTime)
     {
-        StopCoroutine("ReloadProcess");
-        StartCoroutine(ReloadProcess(reloadTime));        
+        StartCoroutine(ReloadProcess(reloadTime));
     }
+
 
     private IEnumerator ReloadProcess(float reloadTime)
     {
@@ -80,8 +84,6 @@ public class WeaponView : MonoBehaviour
             timePassed += Time.deltaTime;
         }
     }
-
-
 
 
 

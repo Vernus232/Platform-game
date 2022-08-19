@@ -244,21 +244,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Minigun
   type: 0
-  projectilesSpeed: 50
+  projectilesSpeed: 60
   projMaxSpeedDifferenceMul: 1.2
   ricochet: 0
-  fireRate: 2000
+  fireRate: 150
   FireRateMult: 0
-  projectilesInBurstCount: 5
+  projectilesInBurstCount: 20
   instantiateBurstMomentally: 1
-  maxAmmo: 300
+  maxAmmo: 50
   reloadTime: 6
-  maxWeaponRecoil: 15
-  minWeaponRecoil: 10
-  recoilIncreaseWithShot: 2
+  maxWeaponRecoil: 0
+  minWeaponRecoil: 0
+  recoilIncreaseWithShot: 0.5
   recoilReductionWithTime: 0.15
   movementRecoilImportance: 0
-  cameraShakeMult: 0
+  cameraShakeMult: 0.07
   shootingPoint: {fileID: 687625023}
   prefabProjectile: {fileID: 5526811408548887409, guid: 72c53ebc40186754d991b6ee393d5cee, type: 3}
   shotAudio: {fileID: 1088981578}
@@ -275,7 +275,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8f0a7cc2c43956144b9874c9f0110f06, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3ffe5bc8635ebdc45bb4b07e99e53cf9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1.25
@@ -1113,7 +1113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 100
-  damageParticleSystemPrefab: {fileID: 0}
+  damageParticleSystemPrefab: {fileID: 6856103324233738395, guid: d0e9f2d3f64177d48a44e0e97728fca6, type: 3}
   deathParticleSystemPrefab: {fileID: 6856103324233738395, guid: 9687e27e713336d488206ad4b1d0cebc, type: 3}
   xSpeedLimit: 8
   xMovementForce: 1.7
@@ -1121,7 +1121,6 @@ MonoBehaviour:
   yJumpSpeed: 10
   movementRecoil: 0
   maxMovementRecoil: 0
-  addJumpsMax: 1
   zeroFrictionMat: {fileID: 6200000, guid: 26029cd1d7736d449b36dc61b275f43a, type: 2}
   normFrictionMat: {fileID: 6200000, guid: 42b77b4819b0c394fb38ded269cd8dd8, type: 2}
   playerSpritePivotTransform: {fileID: 8002262767649983375}

@@ -8,7 +8,7 @@ public class InstantSpawner : MonoBehaviour
 
     public void Spawn()
     {
-        GameObject instantiatedObj = Instantiate(prefab);
+        GameObject instantiatedObj = Instantiate(prefab, transform);
         instantiatedObj.SetActive(true);
     }
 }

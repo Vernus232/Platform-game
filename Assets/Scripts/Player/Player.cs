@@ -75,7 +75,6 @@ public class Player : FragileEntity
     }
     public float movementRecoil;
     [SerializeField] private float maxMovementRecoil;
-    [SerializeField] private int addJumpsMax = 1;
     [Space(10)]
 
 
@@ -97,9 +96,6 @@ public class Player : FragileEntity
         set
         {
             isGrounded = value;
-
-            if (isGrounded)
-                addJumpsLeft = addJumpsMax;  // reset jumps left
         }
     }
     [HideInInspector] public bool isClimbPossible = false;
@@ -177,7 +173,7 @@ public class Player : FragileEntity
     private void Update()
     {
         #region Прыжок
-        if (Input.GetKeyDown(KeyCode.Space)  &&  addJumpsLeft > 0)
+        if (Input.GetKeyDown(KeyCode.Space)  &&  isGrounded)
         {
             int jumpDir = 0;
             if (Input.GetKey(KeyCode.A))
@@ -187,8 +183,6 @@ public class Player : FragileEntity
 
             rb.velocity += new Vector2(xJumpSpeed * jumpDir, 0);  // по х - прибавляем
             rb.velocity =  new Vector2(rb.velocity.x, yJumpSpeed);  // по у - приравниваем
-
-            addJumpsLeft -= 1;
         }
         #endregion
 

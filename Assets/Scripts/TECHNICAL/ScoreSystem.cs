@@ -17,17 +17,23 @@ public class ScoreSystem : MonoBehaviour
         {
             score = value;
             ScoreView.main.UpdateUIScore(score);
-            SpawnManager.main.OnScoreChanged();
             LevelSystem.main.OnScoreChanged();
+            foreach (SpawnManager spawnManager in spawnManagers)
+            {
+                spawnManager.OnScoreChanged();
+            }
         }
     }
 
     [HideInInspector] public static ScoreSystem main;
+    private SpawnManager[] spawnManagers;
 
 
     private void Start()
     {
         main = this;
+
+        spawnManagers = FindObjectsOfType<SpawnManager>();
     }
 
 

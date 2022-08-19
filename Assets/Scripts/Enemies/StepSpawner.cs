@@ -6,21 +6,21 @@ public class StepSpawner : MonoBehaviour
 {
     public float spawnStep;
 
-    [SerializeField] private GameObject prefab;
+    [SerializeField] protected GameObject prefab;
 
 
      
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         StartCoroutine("SpawnTicker");
     }
 
-    private void OnDisable()
+    protected void OnDisable()
     {
         StopAllCoroutines(); // стопает все корутины в скрипте
     }
 
-    private IEnumerator SpawnTicker()
+    protected IEnumerator SpawnTicker()
     {
         while (true)
         {
@@ -29,7 +29,7 @@ public class StepSpawner : MonoBehaviour
         }
     }
 
-    private void Spawn()
+    protected void Spawn()
     {
         Collider2D collider = GetComponent<Collider2D>();
         Bounds bounds = collider.bounds;

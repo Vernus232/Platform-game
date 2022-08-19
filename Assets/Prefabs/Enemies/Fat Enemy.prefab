@@ -14,12 +14,12 @@ GameObject:
   - component: {fileID: 3660003472143816598}
   - component: {fileID: 3660003472143816601}
   - component: {fileID: 8883346654614211471}
-  - component: {fileID: 3660003472143816604}
   - component: {fileID: 3660003472143816605}
   - component: {fileID: 3660003472143816606}
   - component: {fileID: -3263970536683387512}
+  - component: {fileID: 4337571191577160000}
   m_Layer: 8
-  m_Name: Walking Enemy
+  m_Name: Fat Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,10 +81,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 1.03
-  height: 1
+  radius: 1.4
+  height: 1.75
   canMove: 1
-  maxSpeed: 3
+  maxSpeed: 2
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -148,27 +148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a96ca83c5098e4dae113f8fd878cf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 8
-  fallSpeed: 9
-  normSpeed: 3
+  jumpSpeed: 6
+  fallSpeed: 6
+  normSpeed: 2
   speedChangeSensivity: 0.5
   pivot: {fileID: 8524513297787673954}
---- !u!70 &3660003472143816604
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3660003472143816603}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.18359566}
-  m_Size: {x: 0.5, y: 1.8633957}
-  m_Direction: 0
 --- !u!50 &3660003472143816605
 Rigidbody2D:
   serializedVersion: 4
@@ -181,7 +165,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -202,10 +186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052e30416c3e63d43a3a675b3cb22813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 20
+  maxHp: 300
   damageParticleSystemPrefab: {fileID: 6856103324233738395, guid: bb19a55278119ef49aaea868340c07d6, type: 3}
   deathParticleSystemPrefab: {fileID: 6856103324233738395, guid: 9687e27e713336d488206ad4b1d0cebc, type: 3}
-  scoreForKill: 200
+  scoreForKill: 4000
 --- !u!82 &-3263970536683387512
 AudioSource:
   m_ObjectHideFlags: 0
@@ -218,7 +202,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4681b95a1bd3c8b43b8ac2d6717acbbb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.107
+  m_Volume: 0.189
   m_Pitch: 0.4
   Loop: 1
   Mute: 0
@@ -302,6 +286,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &4337571191577160000
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3660003472143816603}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.21}
+  serializedVersion: 2
+  m_Radius: 1.41
 --- !u!1 &3660003472644520019
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3660003472644520019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.07, y: -0.21, z: 0}
+  m_LocalPosition: {x: 1.886, y: -0.1, z: 0}
   m_LocalScale: {x: 4.0194945, y: 4.019494, z: 1}
   m_Children: []
   m_Father: {fileID: 3660003473293687813}
@@ -347,8 +347,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06574941, y: 0.032874703}
-  m_Size: {x: 0.78, y: 1.84}
+  m_Offset: {x: -0.48, y: 0.032874703}
+  m_Size: {x: 0.99, y: 0.85}
   m_Direction: 0
 --- !u!114 &3660003472644520017
 MonoBehaviour:
@@ -362,8 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e79da1748b19b2a42b59ff42df4a4c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  betweenHitsTime: 0.25
+  damage: 50
+  betweenHitsTime: 0.5
   vulnerableTags:
   - Player
 --- !u!1 &3660003473293687812
@@ -391,8 +391,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3660003473293687812}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.185, y: 0.17000008, z: 0}
-  m_LocalScale: {x: 0.2487875, y: 0.24878754, z: 1}
+  m_LocalPosition: {x: 0, y: 0.12, z: 0}
+  m_LocalScale: {x: 0.82, y: 0.76, z: 1}
   m_Children:
   - {fileID: 3660003472644520016}
   m_Father: {fileID: 8524513297787673954}
@@ -438,7 +438,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 498ae20bcdec15146bfe00144564fffc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b02e2431e28daf14483979df273b7833, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
