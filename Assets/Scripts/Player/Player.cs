@@ -30,6 +30,49 @@ public class Player : FragileEntity
             playerView.UpdateUI();
         }
     }
+
+    private float fireRateModifier = 1;
+    public float FireRateModifier
+    {
+        get
+        {
+            return fireRateModifier;
+        }
+        set
+        {
+            fireRateModifier = value;
+
+            playerView.UpdateUI();
+        }
+    }
+    private float accuracyModifier = 1;
+    public float AccuracyModifier
+    {
+        get
+        {
+            return accuracyModifier;
+        }
+        set
+        {
+            accuracyModifier = value;
+
+            playerView.UpdateUI();
+        }
+    }
+    private float reloadSpeedModifier = 1;
+    public float ReloadSpeedModifier
+    {
+        get
+        {
+            return reloadSpeedModifier;
+        }
+        set
+        {
+            reloadSpeedModifier = value;
+
+            playerView.UpdateUI();
+        }
+    }
     public float movementRecoil;
     [SerializeField] private float maxMovementRecoil;
     [SerializeField] private int addJumpsMax = 1;

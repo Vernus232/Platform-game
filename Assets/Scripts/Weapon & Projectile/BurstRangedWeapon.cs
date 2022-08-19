@@ -12,6 +12,7 @@ public class BurstRangedWeapon : Weapon
 
     [Header("Burst")]
     [Tooltip("In bursts-per-minute.")] [SerializeField] private float fireRate;
+    public float FireRateMult;
     [SerializeField] private int projectilesInBurstCount = 1;
     [Tooltip("Whether to .")] [SerializeField] private bool instantiateBurstMomentally = true;
     [Space(10)]
@@ -91,7 +92,7 @@ public class BurstRangedWeapon : Weapon
         {
             // Проверка Fire rate
             float currTime = Time.time;
-            float betweenShotsTime = 1 / (fireRate / 60);
+            float betweenShotsTime = 1 / ((fireRate / 60) * Player.main.FireRateModifier);
             if ((currTime - prevShootTime) > betweenShotsTime)
             {
                 // Выстрел и задержка
@@ -124,7 +125,8 @@ public class BurstRangedWeapon : Weapon
     private void FixedUpdate()
     {
         #region Снижение отдачи
-        recoil -= recoilReductionWithTime;
+        float ModifiedRecoilReductionWithTime = recoilReductionWithTime * Player.main.AccuracyModifier;
+        recoil -= ModifiedRecoilReductionWithTime;
 
         if (recoil < minWeaponRecoil)
             recoil = minWeaponRecoil;
@@ -202,13 +204,15 @@ public class BurstRangedWeapon : Weapon
 
     public IEnumerator Reload()
     {
-        weaponView.OnWeaponReloadStarted(reloadTime);
+        float modifiedReloadTime = reloadTime / Player.main.ReloadSpeedModifier;
+
+        weaponView.OnWeaponReloadStarted(modifiedReloadTime);
 
         isReloading = true;
 
         ReloadAudio.Play();
 
-        yield return new WaitForSeconds(reloadTime);
+        yield return new WaitForSeconds(modifiedReloadTime);
 
         Ammo = maxAmmo;
         isReloading = false;
