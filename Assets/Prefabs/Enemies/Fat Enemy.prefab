@@ -189,7 +189,7 @@ MonoBehaviour:
   maxHp: 300
   damageParticleSystemPrefab: {fileID: 6856103324233738395, guid: bb19a55278119ef49aaea868340c07d6, type: 3}
   deathParticleSystemPrefab: {fileID: 6856103324233738395, guid: 9687e27e713336d488206ad4b1d0cebc, type: 3}
-  scoreForKill: 4000
+  scoreForKill: 500
 --- !u!82 &-3263970536683387512
 AudioSource:
   m_ObjectHideFlags: 0
@@ -328,7 +328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3660003472644520019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.886, y: -0.1, z: 0}
+  m_LocalPosition: {x: 1.791, y: -0.23, z: 0}
   m_LocalScale: {x: 4.0194945, y: 4.019494, z: 1}
   m_Children: []
   m_Father: {fileID: 3660003473293687813}
@@ -348,7 +348,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.48, y: 0.032874703}
-  m_Size: {x: 0.99, y: 0.85}
+  m_Size: {x: 1, y: 0.85}
   m_Direction: 0
 --- !u!114 &3660003472644520017
 MonoBehaviour:
@@ -391,8 +391,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3660003473293687812}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.12, z: 0}
-  m_LocalScale: {x: 0.82, y: 0.76, z: 1}
+  m_LocalPosition: {x: 0, y: 0.2272, z: 0}
+  m_LocalScale: {x: 0.82, y: 0.71446234, z: 1}
   m_Children:
   - {fileID: 3660003472644520016}
   m_Father: {fileID: 8524513297787673954}
@@ -438,7 +438,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b02e2431e28daf14483979df273b7833, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5116a1469ea03854cb8f8a6038618818, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
