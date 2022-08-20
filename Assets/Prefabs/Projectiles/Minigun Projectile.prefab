@@ -216,7 +216,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.86120355, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5039,7 +5039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f939976b23cb7f46a0e0364b2b150f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 2
+  lifespan: 0.15
   particleCaster_prefab: {fileID: 6856103324233738395, guid: 2ccf50a56d9f4344886e0d5ac1af2baa, type: 3}
   penetration: 0
   ricochets: 0
