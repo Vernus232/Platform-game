@@ -508,20 +508,20 @@ MonoBehaviour:
   weaponName: Ricochet Rifle
   type: 0
   projectilesSpeed: 300
-  projMaxSpeedDifferenceMul: 1.05
+  projMaxSpeedDifferenceMul: 1.5
   ricochet: 0
-  fireRate: 150
+  fireRate: 60
   FireRateMult: 0
-  projectilesInBurstCount: 1
+  projectilesInBurstCount: 2
   instantiateBurstMomentally: 1
   maxAmmo: 15
   reloadTime: 2
   maxWeaponRecoil: 15
-  minWeaponRecoil: 1
-  recoilIncreaseWithShot: 2
-  recoilReductionWithTime: 0.25
+  minWeaponRecoil: 5
+  recoilIncreaseWithShot: 4
+  recoilReductionWithTime: 0.1
   movementRecoilImportance: 0
-  cameraShakeMult: 4
+  cameraShakeMult: 3
   shootingPoint: {fileID: 1925011779}
   prefabProjectile: {fileID: 5526811408548887409, guid: 8816f5c1babbd4a4b8ec766ea9ece08a, type: 3}
   shotAudio: {fileID: 537686735}
@@ -2717,7 +2717,7 @@ MonoBehaviour:
   projectilesSpeed: 500
   projMaxSpeedDifferenceMul: 1.2
   ricochet: 0
-  fireRate: 2000
+  fireRate: 1500
   FireRateMult: 0
   projectilesInBurstCount: 1
   instantiateBurstMomentally: 1
@@ -3376,13 +3376,13 @@ MonoBehaviour:
   projectilesSpeed: 600
   projMaxSpeedDifferenceMul: 1.05
   ricochet: 0
-  fireRate: 550
+  fireRate: 500
   FireRateMult: 0
   projectilesInBurstCount: 1
   instantiateBurstMomentally: 1
   maxAmmo: 25
   reloadTime: 3
-  maxWeaponRecoil: 15
+  maxWeaponRecoil: 13
   minWeaponRecoil: 1
   recoilIncreaseWithShot: 2
   recoilReductionWithTime: 0.25
@@ -3864,7 +3864,7 @@ MonoBehaviour:
   projectilesSpeed: 1500
   projMaxSpeedDifferenceMul: 1
   ricochet: 0
-  fireRate: 60
+  fireRate: 40
   FireRateMult: 0
   projectilesInBurstCount: 1
   instantiateBurstMomentally: 1
@@ -4127,7 +4127,7 @@ MonoBehaviour:
   projectilesSpeed: 500
   projMaxSpeedDifferenceMul: 1.05
   ricochet: 0
-  fireRate: 120
+  fireRate: 100
   FireRateMult: 0
   projectilesInBurstCount: 1
   instantiateBurstMomentally: 1
