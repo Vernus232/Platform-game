@@ -4,35 +4,53 @@ using UnityEngine;
 
 public class ListView : MonoBehaviour
 {
-    [SerializeField] private int requestedWeaponIndex;
-    [SerializeField] private GameObject uiUnlockGameObject;
-    [SerializeField] private GameObject uiActiveGameObject;
+    [SerializeField] private GameObject[] iconObjects;
+    [SerializeField] private GameObject[] highlightObjects;
 
     private WeaponChoose weaponChoose;
 
+
     private void Start()
     {
-        weaponChoose.weaponUnlocks =
+        weaponChoose = FindObjectOfType<WeaponChoose>();
+
+        UpdateUnlocks();
+        HighlightUIElement(iconObjects[1]);
     }
 
 
     public void OnWeaponChanged(int activeIndex)
     {
-        if (requestedWeaponIndex == activeIndex)
-        {
-            uiActiveGameObject.SetActive(true);
-        }
-        else
-        {
-            uiActiveGameObject.SetActive(false);
-        }
+        HighlightUIElement(highlightObjects[activeIndex]);
     }
-    public void OnWeaponUnlocked(int index)
+    public void OnWeaponUnlocked()
     {
-        if (requestedWeaponIndex == index)
-        {
-            uiUnlockGameObject.SetActive(true);
-        }
-        
+        UpdateUnlocks();        
     }
+
+    private void HighlightUIElement(GameObject activeHighlightObject)
+    {
+        // Вырубили все хайлайты
+        foreach (GameObject highlightObject in highlightObjects)
+        {
+            if (highlightObject)
+                highlightObject.SetActive(false);
+        }
+
+        // Активировали нужный хайлайт
+        if (activeHighlightObject)
+            activeHighlightObject.SetActive(true);
+    }
+
+    private void UpdateUnlocks()
+    {
+        for (int i = 0; i < weaponChoose.weaponUnlocks.Length; i++)
+        {
+            bool isWeaponUnlocked = weaponChoose.weaponUnlocks[i];
+            if (iconObjects[i])
+                iconObjects[i].SetActive(isWeaponUnlocked);
+        }
+    }
+
+
 }

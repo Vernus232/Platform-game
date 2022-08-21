@@ -39,6 +39,7 @@ public class WeaponChoose : MonoBehaviour
     {
         main = this;
         weaponView = FindObjectOfType<WeaponView>();
+        list = FindObjectOfType<ListView>();
 
         int STARTING_WEAPON_IDX = 1;
         TryChooseWeapon(STARTING_WEAPON_IDX);
@@ -167,7 +168,7 @@ public class WeaponChoose : MonoBehaviour
 
         weaponUnlocks[weaponIndex] = true;
 
-        list.OnWeaponUnlocked(weaponIndex);
+        list.OnWeaponUnlocked();
     }
 
 
