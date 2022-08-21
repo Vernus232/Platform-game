@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a62abec90e8394bb23c32463d0bf92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: 0877a1f30320043478f4250f3180c6dc, type: 3}
+  cursorTexture: {fileID: 2800000, guid: 52ab2cf330182e84f8bdcbe237973e7c, type: 3}
 --- !u!1 &3627497233617114467
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,8 +457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e799147ff542a4c807a75015e2e64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreToSpawnSpeed: 10
-  hiddenInitialSpawn: 0.46
+  scoreToSpawnSpeed: 5
+  hiddenInitialSpawn: 0.25
   spawners:
   - {fileID: 0}
   currentSpawnSpeed: 0
@@ -702,8 +702,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e799147ff542a4c807a75015e2e64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreToSpawnSpeed: 15
-  hiddenInitialSpawn: 0.08
+  scoreToSpawnSpeed: 4
+  hiddenInitialSpawn: 0.1
   spawners:
   - {fileID: 0}
   currentSpawnSpeed: 0

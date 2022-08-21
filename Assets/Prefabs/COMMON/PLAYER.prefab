@@ -745,7 +745,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812270260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.403, y: -0.087, z: 0}
+  m_LocalPosition: {x: 0.3813, y: -0.0771, z: 0}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1698921162}
@@ -791,7 +791,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 708fca1f13b03104e84fcc274dc944ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be73a268c1a3a6d4087505421695021b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -908,7 +908,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925011778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.819, y: -0.069, z: 0}
+  m_LocalPosition: {x: 0.894, y: -0.039, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1698921162}
@@ -1140,7 +1140,7 @@ MonoBehaviour:
   refreshTime: 5
   dashSpeed: 60
   maxDashDist: 10
-  maxCharges: 1
+  maxCharges: 2
   trailObj: {fileID: 8002262768130540173}
 --- !u!114 &2174105434743423030
 MonoBehaviour:
@@ -3080,7 +3080,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 708fca1f13b03104e84fcc274dc944ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0066eeb7b9ea2e45a9a77bebbee28a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3205,7 +3205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8002262767279825594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.819, y: -0.069, z: 0}
+  m_LocalPosition: {x: 0.872, y: -0.056, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8002262767600907455}
@@ -3610,7 +3610,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8002262767635815684}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.809, y: -0.082, z: 0}
+  m_LocalPosition: {x: 0.781, y: -0.042, z: 0}
   m_LocalScale: {x: 2.106607, y: 1.9470155, z: 3.1918287}
   m_Children: []
   m_Father: {fileID: 8002262767781827669}
@@ -4644,8 +4644,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8002262768102387566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.69, y: -0.107, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: 0.577, y: -0.117, z: 0}
+  m_LocalScale: {x: 0.53058004, y: 0.53058004, z: 1.7686}
   m_Children: []
   m_Father: {fileID: 8002262767781827669}
   m_RootOrder: 2
@@ -4690,7 +4690,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 796405f5a7239f64a9a13c9d9df6a569, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 02cc310428ef37248bdb0c8d4a83d748, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4752,7 +4752,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6b6fade4e3505b641823b2bafc14a980, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4781,8 +4781,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.5913086
-        value: 0.9258065
+        time: 0.5757446
+        value: 0.13556147
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -4827,7 +4827,7 @@ TrailRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0
   m_Autodestruct: 0
   m_Emitting: 1
 --- !u!1 &8991087899472822522
