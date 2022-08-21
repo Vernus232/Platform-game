@@ -5,8 +5,10 @@ using UnityEngine;
 public class WeaponChoose : MonoBehaviour
 {
     [SerializeField] private Weapon[] weapons;
-    [SerializeField] private bool[] weaponUnlocks;
+    public bool[] weaponUnlocks;
     [SerializeField] private int fastButtonWeaponIdx = 0;
+
+    private ListView list;
     
     private int activeWeaponIndex;
     public int ActiveWeaponIndex
@@ -143,6 +145,8 @@ public class WeaponChoose : MonoBehaviour
             weapons[ActiveWeaponIndex].gameObject.SetActive(false);
             weapons[index].gameObject.SetActive(true);
             ActiveWeaponIndex = index;
+
+            list.OnWeaponChanged(index);
         }
     }
 
@@ -162,6 +166,8 @@ public class WeaponChoose : MonoBehaviour
         int weaponIndex = System.Array.IndexOf(weapons, weapon);
 
         weaponUnlocks[weaponIndex] = true;
+
+        list.OnWeaponUnlocked(weaponIndex);
     }
 
 
