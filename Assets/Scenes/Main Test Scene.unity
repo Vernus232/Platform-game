@@ -22172,38 +22172,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1698921163, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
-      propertyPath: fireRate
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698921163, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
-      propertyPath: cameraShakeMult
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698921163, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
-      propertyPath: minWeaponRecoil
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698921163, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
-      propertyPath: recoilIncreaseWithShot
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698921163, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
-      propertyPath: projectilesInBurstCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698921163, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
-      propertyPath: recoilReductionWithTime
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698921163, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
-      propertyPath: movementRecoilImportance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698921163, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
-      propertyPath: projMaxSpeedDifferenceMul
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2174105434743423024, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -22251,30 +22219,6 @@ PrefabInstance:
     - target: {fileID: 2174105434743423052, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
       propertyPath: m_Name
       value: PLAYER
-      objectReference: {fileID: 0}
-    - target: {fileID: 8002262766941521077, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
-      propertyPath: fireRate
-      value: 1500
-      objectReference: {fileID: 0}
-    - target: {fileID: 8002262767600907454, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
-      propertyPath: fireRate
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 8002262767600907454, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
-      propertyPath: maxWeaponRecoil
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 8002262767600907454, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
-      propertyPath: recoilReductionWithTime
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8002262767776165030, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
-      propertyPath: fireRate
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 8002262767781827668, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
-      propertyPath: fireRate
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a217078e4b7aa9044bb86f54448c438a, type: 3}
