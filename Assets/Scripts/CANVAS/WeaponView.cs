@@ -9,8 +9,10 @@ public class WeaponView : MonoBehaviour
     [SerializeField] private Text currentAmmo;
     [SerializeField] private Text maxAmmo;
     [SerializeField] private Slider ammoSlider;
+    [SerializeField] private Slider flySlider;
 
     [HideInInspector] public static WeaponView main;
+    [SerializeField] private FlyAbility flyAbility;
 
     private Weapon currentWeapon;
 
@@ -19,6 +21,7 @@ public class WeaponView : MonoBehaviour
     private void Start()
     {
         main = this;
+        flySlider.maxValue = flyAbility.maxCharge;
     }
 
     public void OnWeaponChanged()
@@ -65,7 +68,7 @@ public class WeaponView : MonoBehaviour
         }
     }
 
-
+    
     public void OnWeaponReloadStarted(float reloadTime)
     {
         StartCoroutine(ReloadProcess(reloadTime));
@@ -85,6 +88,9 @@ public class WeaponView : MonoBehaviour
         }
     }
 
-
+    public void UpdateFlyUi()
+    {
+        flySlider.value = flyAbility.charge;
+    }
 
 }

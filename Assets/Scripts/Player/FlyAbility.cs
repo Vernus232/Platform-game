@@ -6,13 +6,14 @@ public class FlyAbility : MonoBehaviour
 {
     [SerializeField] private float force;
 
-    [SerializeField] private float maxCharge;
-    [SerializeField] private float charge;
+    public float maxCharge;
+    public float charge;
     [SerializeField] private float consumptionSpeed;
     [SerializeField] private float passiveRechargeSpeed;
     [SerializeField] private float groundRechargeSpeed;
 
     [SerializeField] private ParticleSystem flyParticleSystem;
+    [SerializeField] private WeaponView weaponView;
 
     private Player player;
     private Rigidbody2D playerRb;
@@ -33,15 +34,17 @@ public class FlyAbility : MonoBehaviour
             playerRb.AddForce(player.transform.up * force);
 
             charge -= consumptionSpeed;
-            print(charge);
 
             flyParticleSystem.Play();
+
         }
 
         if (charge < maxCharge && !player.IsGrounded)
             charge += passiveRechargeSpeed;
         if (charge < maxCharge && player.IsGrounded)
             charge += groundRechargeSpeed;
+
+        weaponView.UpdateFlyUi();
     }
 
 
