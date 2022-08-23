@@ -82,6 +82,7 @@ public class Player : FragileEntity
     [SerializeField] private PhysicsMaterial2D zeroFrictionMat;
     [SerializeField] private PhysicsMaterial2D normFrictionMat;
     [SerializeField] private Transform playerSpritePivotTransform;
+    private FlyAbility flyAbility;
     [Space(10)]
 
 
@@ -95,6 +96,10 @@ public class Player : FragileEntity
         }
         set
         {
+            if (value == true)
+            {
+                flyAbility.OnPlayerLanded();
+            }
             isGrounded = value;
         }
     }
@@ -116,6 +121,7 @@ public class Player : FragileEntity
         rb = GetComponent<Rigidbody2D>();
         playerView = FindObjectOfType<PlayerView>();
         deathscreenView = FindObjectOfType<DeathscreenView>(true);
+        flyAbility = GetComponent<FlyAbility>();
 
         Hp = maxHp;
     }
@@ -183,6 +189,8 @@ public class Player : FragileEntity
 
             rb.velocity += new Vector2(xJumpSpeed * jumpDir, 0);  // по х - прибавляем
             rb.velocity =  new Vector2(rb.velocity.x, yJumpSpeed);  // по у - приравниваем
+
+            flyAbility.OnJump();
         }
         #endregion
 

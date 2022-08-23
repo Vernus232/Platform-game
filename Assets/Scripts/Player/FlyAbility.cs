@@ -11,6 +11,8 @@ public class FlyAbility : MonoBehaviour
     [SerializeField] private float consumptionSpeed;
     [SerializeField] private float passiveRechargeSpeed;
     [SerializeField] private float groundRechargeSpeed;
+    [SerializeField] private float secondsToFly;
+    [SerializeField] private bool isDelayPassed = false;
 
     [SerializeField] private ParticleSystem flyParticleSystem;
     [SerializeField] private WeaponView weaponView;
@@ -18,7 +20,7 @@ public class FlyAbility : MonoBehaviour
     private Player player;
     private Rigidbody2D playerRb;
 
-
+    //На старте
     private void Start()
     {
         player = FindObjectOfType<Player>();
@@ -27,16 +29,17 @@ public class FlyAbility : MonoBehaviour
         charge = maxCharge;
     }
 
+    //Обновляется в фпс физики (50 fps)
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space)  &&  !player.IsGrounded  &&  charge > 0)
+        if (Input.GetKey(KeyCode.Space) && !player.IsGrounded && charge > 0 && isDelayPassed)
         {
-            playerRb.AddForce(player.transform.up * force);
+            playerRb.velocity += new Vector2(0, force);
 
             charge -= consumptionSpeed;
 
             flyParticleSystem.Play();
-
+            
         }
 
         if (charge < maxCharge && !player.IsGrounded)
@@ -47,6 +50,24 @@ public class FlyAbility : MonoBehaviour
         weaponView.UpdateFlyUi();
     }
 
+    // При прыжке.ююююю
+    public void OnJump()
+    {
+        StopCoroutine(FlyDelay());
+        StartCoroutine(FlyDelay());
+    }
 
+    // Задержка между прыжком и полётом
+    private IEnumerator FlyDelay()
+    {
+        yield return new WaitForSeconds(secondsToFly);
+        isDelayPassed = true;
+    }
+
+    public void OnPlayerLanded()
+    {
+        // Прошла ли задержка??? - Нет!
+        isDelayPassed = false;
+    }
 
 }
