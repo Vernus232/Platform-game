@@ -13,6 +13,7 @@ public class DashAbility : MonoBehaviour
 
     private int charges;
     private bool isReady = true;
+    private float playerGravityScale;
 
     private Collider2D playerCollider;
     private Rigidbody2D playerRb;
@@ -23,6 +24,7 @@ public class DashAbility : MonoBehaviour
         Player player = FindObjectOfType<Player>();
         playerCollider = player.GetComponent<Collider2D>();
         playerRb = player.GetComponent<Rigidbody2D>();
+        playerGravityScale = playerRb.gravityScale;
 
         charges = maxCharges;
     }
@@ -69,14 +71,13 @@ public class DashAbility : MonoBehaviour
         IEnumerator NoClipDamagingTransition(float dashTime)
         {
             playerCollider.enabled = false;
-            float tmpGravScale = playerRb.gravityScale;
             playerRb.gravityScale = 0;
             trailObj.SetActive(true);
 
             yield return new WaitForSeconds(dashTime);
 
             playerCollider.enabled = true;
-            playerRb.gravityScale = tmpGravScale;
+            playerRb.gravityScale = playerGravityScale;
             trailObj.SetActive(false);
             playerRb.velocity = new Vector2(0, 0);
         }

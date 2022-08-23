@@ -7,9 +7,9 @@ public class PlayerSeeker : MonoBehaviour
 
     void Awake()
     {
-        Transform playerTransform = GameObject.FindObjectOfType<Player>().transform;
-        if (playerTransform)
-            gameObject.GetComponent<Pathfinding.AIDestinationSetter>().target = playerTransform;
+        Player player = FindObjectOfType<Player>();
+        if (player)
+            GetComponent<Pathfinding.AIDestinationSetter>().target = player.transform;
     }
 
 

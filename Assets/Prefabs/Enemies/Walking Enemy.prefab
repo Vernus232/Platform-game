@@ -347,8 +347,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06574941, y: 0.032874703}
-  m_Size: {x: 0.78, y: 1.84}
+  m_Offset: {x: -0.13, y: 0.032874703}
+  m_Size: {x: 1.05, y: 1.77}
   m_Direction: 0
 --- !u!114 &3660003472644520017
 MonoBehaviour:
@@ -362,8 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e79da1748b19b2a42b59ff42df4a4c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
-  betweenHitsTime: 0.25
+  damage: 10
+  betweenHitsTime: 0.6
   vulnerableTags:
   - Player
 --- !u!1 &3660003473293687812

@@ -21,8 +21,8 @@ public class DamagingField : MonoBehaviour
             {
                 FragileEntity entity = other.gameObject.GetComponent<FragileEntity>();
                 entity.RecieveDamage(damage);
+                prevHitTime = currTime;
             }
-            prevHitTime = currTime;
         }
     }
 

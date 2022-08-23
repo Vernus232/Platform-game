@@ -104,7 +104,6 @@ public class Player : FragileEntity
         }
     }
     [HideInInspector] public bool isClimbPossible = false;
-    private int addJumpsLeft;
 
     private DeathscreenView deathscreenView;
     private Rigidbody2D rb;
@@ -214,10 +213,10 @@ public class Player : FragileEntity
     public void OnClimbReached(Vector3 climbPos, bool isRightSide)
     {
         if (Input.GetKey(KeyCode.A)  &&  isRightSide)
-            StartCoroutine("Climb", climbPos);
+            StartCoroutine(Climb(climbPos));
 
         if (Input.GetKey(KeyCode.D)  &&  !isRightSide)
-            StartCoroutine("Climb", climbPos);
+            StartCoroutine(Climb(climbPos));
     }
 
     private IEnumerator Climb(Vector3 climbPos)
