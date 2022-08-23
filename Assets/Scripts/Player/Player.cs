@@ -87,7 +87,7 @@ public class Player : FragileEntity
 
 
     // Inside script
-    private bool isGrounded = false;
+    public bool isGrounded = false;
     [HideInInspector] public bool IsGrounded
     {
         get
