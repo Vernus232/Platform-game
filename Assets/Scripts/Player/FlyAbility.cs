@@ -5,6 +5,7 @@ using UnityEngine;
 public class FlyAbility : MonoBehaviour
 {
     [SerializeField] private float force;
+    [SerializeField] private float maxSpeed;
 
     public float maxCharge;
     public float charge;
@@ -12,13 +13,14 @@ public class FlyAbility : MonoBehaviour
     [SerializeField] private float passiveRechargeSpeed;
     [SerializeField] private float groundRechargeSpeed;
     [SerializeField] private float secondsToFly;
-    [SerializeField] private bool isDelayPassed = false;
+    [SerializeField] private bool ignoreDelay;
 
     [SerializeField] private ParticleSystem flyParticleSystem;
     [SerializeField] private WeaponView weaponView;
 
     private Player player;
     private Rigidbody2D playerRb;
+    private bool isDelayPassed = false;
 
     //На старте
     private void Start()
@@ -32,9 +34,10 @@ public class FlyAbility : MonoBehaviour
     //Обновляется в фпс физики (50 fps)
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space) && !player.IsGrounded && charge > 0 && isDelayPassed)
+        if (Input.GetKey(KeyCode.Space) && !player.IsGrounded && charge > 0 && (isDelayPassed || ignoreDelay))
         {
-            playerRb.velocity += new Vector2(0, force);
+            if (playerRb.velocity.y < maxSpeed)
+                playerRb.velocity += new Vector2(0, force);
 
             charge -= consumptionSpeed;
 

@@ -1,43 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &277863276109528122
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5392325185028288379}
-  m_Layer: 0
-  m_Name: Pivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5392325185028288379
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277863276109528122}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 3578908670372217264}
-  - {fileID: 3578908671126717529}
-  - {fileID: 3653681823800440320}
-  - {fileID: 3578908670409747510}
-  - {fileID: 8137465380199079027}
-  - {fileID: 3762791105103221831}
-  - {fileID: 3401056258761577834}
-  - {fileID: 3967539349186744597}
-  m_Father: {fileID: 3578908670003935899}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &371463554019108847
 GameObject:
   m_ObjectHideFlags: 0
@@ -49,7 +11,7 @@ GameObject:
   - component: {fileID: 3653681823800440320}
   - component: {fileID: 1749137730434101350}
   - component: {fileID: 1230597277208502273}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RIght Climb Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,10 +26,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371463554019108847}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.875, y: 0.125, z: 0}
+  m_LocalPosition: {x: 7.875, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5392325185028288379}
+  m_Father: {fileID: 430135851445172281}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1749137730434101350
@@ -119,7 +81,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8137465380199079027}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right Player Climb Pos
   m_TagString: PlatformClimb
   m_Icon: {fileID: 0}
@@ -134,10 +96,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518455106860469882}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.625, y: 1, z: 0}
+  m_LocalPosition: {x: 7.75, y: 1.275, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5392325185028288379}
+  m_Father: {fileID: 430135851445172281}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3578908670003935896
@@ -149,9 +111,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3578908670003935899}
-  - component: {fileID: 2719036914779231533}
   m_Layer: 0
-  m_Name: Platform 8
+  m_Name: Platform 16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,24 +129,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5392325185028288379}
+  - {fileID: 430135851445172281}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2719036914779231533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3578908670003935896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f8dbecd3824960488945cbe64ab0902, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxMul: 4
-  stepMul: 1.1
 --- !u!1 &3578908670372217265
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +144,7 @@ GameObject:
   - component: {fileID: 3578908670372217264}
   - component: {fileID: 3578908670372217266}
   - component: {fileID: 3578908670372217267}
-  - component: {fileID: 5191196601240352719}
+  - component: {fileID: 6072433902829361662}
   m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
@@ -214,9 +161,9 @@ Transform:
   m_GameObject: {fileID: 3578908670372217265}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 15.5, y: 0.75, z: 1}
   m_Children: []
-  m_Father: {fileID: 5392325185028288379}
+  m_Father: {fileID: 430135851445172281}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3578908670372217266
@@ -260,7 +207,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -296,7 +243,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5191196601240352719
+--- !u!114 &6072433902829361662
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -315,13 +262,13 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 00000000
   m_ShapePath:
-  - {x: -0.49998358, y: -0.5000721, z: 0}
-  - {x: 0.5000055, y: -0.49887812, z: 0}
-  - {x: 0.49994752, y: 0.4998349, z: 0}
-  - {x: -0.49996328, y: 0.49976504, z: 0}
-  m_ShapePathHash: -1787111385
+  - {x: -0.5000723, y: -0.5003079, z: 0}
+  - {x: 0.4999673, y: -0.50168276, z: 0}
+  - {x: 0.50009584, y: 0.49747777, z: 0}
+  - {x: -0.49989876, y: 0.49955, z: 0}
+  m_ShapePathHash: 425728966
   m_Mesh: {fileID: 0}
-  m_InstanceId: -216926
+  m_InstanceId: 104502
 --- !u!1 &3578908670409747511
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3578908670409747510}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left Player Climb Pos
   m_TagString: PlatformClimb
   m_Icon: {fileID: 0}
@@ -346,10 +293,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3578908670409747511}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.625, y: 1, z: 0}
+  m_LocalPosition: {x: -7.75, y: 1.275, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5392325185028288379}
+  m_Father: {fileID: 430135851445172281}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3578908671126717534
@@ -363,7 +310,7 @@ GameObject:
   - component: {fileID: 3578908671126717529}
   - component: {fileID: 3578908671126717528}
   - component: {fileID: 1830875140958984317}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Left Climb Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,10 +325,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3578908671126717534}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.875, y: 0.125, z: 0}
+  m_LocalPosition: {x: -7.875, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5392325185028288379}
+  m_Father: {fileID: 430135851445172281}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &3578908671126717528
@@ -424,7 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   climbTransform: {fileID: 3578908670409747510}
   isRightSide: 0
---- !u!1 &5170704848874171885
+--- !u!1 &5692279582735068631
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -432,85 +379,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3967539349186744597}
+  - component: {fileID: 430135851445172281}
   m_Layer: 0
-  m_Name: Mid Graph Mark (2)
-  m_TagString: PlatformClimb
+  m_Name: Pivot
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3967539349186744597
+--- !u!4 &430135851445172281
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5170704848874171885}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_GameObject: {fileID: 5692279582735068631}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5392325185028288379}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5279086585674393190
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3762791105103221831}
-  m_Layer: 0
-  m_Name: Mid Graph Mark
-  m_TagString: PlatformClimb
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3762791105103221831
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5279086585674393190}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.75, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5392325185028288379}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7376896974285110460
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3401056258761577834}
-  m_Layer: 0
-  m_Name: Mid Graph Mark (1)
-  m_TagString: PlatformClimb
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3401056258761577834
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7376896974285110460}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.75, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5392325185028288379}
-  m_RootOrder: 6
+  m_Children:
+  - {fileID: 3578908670372217264}
+  - {fileID: 3578908671126717529}
+  - {fileID: 3653681823800440320}
+  - {fileID: 3578908670409747510}
+  - {fileID: 8137465380199079027}
+  m_Father: {fileID: 3578908670003935899}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

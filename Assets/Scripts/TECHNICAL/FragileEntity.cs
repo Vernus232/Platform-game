@@ -50,7 +50,7 @@ public abstract class FragileEntity : MonoBehaviour
 
         Hp -= amount;        
 
-        if (Hp <= 0 && isDead == false)
+        if (Hp <= 0 && !isDead)
         {
             Die();
             isDead = true;

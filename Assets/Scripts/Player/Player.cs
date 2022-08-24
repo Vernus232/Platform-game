@@ -103,7 +103,6 @@ public class Player : FragileEntity
             isGrounded = value;
         }
     }
-    [HideInInspector] public bool isClimbPossible = false;
 
     private DeathscreenView deathscreenView;
     private Rigidbody2D rb;
@@ -210,16 +209,9 @@ public class Player : FragileEntity
 
 
     #region Подтягивание на платформу
-    public void OnClimbReached(Vector3 climbPos, bool isRightSide)
-    {
-        if (Input.GetKey(KeyCode.A)  &&  isRightSide)
-            StartCoroutine(Climb(climbPos));
+    
 
-        if (Input.GetKey(KeyCode.D)  &&  !isRightSide)
-            StartCoroutine(Climb(climbPos));
-    }
-
-    private IEnumerator Climb(Vector3 climbPos)
+    public IEnumerator Climb(Vector3 climbPos)
     {
         // Запоминаем скорость по х, чтобы потом вернуть
         float prevVelocityX = rb.velocity.x;
@@ -227,7 +219,7 @@ public class Player : FragileEntity
         rb.isKinematic = true;
 
         float EPS = 0.1f;
-        float SPEED = 6f;
+        float SPEED = 7f;
         while ((climbPos - transform.position).magnitude > EPS)
         {
             Vector3 step = (climbPos - transform.position).normalized * Time.deltaTime * SPEED;

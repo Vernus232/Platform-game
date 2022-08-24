@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3653681823800440320}
   - component: {fileID: 1749137730434101350}
   - component: {fileID: 1230597277208502273}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RIght Climb Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ MonoBehaviour:
   - {x: -0.5017527, y: 0.50100094, z: 0}
   m_ShapePathHash: 2002067639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 78254
+  m_InstanceId: 104270
 --- !u!1 &3578908670409747511
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 3578908671126717529}
   - component: {fileID: 3578908671126717528}
   - component: {fileID: 1830875140958984317}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Left Climb Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
