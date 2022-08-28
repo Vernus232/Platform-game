@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DragonBones;
+using Transform = UnityEngine.Transform;
+
 
 public class Player : FragileEntity
 {
@@ -115,6 +118,7 @@ public class Player : FragileEntity
     private DeathscreenView deathscreenView;
     private Rigidbody2D rb;
     private PlayerView playerView;
+    private UnityArmatureComponent movementArmatureComponent;
     [HideInInspector] public static Player main;
 
 
@@ -128,6 +132,7 @@ public class Player : FragileEntity
         playerView = FindObjectOfType<PlayerView>();
         deathscreenView = FindObjectOfType<DeathscreenView>(true);
         flyAbility = GetComponent<FlyAbility>();
+        movementArmatureComponent = GetComponentInChildren<UnityArmatureComponent>();
 
         Hp = maxHp;
     }
@@ -147,7 +152,21 @@ public class Player : FragileEntity
 
         // Сообщаем силу
         float xForce = xMovementForce * (targetSpeed - rb.velocity.x);
-        rb.AddForce(new Vector3(xForce, 0, 0));
+        if (Mathf.Abs(xForce) > 0)
+        {
+            rb.AddForce(new Vector3(xForce, 0, 0));
+            if (!movementArmatureComponent.animation.isPlaying)
+            {
+                movementArmatureComponent.animation.Play();
+            }
+            float DIVIDER = 3f;
+            movementArmatureComponent.animation.timeScale = rb.velocity.x / DIVIDER;
+
+        }
+        else
+        {
+            movementArmatureComponent.animation.Stop();
+        }
         #endregion
 
         #region Разброс от скорости
