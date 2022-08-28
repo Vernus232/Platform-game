@@ -1,5 +1,66 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1678761479109657284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5537873011183701675}
+  - component: {fileID: 2701552184540840944}
+  - component: {fileID: 4238570454199965761}
+  m_Layer: 8
+  m_Name: Head WP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5537873011183701675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678761479109657284}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.15, y: 1.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3660003472143816595}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &2701552184540840944
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678761479109657284}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.015350103, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4846499
+--- !u!114 &4238570454199965761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678761479109657284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e3763d5f6182749a5fa148bf842069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageModifier: 3
 --- !u!1 &3660003472143816603
 GameObject:
   m_ObjectHideFlags: 0
@@ -18,6 +79,7 @@ GameObject:
   - component: {fileID: 3660003472143816606}
   - component: {fileID: -3263970536683387512}
   - component: {fileID: 5711212389780300181}
+  - component: {fileID: 6341313702291673188}
   m_Layer: 8
   m_Name: Fat Enemy
   m_TagString: Enemy
@@ -37,6 +99,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8524513297787673954}
+  - {fileID: 5537873011183701675}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -299,9 +362,22 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.14838481, y: 0.2404859}
-  m_Size: {x: 1.0092998, y: 2.8797667}
+  m_Offset: {x: -0.18931854, y: -0.066517115}
+  m_Size: {x: 0.9274323, y: 2.2657604}
   m_Direction: 0
+--- !u!114 &6341313702291673188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3660003472143816603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e3763d5f6182749a5fa148bf842069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageModifier: 1
 --- !u!1 &3660003472644520019
 GameObject:
   m_ObjectHideFlags: 0

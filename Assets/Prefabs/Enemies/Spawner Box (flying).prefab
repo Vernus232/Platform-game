@@ -108,7 +108,7 @@ MonoBehaviour:
   - {x: -1, y: 1, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 122186
+  m_InstanceId: 118156
 --- !u!1 &8052497245776003888
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 6862819789712545274}
   - component: {fileID: 9206364253550060151}
   - component: {fileID: -5470352063065629030}
+  - component: {fileID: 6820075172976473187}
   m_Layer: 1
   m_Name: Spawner Box (flying)
   m_TagString: Decoration
@@ -391,3 +392,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6820075172976473187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9206364253550060150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e3763d5f6182749a5fa148bf842069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageModifier: 1

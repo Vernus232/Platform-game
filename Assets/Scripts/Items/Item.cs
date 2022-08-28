@@ -4,7 +4,13 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
+    [SerializeField] private float timeToLive = 30;
 
+    private void Awake()
+    {
+        if (timeToLive > 0)
+            Destroy(gameObject, timeToLive);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,10 +19,6 @@ public abstract class Item : MonoBehaviour
             if (TryDoActionOnPlayer() == true)
             {
                 Destroy(gameObject);
-            }
-            else
-            {
-                // Игнорим
             }
         }
     }

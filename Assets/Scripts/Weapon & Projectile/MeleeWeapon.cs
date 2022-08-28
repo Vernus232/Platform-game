@@ -5,27 +5,36 @@ using UnityEngine;
 public class MeleeWeapon : Weapon
 {
     public float meleeDamage;
-    public float betweenHitsTime;
+    public float startBetweenHitsTime;
     [SerializeField] private GameObject damagingObject;
     [SerializeField] private AudioSource SwingAudio;
 
+    private float currentBetweenHitsTime;
     private float currTime = 999;
     private float prevHitTime = 0;
 
 
     private void Start()
     {
+        currentBetweenHitsTime = startBetweenHitsTime;
+
         damagingObject.GetComponent<DamagingField>().damage = meleeDamage;
-        damagingObject.GetComponent<DamagingField>().betweenHitsTime = betweenHitsTime;
+        damagingObject.GetComponent<DamagingField>().betweenHitsTime = currentBetweenHitsTime;
+    }
+
+    public void OnReloadSpeedChanged(float newReloadSpeedModifier)
+    {
+        currentBetweenHitsTime = startBetweenHitsTime / newReloadSpeedModifier;
+        damagingObject.GetComponent<DamagingField>().betweenHitsTime = currentBetweenHitsTime;
     }
 
     private void Update()
     {
         currTime = Time.time;
-        if (currTime - prevHitTime > betweenHitsTime  &&  Input.GetMouseButton(0))
+        if (currTime - prevHitTime > currentBetweenHitsTime &&  Input.GetMouseButton(0))
         {
             StartCoroutine(Hit());
-            WeaponView.main.OnWeaponReloadStarted(betweenHitsTime);
+            WeaponView.main.OnWeaponReloadStarted(currentBetweenHitsTime);
 
             prevHitTime = currTime;
         }

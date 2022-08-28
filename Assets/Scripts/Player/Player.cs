@@ -71,6 +71,14 @@ public class Player : FragileEntity
             reloadSpeedModifier = value;
 
             playerView.UpdateUI();
+
+            // Временно
+            MeleeWeapon[] meleeWeapons = FindObjectsOfType<MeleeWeapon>(true);
+            foreach (MeleeWeapon meleeWeapon in meleeWeapons)
+            {
+                meleeWeapon.OnReloadSpeedChanged(reloadSpeedModifier);
+            }
+            
         }
     }
     public float movementRecoil;
@@ -87,7 +95,7 @@ public class Player : FragileEntity
 
 
     // Inside script
-    public bool isGrounded = false;
+    [SerializeField] private bool isGrounded = false;
     [HideInInspector] public bool IsGrounded
     {
         get

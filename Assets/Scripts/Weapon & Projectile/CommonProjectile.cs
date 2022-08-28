@@ -51,8 +51,8 @@ public class CommonProjectile : VanishingProjectile
         if (collision.gameObject.CompareTag("Enemy")  ||  collision.gameObject.CompareTag("Decoration"))
         {
             // Урон цели
-            FragileEntity entity = collision.gameObject.GetComponent<FragileEntity>();
-            entity.RecieveDamage(damage);
+            //FragileEntity entity = collision.gameObject.GetComponent<FragileEntity>();
+            //entity.RecieveDamage(damage);
 
             // Пробитие
             PenetrationCheck(collision);

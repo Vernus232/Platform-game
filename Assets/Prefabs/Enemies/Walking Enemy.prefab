@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3660003472143816605}
   - component: {fileID: 3660003472143816606}
   - component: {fileID: -3263970536683387512}
+  - component: {fileID: 4840535998519225599}
   m_Layer: 8
   m_Name: Walking Enemy
   m_TagString: Enemy
@@ -168,8 +169,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.18359566}
-  m_Size: {x: 0.5, y: 1.8633957}
+  m_Offset: {x: 0, y: -0.07569027}
+  m_Size: {x: 0.35641986, y: 1.3816476}
   m_Direction: 0
 --- !u!50 &3660003472143816605
 Rigidbody2D:
@@ -304,6 +305,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4840535998519225599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3660003472143816603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e3763d5f6182749a5fa148bf842069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageModifier: 1
 --- !u!1 &3660003472644520019
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +476,7 @@ GameObject:
   - component: {fileID: 5275225917151065156}
   - component: {fileID: 4426288768884556347}
   m_Layer: 8
-  m_Name: Weak Point
+  m_Name: Head Weak Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -495,9 +509,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.033558663}
   serializedVersion: 2
-  m_Radius: 0.55
+  m_Radius: 0.62413865
 --- !u!114 &4426288768884556347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,3 +524,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e3763d5f6182749a5fa148bf842069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageModifier: 3

@@ -8,8 +8,6 @@ public abstract class FragileEntity : MonoBehaviour
 
     public float maxHp;
     protected float hp;
-    [SerializeField] private GameObject damageParticleSystemPrefab;
-    [SerializeField] private GameObject deathParticleSystemPrefab;
     public float Hp
     
     {
@@ -20,6 +18,9 @@ public abstract class FragileEntity : MonoBehaviour
             OnHpChanged();
         }
     }
+
+    [SerializeField] private GameObject damageParticleSystemPrefab;
+    [SerializeField] private GameObject deathParticleSystemPrefab;
 
     private bool isDead = false;
 

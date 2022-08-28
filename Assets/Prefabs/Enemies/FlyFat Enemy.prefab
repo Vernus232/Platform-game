@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 5910507293792448885}
   - component: {fileID: 739462501052766137}
   - component: {fileID: -6922319159595013887}
+  - component: {fileID: 6821234298123055683}
   m_Layer: 8
   m_Name: FlyFat Enemy
   m_TagString: Enemy
@@ -432,3 +433,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6821234298123055683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7267947439652132932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e3763d5f6182749a5fa148bf842069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageModifier: 1
