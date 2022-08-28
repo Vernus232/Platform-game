@@ -2984,12 +2984,12 @@ ParticleSystem:
         m_RotationOrder: 4
     inWorldSpace: 0
   InheritVelocityModule:
-    enabled: 1
-    m_Mode: 0
+    enabled: 0
+    m_Mode: 1
     m_Curve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5923,14 +5923,13 @@ MonoBehaviour:
   xSpeedLimit: 8
   xMovementForce: 1.7
   xJumpSpeed: 0
-  yJumpSpeed: 7
+  yJumpSpeed: 8
   movementRecoil: 0
   maxMovementRecoil: 0
   zeroFrictionMat: {fileID: 6200000, guid: 26029cd1d7736d449b36dc61b275f43a, type: 2}
   normFrictionMat: {fileID: 6200000, guid: 42b77b4819b0c394fb38ded269cd8dd8, type: 2}
   playerSpritePivotTransform: {fileID: 8002262767649983375}
   isGrounded: 0
-  isClimbPossible: 0
 --- !u!114 &2174105434743423031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5974,15 +5973,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cd9873fb75bd44a96530aefd1e7eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 0.6
-  maxSpeed: 0
-  maxCharge: 50
+  force: 1
+  maxSpeed: 8
+  maxCharge: 15
   charge: 0
   consumptionSpeed: 1
   passiveRechargeSpeed: 0.1
-  groundRechargeSpeed: 4
+  groundRechargeSpeed: 3
   secondsToFly: 0.3
-  ignoreDelay: 0
+  ignoreDelay: 1
   flyParticleSystem: {fileID: 2116716295}
   weaponView: {fileID: 0}
 --- !u!82 &1485474315
@@ -6440,7 +6439,7 @@ GameObject:
   - component: {fileID: 8002262766363775661}
   - component: {fileID: 8002262766363775635}
   - component: {fileID: 8002262766363775660}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Ground Detector
   m_TagString: GroundDetector
   m_Icon: {fileID: 0}
@@ -7298,7 +7297,7 @@ MonoBehaviour:
   weaponName: Katana
   type: 1
   meleeDamage: 100
-  betweenHitsTime: 1
+  startBetweenHitsTime: 1.5
   damagingObject: {fileID: 8002262766088237173}
   SwingAudio: {fileID: 1480900198}
 --- !u!82 &1480900197

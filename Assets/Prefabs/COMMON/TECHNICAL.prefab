@@ -799,7 +799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 0
-  maxLevel: 10
+  maxLevel: 15
   firstScoreForNextLvl: 500
   scoreForNextLvlIncreaseCoef: 500
   scoreForNextLvl: []
@@ -904,6 +904,16 @@ MonoBehaviour:
           m_StringArgument: Minigun
           m_BoolArgument: 0
         m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
   - m_PersistentCalls:
       m_Calls: []
   - m_PersistentCalls:
