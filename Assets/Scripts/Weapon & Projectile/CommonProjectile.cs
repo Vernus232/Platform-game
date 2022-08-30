@@ -5,8 +5,8 @@ using UnityEngine;
 public class CommonProjectile : VanishingProjectile
 {
         [Tooltip("Объект партикл системы при попадании")]
-    [SerializeField] private GameObject prefab_onObstacleHit;
-    [SerializeField] private GameObject prefab_onNpcHit;
+    [SerializeField] private GameObject obstacleHit_prefab;
+    [SerializeField] private GameObject npcHit_prefab;
 
     public bool isExposive = false;
     public int penetration = 0;
@@ -41,9 +41,8 @@ public class CommonProjectile : VanishingProjectile
         if (collision.gameObject.layer == 3)
         {
             Color collisionColor = collision.gameObject.GetComponent<SpriteRenderer>().color;
-            SpawnPrefabOnDestroy(collisionColor);
+            SpawnPrefabWithColor(obstacleHit_prefab, collisionColor);
 
-            // Пробитие
             PenetrationCheck(collision);
 
             return;
@@ -52,12 +51,8 @@ public class CommonProjectile : VanishingProjectile
         // Во врага или декорации
         if (collision.gameObject.CompareTag("Enemy")  ||  collision.gameObject.CompareTag("Decoration"))
         {
-            // Урон цели
-            //FragileEntity entity = collision.gameObject.GetComponent<FragileEntity>();
-            //entity.RecieveDamage(damage);
-            Color collisionColor = new Color (1, 0, 0, 1);
-            SpawnPrefabOnDestroy(collisionColor);
-            // Пробитие
+            SpawnPrefab(npcHit_prefab);
+
             PenetrationCheck(collision);
 
             return;
@@ -94,21 +89,33 @@ public class CommonProjectile : VanishingProjectile
 
     [System.Obsolete]
     // Метод для спавна геймобщекта после исчезновения пули (Для взрывов и партиклов))
-    private void SpawnPrefabOnDestroy(Color collisionColor)
+    private void SpawnPrefab(GameObject prefab)
     {
         // Размещаем (Создаем его копию) префаб системы партиклов
-        GameObject gameObject_onDestroy = Instantiate(prefab_onObstacleHit, transform.position, transform.rotation);
+        GameObject obj = Instantiate(prefab, transform.position, transform.rotation);
 
         // Запускаем анимацию выбранного инстанса(т.е. объект этого класса на сцене) партикл-системы
-        ParticleSystem particleSystem_onDestroy = gameObject_onDestroy.GetComponent<ParticleSystem>();
-        if (particleSystem_onDestroy != null)
+        ParticleSystem particleSystem = obj.GetComponent<ParticleSystem>();
+        if (particleSystem)
         {
-            particleSystem_onDestroy.startColor = collisionColor;
-            particleSystem_onDestroy.Play();
-            // Таймер на время до смерти
-            Destroy(gameObject_onDestroy, 3);
+            particleSystem.Play();
+            Destroy(obj, 3);
         }
-        
+    }
+    [System.Obsolete]
+    private void SpawnPrefabWithColor(GameObject prefab, Color color)
+    {
+        // Размещаем (Создаем его копию) префаб системы партиклов
+        GameObject obj = Instantiate(prefab, transform.position, transform.rotation);
+
+        // Запускаем анимацию выбранного инстанса(т.е. объект этого класса на сцене) партикл-системы
+        ParticleSystem particleSystem = obj.GetComponent<ParticleSystem>();
+        if (particleSystem)
+        {
+            particleSystem.Play();
+            particleSystem.startColor = color;
+            Destroy(obj, 3);
+        }
     }
 
 }

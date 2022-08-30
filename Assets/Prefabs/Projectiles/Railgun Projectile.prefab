@@ -5040,7 +5040,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifespan: 3
-  prefab_onDestroy: {fileID: 6856103324233738395, guid: f063bb74fab721841b5275b0f2bb071f, type: 3}
+  obstacleHit_prefab: {fileID: 6856103324233738395, guid: 7a92a4641b62e884fbd28a2e46ee92dc, type: 3}
+  npcHit_prefab: {fileID: 6856103324233738395, guid: df707ca6472703c4eb4e7b506df9c27f, type: 3}
   isExposive: 0
   penetration: 10
   ricochets: 0
