@@ -8,7 +8,6 @@ public class CommonProjectile : VanishingProjectile
     [SerializeField] private GameObject obstacleHit_prefab;
     [SerializeField] private GameObject npcHit_prefab;
 
-    public bool isExposive = false;
     public int penetration = 0;
     public int ricochets = 0;
     public float damage;
