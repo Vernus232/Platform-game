@@ -5,8 +5,10 @@ using UnityEngine;
 public class CommonProjectile : VanishingProjectile
 {
         [Tooltip("Объект партикл системы при попадании")]
-    [SerializeField] private GameObject particleCaster_prefab;
+    [SerializeField] private GameObject prefab_onObstacleHit;
+    [SerializeField] private GameObject prefab_onNpcHit;
 
+    public bool isExposive = false;
     public int penetration = 0;
     public int ricochets = 0;
     public float damage;
@@ -39,7 +41,7 @@ public class CommonProjectile : VanishingProjectile
         if (collision.gameObject.layer == 3)
         {
             Color collisionColor = collision.gameObject.GetComponent<SpriteRenderer>().color;
-            Spawn_particleCaster_withColor(collisionColor);
+            SpawnPrefabOnDestroy(collisionColor);
 
             // Пробитие
             PenetrationCheck(collision);
@@ -53,12 +55,14 @@ public class CommonProjectile : VanishingProjectile
             // Урон цели
             //FragileEntity entity = collision.gameObject.GetComponent<FragileEntity>();
             //entity.RecieveDamage(damage);
-
+            Color collisionColor = new Color (1, 0, 0, 1);
+            SpawnPrefabOnDestroy(collisionColor);
             // Пробитие
             PenetrationCheck(collision);
 
             return;
         }
+
     }
 
     private void PenetrationCheck(Collision2D collision)
@@ -89,19 +93,22 @@ public class CommonProjectile : VanishingProjectile
     }
 
     [System.Obsolete]
-    private void Spawn_particleCaster_withColor(Color collisionColor)
+    // Метод для спавна геймобщекта после исчезновения пули (Для взрывов и партиклов))
+    private void SpawnPrefabOnDestroy(Color collisionColor)
     {
         // Размещаем (Создаем его копию) префаб системы партиклов
-        GameObject particleCaster_gameObject = Instantiate(particleCaster_prefab, transform.position, transform.rotation);
+        GameObject gameObject_onDestroy = Instantiate(prefab_onObstacleHit, transform.position, transform.rotation);
 
         // Запускаем анимацию выбранного инстанса(т.е. объект этого класса на сцене) партикл-системы
-        ParticleSystem particleCaster_particleSystem = particleCaster_gameObject.GetComponent<ParticleSystem>();
-        particleCaster_particleSystem.startColor = collisionColor;
-
-        particleCaster_particleSystem.Play();
-
-        // Таймер на смерть
-        Destroy(particleCaster_gameObject, 3);
+        ParticleSystem particleSystem_onDestroy = gameObject_onDestroy.GetComponent<ParticleSystem>();
+        if (particleSystem_onDestroy != null)
+        {
+            particleSystem_onDestroy.startColor = collisionColor;
+            particleSystem_onDestroy.Play();
+            // Таймер на время до смерти
+            Destroy(gameObject_onDestroy, 3);
+        }
+        
     }
 
 }
