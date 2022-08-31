@@ -8,6 +8,7 @@ public class MeleeWeapon : Weapon
     public float startBetweenHitsTime;
     [SerializeField] private GameObject damagingObject;
     [SerializeField] private AudioSource SwingAudio;
+    [SerializeField] private KatanaAnimation swingAnimation;
 
     private float currentBetweenHitsTime;
     private float currTime = 999;
@@ -47,6 +48,7 @@ public class MeleeWeapon : Weapon
         yield return new WaitForSeconds(0.05f);
 
         SwingAudio.Play();
+        StartCoroutine(swingAnimation.SwingAnimation());
 
         damagingObject.SetActive(false);
     }
