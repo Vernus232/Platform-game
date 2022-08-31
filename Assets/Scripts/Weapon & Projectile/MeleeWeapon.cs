@@ -53,6 +53,9 @@ public class MeleeWeapon : Weapon
         damagingObject.SetActive(false);
     }
 
-
+    private void OnDisable()
+    {
+        swingAnimation.OnWeaponDisable();
+    }
 
 }

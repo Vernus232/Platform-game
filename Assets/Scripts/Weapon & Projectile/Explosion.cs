@@ -43,12 +43,12 @@ public class Explosion : MonoBehaviour
 
             return mul;
         }
-        float GetSquarerDistanceModifier(float distance)
-        {
-            float mul = distance / radius;
+        //float GetSquarerDistanceModifier(float distance)
+        //{
+        //    float mul = distance / radius;
 
-            return mul*mul;
-        }
+        //    return mul*mul;
+        //}
 
         float actualDamage = GetLinearDistanceModifier(distance) * maxDamage;
         return actualDamage;

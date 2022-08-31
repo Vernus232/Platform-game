@@ -156,7 +156,8 @@ public class BurstRangedWeapon : Weapon
         {
             InstantiateProjectile();
         }
-        StartCoroutine(shotAnimation.ShotAnimation());
+        if (shotAnimation)
+            StartCoroutine(shotAnimation.ShotAnimation());
     }
 
     private void InstantiateProjectile()
