@@ -36,6 +36,7 @@ public class BurstRangedWeapon : Weapon
     [SerializeField] private GameObject prefabProjectile;
     [SerializeField] private AudioSource shotAudio;
     [SerializeField] private AudioSource ReloadAudio;
+    [SerializeField] private AnimatedTexture shotAnimation;
     [Space(10)]
 
     [Header("Debug")]
@@ -63,6 +64,7 @@ public class BurstRangedWeapon : Weapon
 
     private void Start()
     {
+        shotAnimation = GetComponentInChildren<AnimatedTexture>();
         weaponView = FindObjectOfType<WeaponView>();
         lerpCamera = FindObjectOfType<LerpCamera>();
         rukiPivotTransform = FindObjectOfType<RukiPivot>().transform;
@@ -145,6 +147,7 @@ public class BurstRangedWeapon : Weapon
 
             yield return new WaitForEndOfFrame();
         }
+        StartCoroutine(shotAnimation.ShotAnimation());
     }
 
     private void InstantiateProjectiles_momentally()
@@ -153,6 +156,7 @@ public class BurstRangedWeapon : Weapon
         {
             InstantiateProjectile();
         }
+        StartCoroutine(shotAnimation.ShotAnimation());
     }
 
     private void InstantiateProjectile()
