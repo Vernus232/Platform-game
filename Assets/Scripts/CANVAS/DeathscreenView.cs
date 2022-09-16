@@ -18,7 +18,14 @@ public class DeathscreenView : MonoBehaviour
     private void OnEnable()
     {
         text.text = "Your Score: " + ScoreSystem.main.Score.ToString("000000");
+
+        // Стартуем WaitForBlockDisable
+
     }
+
+    // Корутин WaitForBlockDisable()
+    // Wait for sec
+    // ссылка_на_блок_имадж.Setactive(F)
 
 
 }
