@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Это абстрактный класс (его на сцену не поставишь, потому что самого по себе FragileEntity в природе нет)
+// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ FragileEntity пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ)
 public abstract class FragileEntity : MonoBehaviour
 {
 
@@ -19,6 +19,7 @@ public abstract class FragileEntity : MonoBehaviour
         }
     }
 
+    [Header("Fragile Entity Refs")]
     [SerializeField] private GameObject damageParticleSystemPrefab;
     [SerializeField] private GameObject deathParticleSystemPrefab;
 
@@ -44,7 +45,7 @@ public abstract class FragileEntity : MonoBehaviour
         Destroy(particleSystem_gameObject, 3);
     }
 
-    // Метод получения урона (для "наследников" может дополняться)
+    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
     public virtual void RecieveDamage(float amount)
     {
         Try_SpawnParticleSystemWithTimer(damageParticleSystemPrefab);

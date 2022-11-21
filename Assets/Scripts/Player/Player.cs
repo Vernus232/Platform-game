@@ -75,7 +75,7 @@ public class Player : FragileEntity
 
             playerView.UpdateUI();
 
-            // Временно
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             MeleeWeapon[] meleeWeapons = FindObjectsOfType<MeleeWeapon>(true);
             foreach (MeleeWeapon meleeWeapon in meleeWeapons)
             {
@@ -98,7 +98,7 @@ public class Player : FragileEntity
 
 
     // Inside script
-    [SerializeField] private bool isGrounded = false;
+    private bool isGrounded = false;
     [HideInInspector] public bool IsGrounded
     {
         get
@@ -124,7 +124,7 @@ public class Player : FragileEntity
 
 
 
-    //На старте
+    //пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     private void Start()
     {
         main = this;
@@ -137,11 +137,11 @@ public class Player : FragileEntity
         Hp = maxHp;
     }
 
-    //Обновляется в фпс физики (50 fps)
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (50 fps)
     private void FixedUpdate()
     {
-        #region Ускорение по Х
-        // Определяем целевую скорость
+        #region пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         float targetSpeed = 0;
 
         if (Input.GetKey(KeyCode.A))
@@ -150,7 +150,7 @@ public class Player : FragileEntity
         if (Input.GetKey(KeyCode.D))
             targetSpeed =  xSpeedLimit;
 
-        // Сообщаем силу
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         float xForce = xMovementForce * (targetSpeed - rb.velocity.x);
         if (Mathf.Abs(xForce) > 0)
         {
@@ -169,14 +169,14 @@ public class Player : FragileEntity
         }
         #endregion
 
-        #region Разброс от скорости
+        #region пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         movementRecoil = rb.velocity.magnitude;
 
         if (movementRecoil > maxMovementRecoil)
             movementRecoil = maxMovementRecoil;
         #endregion
 
-        #region Поворот
+        #region пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         Vector3 mouseScreenPos = Input.mousePosition;
         Vector3 normalizedScreenPos = Camera.main.WorldToScreenPoint(transform.position);
         mouseScreenPos.x -= normalizedScreenPos.x;
@@ -200,10 +200,10 @@ public class Player : FragileEntity
         #endregion
     }
 
-    //Обновляется в фпс играющего
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private void Update()
     {
-        #region Прыжок
+        #region пїЅпїЅпїЅпїЅпїЅпїЅ
         if (Input.GetKeyDown(KeyCode.Space)  &&  isGrounded)
         {
             int jumpDir = 0;
@@ -212,35 +212,35 @@ public class Player : FragileEntity
             if (Input.GetKey(KeyCode.D))
                 jumpDir = 1;
 
-            rb.velocity += new Vector2(xJumpSpeed * jumpDir, 0);  // по х - прибавляем
-            rb.velocity =  new Vector2(rb.velocity.x, yJumpSpeed);  // по у - приравниваем
+            rb.velocity += new Vector2(xJumpSpeed * jumpDir, 0);  // пїЅпїЅ пїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            rb.velocity =  new Vector2(rb.velocity.x, yJumpSpeed);  // пїЅпїЅ пїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
             flyAbility.OnJump();
         }
         #endregion
 
-        #region Контроль материала
-        // Если что-то жмём...
+        #region пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅ...
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            // ..то юзаем нет трение
+            // ..пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             gameObject.GetComponent<Collider2D>().sharedMaterial = zeroFrictionMat;
         }
         else
         {
-            // ..иначе стандартное трения
+            // ..пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             gameObject.GetComponent<Collider2D>().sharedMaterial = normFrictionMat;
         }
         #endregion
     }
 
 
-    #region Подтягивание на платформу
+    #region пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     
 
     public IEnumerator Climb(Vector3 climbPos)
     {
-        // Запоминаем скорость по х, чтобы потом вернуть
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         float prevVelocityX = rb.velocity.x;
         rb.velocity = new Vector2(0, 0);
         rb.isKinematic = true;

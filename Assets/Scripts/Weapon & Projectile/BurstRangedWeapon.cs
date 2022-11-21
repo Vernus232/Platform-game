@@ -60,6 +60,7 @@ public class BurstRangedWeapon : Weapon
     private float prevShootTime = 0;
     private WeaponView weaponView;
     private LerpCamera lerpCamera;
+    private Crosshair crosshair;
 
 
     private void Start()
@@ -89,15 +90,15 @@ public class BurstRangedWeapon : Weapon
 
     void Update()
     {
-        #region Выстрел и задержка, Ammo
+        #region пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, Ammo
         if (!isReloading  &&  Input.GetMouseButton(0))
         {
-            // Проверка Fire rate
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Fire rate
             float currTime = Time.time;
             float betweenShotsTime = 1 / ((fireRate / 60) * Player.main.FireRateModifier);
             if ((currTime - prevShootTime) > betweenShotsTime)
             {
-                // Выстрел и задержка
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 if (instantiateBurstMomentally)
                     InstantiateProjectiles_momentally();
                 else
@@ -117,7 +118,7 @@ public class BurstRangedWeapon : Weapon
         }
         #endregion
 
-        // Перезарядка на R
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ R
         if (Input.GetKeyDown(KeyCode.R) && Ammo != maxAmmo && isReloading == false)
         {
             StartCoroutine(Reload());
@@ -126,7 +127,7 @@ public class BurstRangedWeapon : Weapon
 
     private void FixedUpdate()
     {
-        #region Снижение отдачи
+        #region пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         float ModifiedRecoilReductionWithTime = recoilReductionWithTime * Player.main.AccuracyModifier;
         recoil -= ModifiedRecoilReductionWithTime;
 
@@ -138,7 +139,7 @@ public class BurstRangedWeapon : Weapon
         #endregion
     }
 
-    #region Бёрсты
+    #region пїЅпїЅпїЅпїЅпїЅпїЅ
     private IEnumerator InstantiateProjectiles_byFrame()
     {
         for (int i = 0; i < projectilesInBurstCount; i++)
@@ -162,22 +163,22 @@ public class BurstRangedWeapon : Weapon
 
     private void InstantiateProjectile()
     {
-        // Определили суммарный разброс
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         float totalRecoil = Player.main.movementRecoil * movementRecoilImportance + recoil;
 
-        // Определили вектор выстрела
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         float zRotationChange = Random.Range(-totalRecoil, totalRecoil);
         Quaternion randomedRotation = transform.rotation * Quaternion.Euler(Vector3.forward * zRotationChange);
 
-        // Определили разность в скорости пуль
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         float projSpeedDifferenceMul = Random.Range(1f, projMaxSpeedDifferenceMul);
 
-        // Заспавнили пули
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         GameObject instantiatedProjectile = Instantiate(prefabProjectile, shootingPoint.position, randomedRotation);
         Rigidbody2D instantiatedProjectileRb = instantiatedProjectile.GetComponent<Rigidbody2D>();
         instantiatedProjectileRb.AddRelativeForce(new Vector2(projectilesSpeed * projSpeedDifferenceMul, 0));
 
-        // Назначение множителя урона и пробития)
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
         CommonProjectile instantiatedCommonProjectile = instantiatedProjectile.GetComponent<CommonProjectile>();
         if (instantiatedCommonProjectile)
         {
@@ -191,10 +192,10 @@ public class BurstRangedWeapon : Weapon
         }
 
 
-        // Сообщили разброс оружию
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         recoil += recoilIncreaseWithShot;
 
-        // Скриншейк
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         Vector2 vector2 = transform.right;
         lerpCamera.OnShot(cameraShakeMult, vector2);
 
@@ -203,6 +204,7 @@ public class BurstRangedWeapon : Weapon
             shotAudio.Play();
         }
 
+        crosshair.OnShot(recoil);
     }
     #endregion
 

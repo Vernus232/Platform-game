@@ -7,15 +7,16 @@ public class LerpCamera : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float camLerpSpeed;
 
+    [Header("Offset")]
     [SerializeField] [Range(0, 1)] private float xMovementOffsetMul;
     [SerializeField] [Range(0, 1)] private float yMovementOffsetMul;
     [SerializeField] private float maxMovementOffset;
-
     [SerializeField] [Range(0, 1)] private float xMouseOffsetMul;
     [SerializeField] [Range(0, 1)] private float yMouseOffsetMul;
-
     [SerializeField] [Range(0, 1)] private float xRecoilOffsetMul;
     [SerializeField] [Range(0, 1)] private float yRecoilOffsetMul;
+    
+    [Header("Shake")]
     [SerializeField] [Range(0, 1)] private float shakeRecoveringMult;
     [SerializeField] [Range(1, 3)] private float shakeMult;
 
@@ -48,10 +49,10 @@ public class LerpCamera : MonoBehaviour
         if (playerRb == null)
             return;
 
-        // Оффсет от Отдачи
+        // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         //recoilOffset = 
 
-        // Оффсет от скорости
+        // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         movementOffset = playerRb.velocity * new Vector2(xMovementOffsetMul, yMovementOffsetMul);
 
         if (movementOffset.x > maxMovementOffset)
@@ -65,14 +66,14 @@ public class LerpCamera : MonoBehaviour
             movementOffset.y = -maxMovementOffset;
 
 
-        // Оффсет от курсора
+        // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         Vector3 mouseScreenPos = Input.mousePosition;
         Vector3 camScreenPos = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 camToMouseDir = mouseScreenPos - camScreenPos;
         float DOWNSCALE = 50;
         mouseOffset = camToMouseDir * new Vector2(xMouseOffsetMul, yMouseOffsetMul) / DOWNSCALE;
 
-        // Лёрп в (плеера + оффсеты)
+        // ЛёпїЅпїЅ пїЅ (пїЅпїЅпїЅпїЅпїЅпїЅ + пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
         targetPos2D = (Vector2)player.transform.position + mouseOffset + movementOffset + recoilOffset;
         Vector3 targetPos = new Vector3(targetPos2D.x,
                                         targetPos2D.y, 
