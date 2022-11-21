@@ -61,7 +61,9 @@ public class SimpleCrosshair : MonoBehaviour
     {
         m_crosshairImage.transform.position = Input.mousePosition;
 
-        float recoil = weaponChoose.currentWeapon.GetComponent<BurstRangedWeapon>().recoil;
+        float recoil = 0;
+        if (weaponChoose.currentWeapon.GetComponent<BurstRangedWeapon>())
+            recoil = weaponChoose.currentWeapon.GetComponent<BurstRangedWeapon>().recoil;
         int newGap = (int)(recoil * recoilToGapMultiplier);
         SetGap(newGap, true);
     }
