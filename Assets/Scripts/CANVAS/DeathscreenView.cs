@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class DeathscreenView : MonoBehaviour
 {
+    [SerializeField] private float interactionBlockTime;
     [SerializeField] private Text text;
+    [SerializeField] private GameObject interactionBlock;
 
     [HideInInspector] public static DeathscreenView main;
 
@@ -19,13 +21,16 @@ public class DeathscreenView : MonoBehaviour
     {
         text.text = "Your Score: " + ScoreSystem.main.Score.ToString("000000");
 
-        // Стартуем WaitForBlockDisable
-
+        interactionBlock.SetActive(true);
+        StartCoroutine(DisableBlockingImage());
     }
 
-    // Корутин WaitForBlockDisable()
-    // Wait for sec
-    // ссылка_на_блок_имадж.Setactive(F)
+    IEnumerator DisableBlockingImage()
+    {
+        yield return new WaitForSeconds(interactionBlockTime);
+
+        interactionBlock.SetActive(false);
+    }
 
 
 }
