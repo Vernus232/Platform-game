@@ -204,7 +204,6 @@ public class BurstRangedWeapon : Weapon
             shotAudio.Play();
         }
 
-        crosshair.OnShot(recoil);
     }
     #endregion
 

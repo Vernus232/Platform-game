@@ -23,7 +23,6 @@ public class Crosshair
 
     [Tooltip("Specifies the color of the crosshair.")]
     public Color color = Color.green;
-    [SerializeField] private WeaponChoose weaponChoose;
 
     public int SizeNeeded
     {
@@ -35,17 +34,8 @@ public class Crosshair
         }
     }
 
-    public void OnShot(float recoil)
-    {
-        ShotShake(recoil);
-    }
-
-    private void ShotShake(float recoil)
-    {
-
-    }
-
 }
+
 
 public class SimpleCrosshair : MonoBehaviour
 {
@@ -54,14 +44,15 @@ public class SimpleCrosshair : MonoBehaviour
 
     [Tooltip("Specifies the image to draw the crosshair to. If you leave this empty, this script generates a Canvas and an Image with the correct settings for you.")]
     public Image m_crosshairImage;
+    [SerializeField] private float recoilToGapMultiplier;
+    [SerializeField] private WeaponChoose weaponChoose;
+
 
     private void Awake()
     {
         Cursor.visible = false;
         if(m_crosshairImage == null)
-        {
             InitialiseCrosshairImage();
-        }
 
         GenerateCrosshair();
     }
@@ -69,6 +60,10 @@ public class SimpleCrosshair : MonoBehaviour
     private void LateUpdate()
     {
         m_crosshairImage.transform.position = Input.mousePosition;
+
+        float recoil = weaponChoose.currentWeapon.GetComponent<BurstRangedWeapon>().recoil;
+        int newGap = (int)(recoil * recoilToGapMultiplier);
+        SetGap(newGap, true);
     }
 
     public void InitialiseCrosshairImage()
@@ -102,6 +97,7 @@ public class SimpleCrosshair : MonoBehaviour
         m_crosshairImage.sprite = crosshairSprite;
     }
 
+    [System.Obsolete]
     public void SetColor(CrosshairColorChannel channel, int value, bool redrawCrosshair)  // Set between 0 and 255
     {
         switch (channel)
@@ -145,31 +141,28 @@ public class SimpleCrosshair : MonoBehaviour
     public void SetThickness(int newThickness, bool redrawCrosshair)
     {
         m_crosshair.thickness = newThickness;
-        if (m_crosshair.thickness < 1) { m_crosshair.thickness = 1; }
+        if (m_crosshair.thickness < 1) 
+            m_crosshair.thickness = 1; 
         if (redrawCrosshair)
-        {
             GenerateCrosshair();
-        }
     }
 
     public void SetSize(int newSize, bool redrawCrosshair)
     {
         m_crosshair.size = newSize;
-        if(m_crosshair.size < 1) { m_crosshair.size = 1; }
+        if(m_crosshair.size < 1)
+            m_crosshair.size = 1;
         if (redrawCrosshair)
-        {
             GenerateCrosshair();
-        }
     }
 
     public void SetGap(int newGap, bool redrawCrosshair)
     {
         m_crosshair.gap = newGap;
-        if (m_crosshair.gap < 0) { m_crosshair.gap = 0; }
+        if (m_crosshair.gap < 0)
+            m_crosshair.gap = 0;
         if (redrawCrosshair)
-        {
             GenerateCrosshair();
-        }
     }
 
     #region Getters
