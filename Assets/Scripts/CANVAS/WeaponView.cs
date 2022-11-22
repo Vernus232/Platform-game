@@ -6,11 +6,19 @@ using UnityEngine.UI;
 public class WeaponView : MonoBehaviour
 {
     [SerializeField] private Text weaponNameText;
+
+    [Header("Ammunition")]
     [SerializeField] private Text currentAmmo;
     [SerializeField] private Text maxAmmo;
     [SerializeField] private Slider ammoSlider;
+    [SerializeField] private Text ammoOnCursor;
+    [SerializeField] private Slider cursorAmmoSlider;
+
+
+    [Space(10)]
     [SerializeField] private Slider flySlider;
 
+    [Header("Refs")]
     [HideInInspector] public static WeaponView main;
     [SerializeField] private FlyAbility flyAbility;
 
@@ -27,6 +35,8 @@ public class WeaponView : MonoBehaviour
     public void OnWeaponChanged()
     {
         currentWeapon = WeaponChoose.main.currentWeapon;
+
+        cursorAmmoSlider.value = 0;
 
         BurstRangedWeapon burstRangedWeapon = currentWeapon.GetComponent<BurstRangedWeapon>();
         if (burstRangedWeapon && burstRangedWeapon.Ammo > 0)
@@ -54,6 +64,7 @@ public class WeaponView : MonoBehaviour
 
             currentAmmo.text = burstWeapon.Ammo.ToString("00");
             maxAmmo.text = burstWeapon.maxAmmo.ToString("00");
+            ammoOnCursor.text = burstWeapon.Ammo.ToString("00");
 
             ammoSlider.value = (float) burstWeapon.Ammo / (float) burstWeapon.maxAmmo * 100f;
         }
@@ -63,6 +74,7 @@ public class WeaponView : MonoBehaviour
         {
             currentAmmo.text = "--";
             maxAmmo.text = "--";
+            ammoOnCursor.text = "--";
 
             ammoSlider.value = 100;
         }
@@ -84,8 +96,11 @@ public class WeaponView : MonoBehaviour
             yield return new WaitForEndOfFrame();
 
             ammoSlider.value = timePassed / reloadTime * 100;
+            cursorAmmoSlider.value = timePassed / reloadTime * 100;
             timePassed += Time.deltaTime;
         }
+
+        cursorAmmoSlider.value = 0;
     }
 
     public void UpdateFlyUi()

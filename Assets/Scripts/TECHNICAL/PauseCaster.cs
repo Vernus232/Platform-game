@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseCaster : MonoBehaviour
 {
-    public GameObject pauseScreen;
+    [SerializeField] private GameObject crosshairGameObject;
+    [SerializeField] private GameObject pauseScreen;
     private RukiPivot rukiPivo;
     private WeaponChoose weaponChoose;
 
@@ -20,14 +21,21 @@ public class PauseCaster : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            pauseScreen.SetActive(true);
-            Time.timeScale = 0;
-            rukiPivo.enabled = false;
-            weaponChoose.currentWeapon.enabled = false;
-            weaponChoose.enabled = false;
+            Pause();
         }
     }
 
+    private void Pause()
+    {
+        pauseScreen.SetActive(true);
+        Time.timeScale = 0;
+        rukiPivo.enabled = false;
+        weaponChoose.currentWeapon.enabled = false;
+        weaponChoose.enabled = false;
+        crosshairGameObject.SetActive(false);
+        Cursor.visible = true;
+    }
+    
     public void Resume()
     {
         Time.timeScale = 1;
@@ -35,6 +43,8 @@ public class PauseCaster : MonoBehaviour
         rukiPivo.enabled = true;
         weaponChoose.currentWeapon.enabled = true;
         weaponChoose.enabled = true;
+        Cursor.visible = false;
+        crosshairGameObject.SetActive(true);
     }
     public void Exit()
     {

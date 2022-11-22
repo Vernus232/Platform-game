@@ -60,7 +60,6 @@ public class BurstRangedWeapon : Weapon
     private float prevShootTime = 0;
     private WeaponView weaponView;
     private LerpCamera lerpCamera;
-    private Crosshair crosshair;
 
 
     private void Start()
