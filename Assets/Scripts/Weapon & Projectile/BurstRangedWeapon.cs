@@ -84,6 +84,7 @@ public class BurstRangedWeapon : Weapon
     private void OnDisable()
     {
         StopAllCoroutines();
+        shotAnimation.gameObject.SetActive(false);
         isReloading = false;
     }
 
@@ -147,6 +148,7 @@ public class BurstRangedWeapon : Weapon
 
             yield return new WaitForEndOfFrame();
         }
+        shotAnimation.gameObject.SetActive(true);
         StartCoroutine(shotAnimation.ShotAnimation());
     }
 
@@ -156,6 +158,7 @@ public class BurstRangedWeapon : Weapon
         {
             InstantiateProjectile();
         }
+        shotAnimation.gameObject.SetActive(true);
         if (shotAnimation)
             StartCoroutine(shotAnimation.ShotAnimation());
     }

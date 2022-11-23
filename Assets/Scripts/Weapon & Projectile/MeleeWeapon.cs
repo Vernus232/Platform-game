@@ -18,7 +18,6 @@ public class MeleeWeapon : Weapon
     private void Start()
     {
         currentBetweenHitsTime = startBetweenHitsTime;
-
         damagingObject.GetComponent<DamagingField>().damage = meleeDamage;
         damagingObject.GetComponent<DamagingField>().betweenHitsTime = currentBetweenHitsTime;
     }
@@ -56,6 +55,7 @@ public class MeleeWeapon : Weapon
     private void OnDisable()
     {
         swingAnimation.OnWeaponDisable();
+        damagingObject.SetActive(false);
     }
 
 }

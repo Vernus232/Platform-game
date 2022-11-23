@@ -5,8 +5,6 @@ public class AnimatedTexture : MonoBehaviour
 {
     public float fps = 30.0f;
     public Sprite[] frames;
-
-    private int frameIndex;
     private SpriteRenderer rendererMy;
     
     void Start()
