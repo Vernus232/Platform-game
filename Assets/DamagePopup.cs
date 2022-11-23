@@ -16,10 +16,11 @@ public class DamagePopup : MonoBehaviour
         {
             damageAmount = value;
             damageText.text = damageAmount.ToString("-00");
+            // TODO set scale
         }
     }
     private float damageAmount;
-    
+
     [SerializeField] private Text damageText;
 
 
@@ -27,4 +28,5 @@ public class DamagePopup : MonoBehaviour
         Destroy(gameObject, time);
     }
 
+    // TODO SetColor(currentHpPercent)
 }
