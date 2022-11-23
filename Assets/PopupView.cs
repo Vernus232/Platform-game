@@ -46,7 +46,7 @@ public class PopupView : MonoBehaviour
             entityPopupDict.Add(entity, newPopup);
         }
     }
- 
+
     private GameObject CreateDamagePopup(Vector3 position, float amount)
     {
         Vector2 WorldToScreenPos(Vector3 worldPos)
@@ -69,7 +69,7 @@ public class PopupView : MonoBehaviour
         damagePopupGameObj.GetComponent<RectTransform>().anchoredPosition = WorldToScreenPos(position);
         damagePopupGameObj.GetComponent<DamagePopup>().SetLifetime(damagePopupLifetime);
         damagePopupGameObj.GetComponent<DamagePopup>().DamageAmount = amount;
-        // TODO SetColor(entity.Hp/entity.maxHp)
+        
 
         return damagePopupGameObj;
     }
