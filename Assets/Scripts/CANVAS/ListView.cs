@@ -30,14 +30,14 @@ public class ListView : MonoBehaviour
 
     private void HighlightUIElement(GameObject activeHighlightObject)
     {
-        // Вырубили все хайлайты
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         foreach (GameObject highlightObject in highlightObjects)
         {
             if (highlightObject)
                 highlightObject.SetActive(false);
         }
 
-        // Активировали нужный хайлайт
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (activeHighlightObject)
             activeHighlightObject.SetActive(true);
     }
