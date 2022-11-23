@@ -9,7 +9,6 @@ public abstract class FragileEntity : MonoBehaviour
     public float maxHp;
     protected float hp;
     public float Hp
-    
     {
         get => hp;
         set
@@ -25,11 +24,9 @@ public abstract class FragileEntity : MonoBehaviour
 
     private bool isDead = false;
 
-
     private void Start()
     {
         Hp = maxHp;
-        damagePopup = FindObjectOfType<DamagePopup>(true);
     }
 
 
@@ -46,12 +43,14 @@ public abstract class FragileEntity : MonoBehaviour
         Destroy(particleSystem_gameObject, 3);
     }
 
+
+
     // ����� ��������� ����� (��� "�����������" ����� �����������)
     public virtual void RecieveDamage(float amount)
     {
         Try_SpawnParticleSystemWithTimer(damageParticleSystemPrefab);
 
-        damagePopup.CreateDamageText(transform, amount);
+        PopupView.main.Try_CreateDamagePopup(this, amount);
 
         Hp -= amount;        
 

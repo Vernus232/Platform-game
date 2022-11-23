@@ -6,21 +6,25 @@ using UnityEngine.UI;
 
 public class DamagePopup : MonoBehaviour
 {
+    public float DamageAmount
+    {
+        get
+        {
+            return damageAmount;
+        }
+        set
+        {
+            damageAmount = value;
+            damageText.text = damageAmount.ToString("-00");
+        }
+    }
+    private float damageAmount;
+    
     [SerializeField] private Text damageText;
 
-    
-    public void CreateDamageText(Transform transform, float damage)
-    {
-        
-        Vector2 ViewportPosition = Cam.WorldToViewportPoint(WorldObject.transform.position);
-        Vector2 WorldObject_ScreenPosition=new Vector2(
-        ((ViewportPosition.x * CanvasRect.sizeDelta.x)-(CanvasRect.sizeDelta.x*0.5f)),
-        ((ViewportPosition.y * CanvasRect.sizeDelta.y)-(CanvasRect.sizeDelta.y*0.5f)));
 
-        //now you can set the position of the ui element
-        UI_Element.anchoredPosition = WorldObject_ScreenPosition;
-
-        damageText.text = damage.ToString("-00");
-        Instantiate(damageText, transform);
+    public void SetLifetime(float time){
+        Destroy(gameObject, time);
     }
+
 }
