@@ -5,7 +5,7 @@ using UnityEngine;
 // ��� ����������� ����� (��� �� ����� �� ���������, ������ ��� ������ �� ���� FragileEntity � ������� ���)
 public abstract class FragileEntity : MonoBehaviour
 {
-
+    private DamagePopup damagePopup;
     public float maxHp;
     protected float hp;
     public float Hp
@@ -29,6 +29,7 @@ public abstract class FragileEntity : MonoBehaviour
     private void Start()
     {
         Hp = maxHp;
+        damagePopup = FindObjectOfType<DamagePopup>(true);
     }
 
 
@@ -49,6 +50,8 @@ public abstract class FragileEntity : MonoBehaviour
     public virtual void RecieveDamage(float amount)
     {
         Try_SpawnParticleSystemWithTimer(damageParticleSystemPrefab);
+
+        damagePopup.CreateDamageText(transform, amount);
 
         Hp -= amount;        
 

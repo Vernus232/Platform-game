@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CommonProjectile : VanishingProjectile
 {
-        [Tooltip("Объект партикл системы при попадании")]
+        [Tooltip("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private GameObject obstacleHit_prefab;
     [SerializeField] private GameObject npcHit_prefab;
 
@@ -15,6 +15,7 @@ public class CommonProjectile : VanishingProjectile
     private Vector2 prevFrameVelocity;
     private Vector3 prevFramePosition;
 
+    
 
     public void SetParametersOnSpawn(Vector2 vel, Vector3 pos)
     {
@@ -32,11 +33,11 @@ public class CommonProjectile : VanishingProjectile
         prevFramePosition = transform.position;
     }
 
-    // Регистрация попадания во что-либо
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ
     [System.Obsolete]
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // В Obstacle
+        // пїЅ Obstacle
         if (collision.gameObject.layer == 3)
         {
             Color collisionColor = collision.gameObject.GetComponent<SpriteRenderer>().color;
@@ -47,7 +48,7 @@ public class CommonProjectile : VanishingProjectile
             return;
         }
 
-        // Во врага или декорации
+        // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (collision.gameObject.CompareTag("Enemy")  ||  collision.gameObject.CompareTag("Decoration"))
         {
             SpawnPrefab(npcHit_prefab);
@@ -87,13 +88,13 @@ public class CommonProjectile : VanishingProjectile
     }
 
     [System.Obsolete]
-    // Метод для спавна геймобщекта после исчезновения пули (Для взрывов и партиклов))
+    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ))
     private void SpawnPrefab(GameObject prefab)
     {
-        // Размещаем (Создаем его копию) префаб системы партиклов
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ) пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         GameObject obj = Instantiate(prefab, transform.position, transform.rotation);
 
-        // Запускаем анимацию выбранного инстанса(т.е. объект этого класса на сцене) партикл-системы
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ(пїЅ.пїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ) пїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ParticleSystem particleSystem = obj.GetComponent<ParticleSystem>();
         if (particleSystem)
         {
@@ -104,10 +105,10 @@ public class CommonProjectile : VanishingProjectile
     [System.Obsolete]
     private void SpawnPrefabWithColor(GameObject prefab, Color color)
     {
-        // Размещаем (Создаем его копию) префаб системы партиклов
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ) пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         GameObject obj = Instantiate(prefab, transform.position, transform.rotation);
 
-        // Запускаем анимацию выбранного инстанса(т.е. объект этого класса на сцене) партикл-системы
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ(пїЅ.пїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ) пїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ParticleSystem particleSystem = obj.GetComponent<ParticleSystem>();
         if (particleSystem)
         {
