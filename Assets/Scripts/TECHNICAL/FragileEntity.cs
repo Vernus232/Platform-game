@@ -50,7 +50,8 @@ public abstract class FragileEntity : MonoBehaviour
     {
         Try_SpawnParticleSystemWithTimer(damageParticleSystemPrefab);
 
-        PopupView.main.Try_CreateDamagePopup(this, amount);
+        if (GameOptions.damagePopupsOn)
+            PopupView.main.Try_CreateDamagePopup(this, amount);
 
         Hp -= amount;        
 

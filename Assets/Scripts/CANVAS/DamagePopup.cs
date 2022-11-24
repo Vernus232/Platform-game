@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class DamagePopup : MonoBehaviour
 {
     public float DamageAmount
@@ -17,7 +16,7 @@ public class DamagePopup : MonoBehaviour
             damageAmount = value;
             damageText.text = damageAmount.ToString("-00");
             SetScale(Mathf.RoundToInt(damageAmount) / 4);
-            SetColor(Mathf.RoundToInt(damageAmount) / 4);
+            SetColor(damageAmount / 4);
         }
     }
     private float damageAmount;

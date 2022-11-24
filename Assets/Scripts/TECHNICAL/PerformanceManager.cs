@@ -5,9 +5,9 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class PerformanceManager : MonoBehaviour
 {
-    [SerializeField] private float updateTime;
-    [SerializeField] private int maxLights;
-    [SerializeField] private int maxItems;
+    public float updateTime;
+    public int maxLights;
+    public int maxItems;
 
     private void Start()
     {
