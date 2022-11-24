@@ -33,7 +33,7 @@ public class DamagePopup : MonoBehaviour
         else
             damageText.fontSize = initialFS;
 
-        damageText.color = damageGradient.Evaluate(damageAmount / 4 / 50);
+        damageText.color = damageGradient.Evaluate(damageAmount / 4 / 500);
         
         float s(float x)
         {

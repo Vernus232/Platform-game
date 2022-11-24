@@ -15,6 +15,7 @@ public class MenuOptions : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = true;
         // Updating options on scene launch
         lightsSlider.value = GameOptions.maxLights;
         itemsSlider.value = GameOptions.maxItems;
