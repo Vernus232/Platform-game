@@ -55,7 +55,7 @@ public class WeaponView : MonoBehaviour
 
     public void UpdateUI()
     {
-        weaponNameText.text = "Current weapon:     " + currentWeapon.weaponName;
+        weaponNameText.text = currentWeapon.weaponName;
 
 
         if (currentWeapon.type == WeaponType.Burst)

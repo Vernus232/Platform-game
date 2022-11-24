@@ -75,15 +75,14 @@ public class WeaponChoose : MonoBehaviour
             TryChooseWeapon(9);
 
         if (Input.mouseScrollDelta.y > 0)
-            ChooseNextUnlockedWeapon();
-
-        if (Input.mouseScrollDelta.y < 0)
             ChoosePrevUnlockedWeapon();
+        if (Input.mouseScrollDelta.y < 0)
+            ChooseNextUnlockedWeapon();
     }
 
     private void ChooseNextUnlockedWeapon()
     {
-        // От текущего до последнего
+        // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         for (int index = ActiveWeaponIndex + 1; index < weaponUnlocks.Length; index++)
         {
             if (weaponUnlocks[index])
@@ -94,7 +93,7 @@ public class WeaponChoose : MonoBehaviour
             }
         }
 
-        //От первого до текущего
+        //пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         for (int index = 0; index <= ActiveWeaponIndex; index++)
         {
             if (weaponUnlocks[index])
@@ -108,7 +107,7 @@ public class WeaponChoose : MonoBehaviour
 
     private void ChoosePrevUnlockedWeapon()
     {
-        // От текущего до первого
+        // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         for (int index = ActiveWeaponIndex - 1; index >= 0; index--)
         {
             if (weaponUnlocks[index])
@@ -119,7 +118,7 @@ public class WeaponChoose : MonoBehaviour
             }
         }
 
-        //От первого до текущего
+        //пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         for (int index = weaponUnlocks.Length - 1; index >= ActiveWeaponIndex; index--)
         {
             if (weaponUnlocks[index])
