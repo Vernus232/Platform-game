@@ -14,9 +14,7 @@ public class DamagePopup : MonoBehaviour
         set
         {
             damageAmount = value;
-            damageText.text = damageAmount.ToString("-00");
-            SetScale(Mathf.RoundToInt(damageAmount) / 4);
-            SetColor(damageAmount / 4);
+            OnDamageChanged();
         }
     }
     private float damageAmount;
@@ -24,17 +22,51 @@ public class DamagePopup : MonoBehaviour
     [SerializeField] private Text damageText;
 
 
-    public void SetLifetime(float time){
-        Destroy(gameObject, time);
+    private void OnDamageChanged()
+    {
+        damageText.text = damageAmount.ToString("0");
+        
+        int MAX_FS = 200;
+        int initialFS = 20 + Mathf.RoundToInt(damageAmount / 4);            
+        if (initialFS > MAX_FS)
+            damageText.fontSize = MAX_FS;
+        else
+            damageText.fontSize = initialFS;
+
+        damageText.color = damageGradient.Evaluate(damageAmount / 4 / 50);
+        
+        float s(float x)
+        {
+            float k = 0.00235f;
+            float b = 0.3f;
+            return k*x + b;
+        }
+        float lifetime = s(damageAmount);
+        StartCoroutine(PopupLife(lifetime));  
     }
 
-    public void SetScale(int scaleValue)
+    private IEnumerator PopupLife(float lifetime)
     {
-        damageText.fontSize = 20 + scaleValue;
+        float UPDATE_STEP = 0.05f;
+        float P = 2;
+        int initialFontSize = damageText.fontSize;
+        float f(float x)
+        {
+            float m = Mathf.Pow(lifetime, -P);
+            return 1 - m * Mathf.Pow(x, P);
+        }
+
+        float t = 0;
+        while (t < lifetime)
+        {
+            damageText.fontSize = 1 + Mathf.RoundToInt(initialFontSize * f(t));
+            
+            yield return new WaitForSeconds(UPDATE_STEP);
+            t += UPDATE_STEP;
+        }
+        
+        Destroy(gameObject);
     }
 
-    public void SetColor(float value)
-    {
-        damageText.color = damageGradient.Evaluate(value / 50);
-    }
+
 }

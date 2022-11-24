@@ -67,7 +67,7 @@ public class PopupView : MonoBehaviour
 
         // Set popup parameters
         damagePopupGameObj.GetComponent<RectTransform>().anchoredPosition = WorldToScreenPos(position);
-        damagePopupGameObj.GetComponent<DamagePopup>().SetLifetime(damagePopupLifetime);
+        // damagePopupGameObj.GetComponent<DamagePopup>().Lifetime = damagePopupLifetime;
         damagePopupGameObj.GetComponent<DamagePopup>().DamageAmount = amount;
         
 

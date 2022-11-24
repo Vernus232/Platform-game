@@ -62,9 +62,9 @@ public class WeaponView : MonoBehaviour
         {
             BurstRangedWeapon burstWeapon = currentWeapon.GetComponent<BurstRangedWeapon>();
 
-            currentAmmo.text = burstWeapon.Ammo.ToString("00");
-            maxAmmo.text = burstWeapon.maxAmmo.ToString("00");
-            ammoOnCursor.text = burstWeapon.Ammo.ToString("00");
+            currentAmmo.text = burstWeapon.Ammo.ToString("0");
+            maxAmmo.text = burstWeapon.maxAmmo.ToString("0");
+            ammoOnCursor.text = burstWeapon.Ammo.ToString("0");
 
             ammoSlider.value = (float) burstWeapon.Ammo / (float) burstWeapon.maxAmmo * 100f;
         }
