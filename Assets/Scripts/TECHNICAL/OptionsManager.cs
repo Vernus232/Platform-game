@@ -17,6 +17,7 @@ public class OptionsManager : MonoBehaviour
         performanceManager = FindObjectOfType<PerformanceManager>();
         performanceManager.maxLights = GameOptions.maxLights;
         performanceManager.maxItems = GameOptions.maxItems;
+        performanceManager.maxEnemies = GameOptions.maxEnemies;
         performanceManager.updateTime = GameOptions.updateTime;
 
         // Crosshair prikolchiki

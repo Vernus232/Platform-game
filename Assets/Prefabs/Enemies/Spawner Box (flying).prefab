@@ -295,7 +295,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnStep: 5
+  minDistFromPlayer: 5
   prefab: {fileID: 7267947439652132932, guid: 6fbd734f705b2bf43a89fd8133a2b808, type: 3}
+  particleSysPrefab: {fileID: 6856103324233738395, guid: df707ca6472703c4eb4e7b506df9c27f, type: 3}
 --- !u!82 &-5470352063065629030
 AudioSource:
   m_ObjectHideFlags: 0

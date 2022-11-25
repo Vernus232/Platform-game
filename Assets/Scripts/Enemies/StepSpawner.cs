@@ -5,8 +5,10 @@ using UnityEngine;
 public class StepSpawner : MonoBehaviour
 {
     public float spawnStep;
+    [SerializeField] private float minDistFromPlayer = 5;
 
     [SerializeField] protected GameObject prefab;
+    [SerializeField] protected GameObject particleSysPrefab;
 
 
      
@@ -17,7 +19,7 @@ public class StepSpawner : MonoBehaviour
 
     protected void OnDisable()
     {
-        StopAllCoroutines(); // стопает все корутины в скрипте
+        StopAllCoroutines(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     }
 
     protected IEnumerator SpawnTicker()
@@ -45,10 +47,9 @@ public class StepSpawner : MonoBehaviour
         int fails = 0;
         while (fails < 100)
         {
-            if (collider.OverlapPoint(randomPoint))
+            if (collider.OverlapPoint(randomPoint)  &  Vector2.Distance(randomPoint, Player.main.transform.position) > minDistFromPlayer)
             {
-                GameObject instantiatedObj = Instantiate(prefab, randomPoint, prefab.transform.rotation);
-                instantiatedObj.SetActive(true);
+                StartCoroutine(DoSpawnEntity(randomPoint));
                 break;
             }
             else
@@ -59,7 +60,17 @@ public class StepSpawner : MonoBehaviour
         }
     }
 
-    
+    [System.Obsolete]
+    private IEnumerator DoSpawnEntity(Vector2 randomPoint)
+    {
+        Instantiate(particleSysPrefab, randomPoint, particleSysPrefab.transform.rotation);
+        float particleSystemLifetime = particleSysPrefab.GetComponent<ParticleSystem>().startLifetime;
+
+        yield return new WaitForSeconds(particleSystemLifetime);
+
+        GameObject instantiatedObj = Instantiate(prefab, randomPoint, prefab.transform.rotation);
+        instantiatedObj.SetActive(true);
+    }
 
 
 }

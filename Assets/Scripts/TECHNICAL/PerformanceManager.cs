@@ -45,7 +45,6 @@ public class PerformanceManager : MonoBehaviour
                 int e = 0;
                 foreach (Enemy enemy in enemies)
                 {
-                    print(enemies.Length);
                     if (Vector2.Distance(enemy.transform.position, Player.main.transform.position) > radiusOfDelete)
                     {
                         Destroy(enemy.gameObject);
