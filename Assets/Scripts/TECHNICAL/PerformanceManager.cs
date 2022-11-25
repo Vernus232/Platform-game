@@ -5,7 +5,9 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class PerformanceManager : MonoBehaviour
 {
+    public float radiusOfDelete;
     public float updateTime;
+    public int maxEnemies;
     public int maxLights;
     public int maxItems;
 
@@ -33,10 +35,24 @@ public class PerformanceManager : MonoBehaviour
 
             Item[] items = FindObjectsOfType<Item>();
             if (items.Length > maxItems)
-            {
                 foreach (Item item in items)
-                {
                     Destroy(item.gameObject);
+
+            Enemy[] enemies = FindObjectsOfType<Enemy>();
+            if (enemies.Length > maxEnemies)
+            {
+                int enemiesToDelete = enemies.Length - maxEnemies;
+                int e = 0;
+                foreach (Enemy enemy in enemies)
+                {
+                    print(enemies.Length);
+                    if (Vector2.Distance(enemy.transform.position, Player.main.transform.position) > radiusOfDelete)
+                    {
+                        Destroy(enemy.gameObject);
+                        e += 1;
+                        if (e >= enemiesToDelete)
+                            break;
+                    }
                 }
             }
         }

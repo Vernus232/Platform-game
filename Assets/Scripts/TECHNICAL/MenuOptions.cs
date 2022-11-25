@@ -8,6 +8,7 @@ public class MenuOptions : MonoBehaviour
 {
     [SerializeField] private Slider lightsSlider;
     [SerializeField] private Slider itemsSlider;
+    [SerializeField] private Slider enemiesSlider;
     [SerializeField] private Slider cycleSlider;
     [SerializeField] private Toggle popupsToggle;
     [SerializeField] private Toggle ammoToggle;
@@ -19,6 +20,7 @@ public class MenuOptions : MonoBehaviour
         // Updating options on scene launch
         lightsSlider.value = GameOptions.maxLights;
         itemsSlider.value = GameOptions.maxItems;
+        enemiesSlider.value = GameOptions.maxEnemies;
         cycleSlider.value = GameOptions.updateTime;
 
         popupsToggle.isOn = GameOptions.damagePopupsOn;
@@ -34,6 +36,10 @@ public class MenuOptions : MonoBehaviour
     public void ChangeMaxItems()
     {
         GameOptions.maxItems = Mathf.RoundToInt(itemsSlider.value);
+    }
+    public void ChangeMaxEnemies()
+    {
+        GameOptions.maxEnemies = Mathf.RoundToInt(enemiesSlider.value);
     }
     public void ChangeCheckCycle()
     {
