@@ -10,9 +10,11 @@ public class MenuOptions : MonoBehaviour
     [SerializeField] private Slider itemsSlider;
     [SerializeField] private Slider enemiesSlider;
     [SerializeField] private Slider cycleSlider;
+    [SerializeField] private Slider radiusSlider;
     [SerializeField] private Toggle popupsToggle;
     [SerializeField] private Toggle ammoToggle;
     [SerializeField] private Toggle reloadToggle;
+    [SerializeField] private Toggle particlesToggle;
 
     private void Start()
     {
@@ -22,10 +24,12 @@ public class MenuOptions : MonoBehaviour
         itemsSlider.value = GameOptions.maxItems;
         enemiesSlider.value = GameOptions.maxEnemies;
         cycleSlider.value = GameOptions.updateTime;
+        radiusSlider.value = GameOptions.circleRadius;
 
         popupsToggle.isOn = GameOptions.damagePopupsOn;
         ammoToggle.isOn = GameOptions.ammoOnCrosshairOn;
         reloadToggle.isOn = GameOptions.reloadOnCrosshairOn;
+        particlesToggle.isOn = GameOptions.Particles;
     }
 
 #region Methods
@@ -45,6 +49,10 @@ public class MenuOptions : MonoBehaviour
     {
         GameOptions.updateTime = Mathf.RoundToInt(cycleSlider.value);
     }
+    public void ChangeCircleRadius()
+    {
+        GameOptions.circleRadius = Mathf.RoundToInt(radiusSlider.value);
+    }
     public void ChangePopups()
     {
         GameOptions.damagePopupsOn = popupsToggle.isOn;
@@ -56,6 +64,10 @@ public class MenuOptions : MonoBehaviour
     public void ChangeReloadOnCrosshair()
     {
         GameOptions.reloadOnCrosshairOn = reloadToggle.isOn;
+    }
+    public void ChangeParticles()
+    {
+        GameOptions.Particles = particlesToggle.isOn;
     }
 #endregion
 }

@@ -11,7 +11,7 @@ public class StepSpawner : MonoBehaviour
     [SerializeField] protected GameObject particleSysPrefab;
 
 
-     
+    
     protected virtual void OnEnable()
     {
         StartCoroutine("SpawnTicker");
@@ -47,30 +47,36 @@ public class StepSpawner : MonoBehaviour
         int fails = 0;
         while (fails < 100)
         {
-            if (collider.OverlapPoint(randomPoint)  &  Vector2.Distance(randomPoint, Player.main.transform.position) > minDistFromPlayer)
+            if (Player.main)
             {
-                StartCoroutine(DoSpawnEntity(randomPoint));
-                break;
+                if (collider.OverlapPoint(randomPoint)  &  Vector2.Distance(randomPoint, Player.main.transform.position) > minDistFromPlayer)
+                {
+                    StartCoroutine(DoSpawnEntity(randomPoint));
+                    break;
+                }
+                else
+                {
+                    randomPoint = create_randomPoint_in_bounds();
+                    fails++;
+                } 
             }
-            else
-            {
-                randomPoint = create_randomPoint_in_bounds();
-                fails++;
-            }
+            
         }
     }
 
     [System.Obsolete]
     private IEnumerator DoSpawnEntity(Vector2 randomPoint)
     {
-        Instantiate(particleSysPrefab, randomPoint, particleSysPrefab.transform.rotation);
-        float particleSystemLifetime = particleSysPrefab.GetComponent<ParticleSystem>().startLifetime;
+        if (GameOptions.Particles)
+        {
+            Instantiate(particleSysPrefab, randomPoint, particleSysPrefab.transform.rotation);
+            float particleSystemLifetime = particleSysPrefab.GetComponent<ParticleSystem>().startLifetime;
 
-        yield return new WaitForSeconds(particleSystemLifetime);
+            yield return new WaitForSeconds(particleSystemLifetime);
+        }
+        
 
         GameObject instantiatedObj = Instantiate(prefab, randomPoint, prefab.transform.rotation);
         instantiatedObj.SetActive(true);
     }
-
-
 }

@@ -13,9 +13,12 @@ public static class GameOptions
 
     // Time between checking items and lights
     public static float updateTime = 5;
+    // Radius of circle where enemies do not destroy
+    public static int circleRadius = 20;
 
 
     public static bool damagePopupsOn = true;
     public static bool ammoOnCrosshairOn = true;
     public static bool reloadOnCrosshairOn = true;
+    public static bool Particles = true;
 }

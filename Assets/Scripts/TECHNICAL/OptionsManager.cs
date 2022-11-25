@@ -19,6 +19,7 @@ public class OptionsManager : MonoBehaviour
         performanceManager.maxItems = GameOptions.maxItems;
         performanceManager.maxEnemies = GameOptions.maxEnemies;
         performanceManager.updateTime = GameOptions.updateTime;
+        performanceManager.radiusOfDelete = GameOptions.circleRadius;
 
         // Crosshair prikolchiki
         crosshairReloadingSlider = FindObjectOfType<SimpleCrosshair>().GetComponentInChildren<Slider>();
