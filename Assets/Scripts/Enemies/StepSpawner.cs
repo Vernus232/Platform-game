@@ -27,8 +27,9 @@ public class StepSpawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(spawnStep);
-            Spawn();
-        }
+            if (Player.main)
+                Spawn();
+        }        
     }
 
     protected void Spawn()
@@ -47,20 +48,16 @@ public class StepSpawner : MonoBehaviour
         int fails = 0;
         while (fails < 100)
         {
-            if (Player.main)
+            if (collider.OverlapPoint(randomPoint)  &  Vector2.Distance(randomPoint, Player.main.transform.position) > minDistFromPlayer)
             {
-                if (collider.OverlapPoint(randomPoint)  &  Vector2.Distance(randomPoint, Player.main.transform.position) > minDistFromPlayer)
-                {
-                    StartCoroutine(DoSpawnEntity(randomPoint));
-                    break;
-                }
-                else
-                {
-                    randomPoint = create_randomPoint_in_bounds();
-                    fails++;
-                } 
+                StartCoroutine(DoSpawnEntity(randomPoint));
+                break;
             }
-            
+            else
+            {
+                randomPoint = create_randomPoint_in_bounds();
+                fails++;
+            }             
         }
     }
 
