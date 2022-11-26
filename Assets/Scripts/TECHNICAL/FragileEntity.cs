@@ -5,7 +5,6 @@ using UnityEngine;
 // ��� ����������� ����� (��� �� ����� �� ���������, ������ ��� ������ �� ���� FragileEntity � ������� ���)
 public abstract class FragileEntity : MonoBehaviour
 {
-    private DamagePopup damagePopup;
     public float maxHp;
     protected float hp;
     public float Hp
