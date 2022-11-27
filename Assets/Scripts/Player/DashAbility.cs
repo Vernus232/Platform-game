@@ -56,7 +56,7 @@ public class DashAbility : MonoBehaviour
         Vector2 playerPos = transform.position;
         Vector2 dashDirection = (mousePos - playerPos).normalized;
 
-        playerRb.velocity = dashSpeed * dashDirection;
+        playerRb.AddForce(dashSpeed * dashDirection, ForceMode2D.Impulse);
 
 
         float dashDist = (mousePos - playerPos).magnitude;
