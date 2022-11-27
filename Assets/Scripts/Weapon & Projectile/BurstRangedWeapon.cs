@@ -127,12 +127,12 @@ public class BurstRangedWeapon : Weapon
 
     private void FixedUpdate()
     {
-        #region �������� ������
+        #region Recoil
         float ModifiedRecoilReductionWithTime = recoilReductionWithTime * Player.main.AccuracyModifier;
         recoil -= ModifiedRecoilReductionWithTime;
-
-        if (recoil < minWeaponRecoil)
-            recoil = minWeaponRecoil;
+        
+        if (recoil < minWeaponRecoil - Player.main.AccuracyModifier + 1)
+            recoil = minWeaponRecoil - Player.main.AccuracyModifier + 1;
 
         if (recoil > maxWeaponRecoil)
             recoil = maxWeaponRecoil;

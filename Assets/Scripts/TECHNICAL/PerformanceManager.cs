@@ -22,6 +22,9 @@ public class PerformanceManager : MonoBehaviour
         {
             yield return new WaitForSeconds(updateTime);
 
+            if (!Player.main)
+                break;
+            
             Light2D[] lights = FindObjectsOfType<Light2D>();
             if (lights.Length > maxLights)
             {
