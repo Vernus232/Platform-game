@@ -14,7 +14,7 @@ public class StepSpawner : MonoBehaviour
     
     protected virtual void OnEnable()
     {
-        StartCoroutine("SpawnTicker");
+        StartCoroutine(SpawnTicker());
     }
 
     protected void OnDisable()
