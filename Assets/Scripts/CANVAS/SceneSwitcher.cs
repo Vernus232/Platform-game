@@ -7,6 +7,7 @@ public class SceneSwitcher : MonoBehaviour
 {
     public void LoadScene(int i)
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(i);
     }
 
@@ -17,6 +18,6 @@ public class SceneSwitcher : MonoBehaviour
 
     public void RestartCurrentScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

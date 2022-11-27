@@ -8,11 +8,13 @@ public class PauseCaster : MonoBehaviour
 {
     [SerializeField] private GameObject crosshairGameObject;
     [SerializeField] private GameObject pauseScreen;
+    [HideInInspector] public static PauseCaster main;
     private RukiPivot rukiPivo;
     private WeaponChoose weaponChoose;
 
     private void Start()
     {
+        main = this;
         rukiPivo = FindObjectOfType<RukiPivot>();
         weaponChoose = FindObjectOfType<WeaponChoose>();
     }
@@ -48,6 +50,7 @@ public class PauseCaster : MonoBehaviour
     }
     public void Exit()
     {
+        
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
     }
@@ -57,4 +60,14 @@ public class PauseCaster : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
     }
+
+    public void FreezeGame(){
+        Time.timeScale = 0;
+    }
+    public void OnPlayerDeath(){
+        Invoke("FreezeGame", 1f);
+    }
+
+
+    
 }

@@ -260,10 +260,17 @@ public class Player : FragileEntity
     }
     #endregion
 
-    private void OnDestroy()
+    protected override void Die()
     {
-        if (deathscreenView)
-            deathscreenView.gameObject.SetActive(true);
+        PauseCaster.main.OnPlayerDeath();
+
+        deathscreenView.gameObject.SetActive(true);
+
+        base.Die();
+    }
+
+    public void DieFromDeathline(){
+        Die();
     }
 
     public override void OnHpChanged()

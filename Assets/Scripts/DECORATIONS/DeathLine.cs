@@ -6,6 +6,13 @@ public class DeathLine : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
+        if (collision.CompareTag("Player")){
+            collision.gameObject.GetComponent<Player>().DieFromDeathline();
+        }
+        else{
+            Destroy(collision.gameObject);
+        }
+
+
     }
 }
