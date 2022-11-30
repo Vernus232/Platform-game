@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
 using System;
+using System.Linq;
 
-public static class SaverV2
+public static class Saver
 {
     private static string path = Application.persistentDataPath + "/Scores.txt";
 
@@ -36,7 +36,9 @@ public static class SaverV2
         {
             string line = sr.ReadLine();
             string[] string_scores = line.Split(';');
-            int[] scores = Array.ConvertAll(string_scores, s => int.Parse(s));
+            string[] sliced_string_scores = string_scores.Take(string_scores.Length - 1).ToArray<string>();
+            int[] scores = Array.ConvertAll(sliced_string_scores, int.Parse);
+            
             return scores;
         }
     }
