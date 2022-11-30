@@ -39,7 +39,8 @@ public class ScoreSystem : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Score += scoreIncreaseOverTime;
+        if (Player.main)
+            Score += scoreIncreaseOverTime;
     }
 
     public void AddScoreForKill(float addScore)

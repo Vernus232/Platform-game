@@ -7,8 +7,9 @@ using ZSerializer;
 
 public class LeaderboardView : PersistentMonoBehaviour
 {
+    [NonZSerialized] public Button pressbutt;
     [NonZSerialized] [SerializeField] private Text[] texts;
-    [SerializeField] private int[] scores;
+    public int[] scores;
 
     private void Start()
     {
@@ -16,5 +17,10 @@ public class LeaderboardView : PersistentMonoBehaviour
         {
             texts[i].text = i.ToString() + ". " + scores[i].ToString();
         }
+    }
+
+    public void ButtonClick(int value)
+    {
+        scores[1] = value;
     }
 }

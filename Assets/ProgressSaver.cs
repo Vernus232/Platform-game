@@ -10,8 +10,9 @@ public class ProgressSaver : MonoBehaviour
         main = this;
     }
 
-    public void SaveProgress(){
-        // ScoreSystem.main.Score;
+    public void SaveProgress()
+    {
+        
     }
 
 
