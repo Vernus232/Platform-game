@@ -32,5 +32,8 @@ public class DeathscreenView : MonoBehaviour
         interactionBlock.SetActive(false);
     }
 
-
+    public void SaveScore()
+    {
+        SaverV2.SaveScores();
+    }
 }

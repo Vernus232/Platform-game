@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using ZSerializer;
 
 
-public class LeaderboardView : PersistentMonoBehaviour
+public class LeaderboardView : MonoBehaviour
 {
-    [NonZSerialized] public Button pressbutt;
-    [NonZSerialized] [SerializeField] private Text[] texts;
+    [SerializeField] private Text[] texts;
     public int[] scores;
 
     private void Start()
@@ -19,8 +17,9 @@ public class LeaderboardView : PersistentMonoBehaviour
         }
     }
 
-    public void ButtonClick(int value)
+    public void LoadScore()
     {
-        scores[1] = value;
+        int[] newScores = SaverV2.LoadScores();
     }
+
 }

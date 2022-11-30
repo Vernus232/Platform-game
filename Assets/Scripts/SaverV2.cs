@@ -4,10 +4,10 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SaverV2 : MonoBehaviour
+public static class SaverV2
 {
-    [SerializeField] private static int[] scores;
-    private static string path = "D:/Exponenta-Data/Scores.txt";
+    public static int[] scores;
+    private static string path = Application.persistentDataPath + "/Scores.txt";
 
 
     public static void SaveScores()
@@ -26,12 +26,10 @@ public class SaverV2 : MonoBehaviour
             {
                 sw.Write(Mathf.RoundToInt(ScoreSystem.main.Score) + ";");
             }
-            print(ScoreSystem.main.Score);
-            print("Saved successfully!");
         }
     }
 
-    public static void LoadScores()
+    public static int[] LoadScores()
     {
         // Open the file to read from.
         using (StreamReader sr = File.OpenText(path))
@@ -42,9 +40,10 @@ public class SaverV2 : MonoBehaviour
                 while ((s = sr.ReadLine()) != ";")
                 {
                     int.TryParse(s, out scores[i]);
-                    print(int.TryParse(s, out scores[i]));
+                    Debug.Log(int.TryParse(s, out scores[i]));
                 }
             }
+            return scores;
         }
     }
 }
