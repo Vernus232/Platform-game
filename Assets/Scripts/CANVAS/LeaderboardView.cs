@@ -19,7 +19,7 @@ public class LeaderboardView : MonoBehaviour
 
     public void LoadScore()
     {
-        int[] newScores = SaverV2.LoadScores();
+        scores = SaverV2.LoadScores();
     }
 
 }

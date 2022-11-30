@@ -34,6 +34,6 @@ public class DeathscreenView : MonoBehaviour
 
     public void SaveScore()
     {
-        SaverV2.SaveScores();
+        SaverV2.SaveScore();
     }
 }
