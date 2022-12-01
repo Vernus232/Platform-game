@@ -10,6 +10,7 @@ public class PauseCaster : MonoBehaviour
     [SerializeField] private GameObject pauseScreen;
     [HideInInspector] public static PauseCaster main;
     private RukiPivot rukiPivo;
+    private bool paused;
     private WeaponChoose weaponChoose;
 
     private void Start()
@@ -23,7 +24,10 @@ public class PauseCaster : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pause();
+            if (!paused)
+                Pause();
+            else
+                Resume();
         }
     }
 
@@ -35,6 +39,7 @@ public class PauseCaster : MonoBehaviour
         weaponChoose.currentWeapon.enabled = false;
         weaponChoose.enabled = false;
         crosshairGameObject.SetActive(false);
+        paused = true;
         Cursor.visible = true;
     }
     
@@ -45,6 +50,7 @@ public class PauseCaster : MonoBehaviour
         rukiPivo.enabled = true;
         weaponChoose.currentWeapon.enabled = true;
         weaponChoose.enabled = true;
+        paused = false;
         Cursor.visible = false;
         crosshairGameObject.SetActive(true);
     }
