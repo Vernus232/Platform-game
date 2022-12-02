@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class GameOptions
 {
+#region Ingame
     // Max lights on scene
     public static int maxLights = 50;
     // Max items on scene
@@ -21,4 +22,11 @@ public static class GameOptions
     public static bool ammoOnCrosshairOn = true;
     public static bool reloadOnCrosshairOn = true;
     public static bool Particles = true;
+#endregion
+
+#region Graphics
+    // Game framerate (fps)
+    public static int Framerate = -1;
+    public static int FpsDropdownValue;
+#endregion
 }

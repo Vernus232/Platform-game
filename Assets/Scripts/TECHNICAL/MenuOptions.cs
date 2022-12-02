@@ -15,6 +15,7 @@ public class MenuOptions : MonoBehaviour
     [SerializeField] private Toggle ammoToggle;
     [SerializeField] private Toggle reloadToggle;
     [SerializeField] private Toggle particlesToggle;
+    [SerializeField] private Dropdown fpsDropdown;
 
     private void Start()
     {
@@ -30,6 +31,8 @@ public class MenuOptions : MonoBehaviour
         ammoToggle.isOn = GameOptions.ammoOnCrosshairOn;
         reloadToggle.isOn = GameOptions.reloadOnCrosshairOn;
         particlesToggle.isOn = GameOptions.Particles;
+
+        fpsDropdown.value = GameOptions.FpsDropdownValue;
     }
 
 #region Methods
@@ -68,6 +71,24 @@ public class MenuOptions : MonoBehaviour
     public void ChangeParticles()
     {
         GameOptions.Particles = particlesToggle.isOn;
+    }
+
+    // Может как-то попроще можно сделать? не оч приятно.
+    public void ChangeFramerate(int value)
+    {
+        if (value == 0)
+            Application.targetFrameRate = -1;
+        if (value == 1)
+            Application.targetFrameRate = 30;
+        if (value == 2)
+            Application.targetFrameRate = 60;
+        if (value == 3)
+            Application.targetFrameRate = 90;
+        if (value == 4)
+            Application.targetFrameRate = 120;
+        if (value == 5)
+            Application.targetFrameRate = 144;
+        GameOptions.FpsDropdownValue = value;
     }
 #endregion
 }
