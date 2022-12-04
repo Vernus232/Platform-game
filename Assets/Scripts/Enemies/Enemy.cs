@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : FragileEntity
 {
+    public MobEnum name;
     [SerializeField] private float scoreForKill;
 
 

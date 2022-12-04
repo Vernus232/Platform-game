@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpawnLevel : MonoBehaviour
 {
     public List<SpawnWave> spawnWaves;
-    private SpawnInstantiator spawnInstantiator;
 
     private void Start() 
     {
@@ -15,6 +14,16 @@ public class SpawnLevel : MonoBehaviour
     private void InvokeWaves()
     {
         foreach (SpawnWave spawnWave in spawnWaves)
-            Invoke("spawnInstantiator.StartWave(spawnWave)", spawnWave.duration * 60);
+
+            InvokeWave(spawnWave, spawnWave.duration * 60);
     }
+
+    private IEnumerator InvokeWave(SpawnWave wave, float time)
+    {
+        yield return new WaitForSeconds(time);
+        SpawnInstantiator.main.InstantiateWave(wave);
+    }
+
+
+
 }
