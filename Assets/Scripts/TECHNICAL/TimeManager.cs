@@ -5,6 +5,7 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour
 {
     [SerializeField] private float winTimescaleSlowdownTime;
+    public float currentGameTime = 0;
 
     public static TimeManager main;
 
@@ -36,5 +37,10 @@ public class TimeManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public IEnumerator GameTime()
+    {
+        yield return new WaitForSeconds(1);
+        currentGameTime += 1;
+    }
 
 }
