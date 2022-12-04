@@ -14,8 +14,9 @@ public class SpawnLevel : MonoBehaviour
     private void InvokeWaves()
     {
         foreach (SpawnWave spawnWave in spawnWaves)
-
-            InvokeWave(spawnWave, spawnWave.duration * 60);
+        {
+            StartCoroutine(InvokeWave(spawnWave, spawnWave.offset * 60));
+        }
     }
 
     private IEnumerator InvokeWave(SpawnWave wave, float time)

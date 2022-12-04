@@ -5,7 +5,8 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour
 {
     [SerializeField] private float winTimescaleSlowdownTime;
-    public float currentGameTime = 0;
+    public float currentGameTimeInSeconds = 0;
+    public float currentGameTimeInMinutes = 0;
 
     public static TimeManager main;
 
@@ -13,6 +14,8 @@ public class TimeManager : MonoBehaviour
     private void Start()
     {
         main = this;
+
+        StartCoroutine(GameTime());
     }
 
     public void OnWin()
@@ -39,8 +42,12 @@ public class TimeManager : MonoBehaviour
 
     public IEnumerator GameTime()
     {
-        yield return new WaitForSeconds(1);
-        currentGameTime += 1;
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            currentGameTimeInSeconds += 1;
+            currentGameTimeInMinutes += 1/60f;
+        }
     }
 
 }

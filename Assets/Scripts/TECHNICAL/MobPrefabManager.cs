@@ -28,7 +28,7 @@ public class MobPrefabManager : MonoBehaviour
         {
             foreach (Enemy enemy in Resources.LoadAll<Enemy>("Enemies"))
             {
-                if ((int)enemy.name == i)
+                if ((int)enemy.type == i)
                 {
                     mobEnumPrefabDict.Add((MobEnum)i, enemy.gameObject);
                     break;

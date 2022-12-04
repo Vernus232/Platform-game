@@ -18,10 +18,6 @@ public class ScoreSystem : MonoBehaviour
             score = value;
             ScoreView.main.UpdateUIScore(score);
             LevelSystem.main.OnScoreChanged();
-            foreach (SpawnManager spawnManager in spawnManagers)
-            {
-                spawnManager.OnScoreChanged();
-            }
         }
     }
 

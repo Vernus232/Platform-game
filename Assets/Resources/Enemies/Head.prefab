@@ -335,7 +335,8 @@ MonoBehaviour:
   maxHp: 15
   damageParticleSystemPrefab: {fileID: 0}
   deathParticleSystemPrefab: {fileID: 6856103324233738395, guid: 9687e27e713336d488206ad4b1d0cebc, type: 3}
-  name: 1
+  type: 1
+  difficulty: 0.5
   scoreForKill: 100
 --- !u!82 &-6922319159595013887
 AudioSource:

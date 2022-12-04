@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class DifficultyManager : MonoBehaviour
 {
-    public float initialTheoreticalDifficulty;
-    public float theoreticalDifficultyIncrease;
-    public float difficultyCorridorSize;
-    public int checkStep;
+    [SerializeField] private float initialTheoreticalDifficulty;
+    [SerializeField] private float theoreticalDifficultyIncrease;
+    [SerializeField] private float difficultyCorridorPercent;
+    [SerializeField] private int checkStep;
+    [SerializeField] private float difficultyToCorrectionCoef;
+    private TimeManager timeManager;
+
 
     private void Start() 
     {
+        timeManager = FindObjectOfType<TimeManager>();
+
         StartCoroutine(Check(checkStep));
     }
 
@@ -19,20 +24,24 @@ public class DifficultyManager : MonoBehaviour
         while (true)
         {
             float currentDifficulty = CalculateCurrentDifficulty();
-            float theoreticalDifficulty = CalculateTheoreticalDifficulty(TimeManager.main.currentGameTime);
+            float theoreticalDifficulty = CalculateTheoreticalDifficulty(timeManager.currentGameTimeInMinutes);
 
             yield return new WaitForSeconds(step);
 
-            if (currentDifficulty - theoreticalDifficulty > difficultyCorridorSize)
+            float corridor = theoreticalDifficulty * difficultyCorridorPercent / 100;
+            if (currentDifficulty - theoreticalDifficulty > corridor)
             {
-                float amount = currentDifficulty - (theoreticalDifficulty + difficultyCorridorSize);
+                float amount = currentDifficulty - (theoreticalDifficulty + corridor);
                 CorrectDifficulty(-amount);
             }
-            if (currentDifficulty - theoreticalDifficulty < -difficultyCorridorSize)
+            if (currentDifficulty - theoreticalDifficulty < -corridor)
             {
-                float amount = (theoreticalDifficulty - difficultyCorridorSize) - currentDifficulty;
+                float amount = (theoreticalDifficulty - corridor) - currentDifficulty;
                 CorrectDifficulty(amount);
             }
+        
+            // print("theoreticalDifficulty = " + theoreticalDifficulty.ToString());
+            // print("currentDifficulty = " + currentDifficulty.ToString() + "\n");
         }
         
     }
@@ -42,7 +51,7 @@ public class DifficultyManager : MonoBehaviour
         float currentDifficulty = 0;
         foreach (Enemy enemy in FindObjectsOfType<Enemy>())
         {
-            currentDifficulty += 1;
+            currentDifficulty += enemy.difficulty;
         }
         return currentDifficulty;
     }
@@ -53,8 +62,10 @@ public class DifficultyManager : MonoBehaviour
         return theoreticalDifficulty;
     }
 
-    private void CorrectDifficulty(float amount)
+    private void CorrectDifficulty(float difficultyAmount)
     {
-        theoreticalDifficultyIncrease += amount;
+        float correctionMult = 1 + difficultyAmount * difficultyToCorrectionCoef;
+        SpawnInstantiator.main.difficultyMultiplier *= correctionMult;
+        print("difficultyMultiplier = " + SpawnInstantiator.main.difficultyMultiplier.ToString());
     }
 }

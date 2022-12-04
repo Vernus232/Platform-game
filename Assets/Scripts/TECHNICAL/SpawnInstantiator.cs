@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnInstantiator : MonoBehaviour
 {
-    public float dificultyMultiplier = 1;
+    public float difficultyMultiplier = 1;
 
     [SerializeField] private GameObject particleSysPrefab;
     private SpawnField[] spawnFields; 
@@ -28,7 +28,18 @@ public class SpawnInstantiator : MonoBehaviour
         float[] defaultSpawnRates = new float[mobEnums.Length];
         for (int i = 0; i < defaultSpawnRates.Length; i++)
         {
-            float mobCount = (int)(wave.mobMix.mobOdds[i] * wave.scale);
+            float SumIntArray(int[] arr)
+            {
+                int sum = 0;
+                foreach (int x in arr)
+                {
+                    sum += x;
+                }
+
+                return sum;
+            }
+            float mobProbability = wave.mobMix.mobOdds[i] / SumIntArray(wave.mobMix.mobOdds);
+            float mobCount = (int)(mobProbability * wave.scale);
             float spawnRate = mobCount / wave.duration;
             defaultSpawnRates[i] = spawnRate;
         }
@@ -36,28 +47,36 @@ public class SpawnInstantiator : MonoBehaviour
         // Spawn all the mob enums in separate coroutines
         for (int i = 0; i < mobEnums.Length; i++)
         {
-            float modifiedSpawnRate = defaultSpawnRates[i] * dificultyMultiplier;
+            float modifiedSpawnRate = defaultSpawnRates[i];
             StartCoroutine(Spawning(mobEnums[i], modifiedSpawnRate, wave.duration));   
         }
     }
 
 
-    private IEnumerator Spawning(MobEnum mobEnum, float mobsPerMinute, float duration)
+    private IEnumerator Spawning(MobEnum mobEnum, float mobs_perMinute, float durationInMinutes)
     {
-        float SPAWN_STEP = 0.2f;
-
-        float mobsPerSpawnStep_float = mobsPerMinute / 60 * SPAWN_STEP;
-        int mobsPerSpawnStep = Mathf.RoundToInt(mobsPerSpawnStep_float);
-
-        for (float t = 0; t < duration; t += SPAWN_STEP)
+        float SPAWN_STEP = 1f;
+        float mobParts_perSpawnStep = mobs_perMinute / 60 * SPAWN_STEP;
+        
+        float mobParts = 0;
+        for (float t = 0; t < durationInMinutes * 60; t += SPAWN_STEP)
         {
-            SpawnMobs(mobEnum, mobsPerSpawnStep);
+            // If we can spawn one whole mob
+            if (mobParts >= 1)
+            {
+                int wholeMobs = (int) mobParts;
+                mobParts -= wholeMobs;
+                SpawnMobs(mobEnum, wholeMobs);
+            }
+
+            // Adding mob part
+            mobParts += mobParts_perSpawnStep * difficultyMultiplier;
             yield return new WaitForSeconds(SPAWN_STEP);
         }
     }
     private void SpawnMobs(MobEnum mobEnum, int count)
     {
-        for (int i = 0; i <= count; i++)
+        for (int i = 0; i < count; i++)
         {
             SpawnMob(mobEnum);
         }
