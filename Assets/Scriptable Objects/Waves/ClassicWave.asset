@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cca9293b4f436c44a171145ec731268, type: 3}
-  m_Name: SpawnWave 3
+  m_Name: ClassicWave
   m_EditorClassIdentifier: 
-  offset: 3
-  duration: 3
-  scale: 30
-  mobMix: {fileID: 11400000, guid: 16e95c2e293be7f43b93748baa45ae26, type: 2}
+  offset: 0
+  duration: 1
+  scale: 20
+  mobMix: {fileID: 11400000, guid: 78ac483050c8bf34e87ec55e2dab9294, type: 2}

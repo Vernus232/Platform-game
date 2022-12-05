@@ -22,6 +22,7 @@ public class SpawnLevel : MonoBehaviour
     private IEnumerator InvokeWave(SpawnWave wave, float time)
     {
         yield return new WaitForSeconds(time);
+        print(wave + "Has started!");
         SpawnInstantiator.main.InstantiateWave(wave);
     }
 
