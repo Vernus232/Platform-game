@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class PerformanceManager : MonoBehaviour
 {
@@ -25,10 +25,10 @@ public class PerformanceManager : MonoBehaviour
             if (!Player.main)
                 break;
             
-            Light2D[] lights = FindObjectsOfType<Light2D>();
+            UnityEngine.Rendering.Universal.Light2D[] lights = FindObjectsOfType<UnityEngine.Rendering.Universal.Light2D>();
             if (lights.Length > maxLights)
             {
-                foreach (Light2D light in lights)
+                foreach (UnityEngine.Rendering.Universal.Light2D light in lights)
                 {
                     if (light.GetComponentInParent<Item>())
                         Destroy(light);

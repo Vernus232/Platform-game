@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
+    public ItemEnum type;
     [SerializeField] private float timeToLive = 30;
 
     private void Awake()

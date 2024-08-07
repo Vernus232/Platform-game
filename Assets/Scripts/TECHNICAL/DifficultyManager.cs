@@ -15,7 +15,6 @@ public class DifficultyManager : MonoBehaviour
     private void Start() 
     {
         timeManager = FindObjectOfType<TimeManager>();
-
         StartCoroutine(Check(checkStep));
     }
 

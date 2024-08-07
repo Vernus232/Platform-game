@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using SpawnNamespace;
 
 
 [CreateAssetMenu(fileName = "SpawnMobMix", menuName = "Spawn/SpawnMobMix", order = 0)]
-public class SpawnMobMix : ScriptableObject
+public class SpawnMobMix : SpawnMix
 {
-    public MobEnum[] mobNames;
-    public int[] mobOdds;
+    public MobEnum[] names;
 }

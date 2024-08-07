@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47a439e2bdcca9d42ada4ed7302285d1, type: 3}
-  m_Name: Classic
+  m_Script: {fileID: 11500000, guid: 6cca9293b4f436c44a171145ec731268, type: 3}
+  m_Name: MainHpWave
   m_EditorClassIdentifier: 
-  odds: 0100000001000000
-  names: 0000000001000000
+  offset: 0
+  duration: 100
+  scale: 60
+  mobMix: {fileID: 11400000, guid: 8d9f4875b6eb41f4e86bf536b7527267, type: 2}

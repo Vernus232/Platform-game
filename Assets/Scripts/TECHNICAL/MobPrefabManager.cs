@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,15 +14,12 @@ public enum MobEnum
 public class MobPrefabManager : MonoBehaviour
 {
     [HideInInspector] public static MobPrefabManager main;
-
     private Dictionary<MobEnum, GameObject> mobEnumPrefabDict = new Dictionary<MobEnum, GameObject>();
     
-
     private void Start() 
     {
         main = this;
 
-        #region Fill mobEnumPrefabDict
         for (int i = 0; i < (int)MobEnum.End; i++)
         {
             foreach (Enemy enemy in Resources.LoadAll<Enemy>("Enemies"))
@@ -35,15 +31,10 @@ public class MobPrefabManager : MonoBehaviour
                 }
             }
         }
-        #endregion
     }
 
-    
-    
-
-    public GameObject GetMobPrefab(MobEnum mobEnum)
+    public GameObject GetPrefab(MobEnum mobEnum)
     {
         return mobEnumPrefabDict[mobEnum];
     }
-
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class UpgradableTurret : UpgradableEntity
 {
@@ -13,13 +13,13 @@ public class UpgradableTurret : UpgradableEntity
     private float startDmg;
     private float startLightrange;
     private DamagingField dmgField;
-    private Light2D light2d;
+    private UnityEngine.Rendering.Universal.Light2D light2d;
 
 
     private void Start()
     {
         dmgField = GetComponentInChildren<DamagingField>();
-        light2d = GetComponentInChildren<Light2D>();
+        light2d = GetComponentInChildren<UnityEngine.Rendering.Universal.Light2D>();
 
         startDmg = dmgField.damage;
         startLightrange = light2d.pointLightOuterRadius;

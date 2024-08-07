@@ -11,18 +11,16 @@ public class SpawnInstantiator : MonoBehaviour
     [HideInInspector] public static SpawnInstantiator main;
 
 
-
     private void Start() 
     {
         main = this;
-
         spawnFields = FindObjectsOfType<SpawnField>();
     }
 
     public void InstantiateWave(SpawnWave wave)
     {
         // Get mob names
-        MobEnum[] mobEnums = wave.mobMix.mobNames;
+        MobEnum[] mobEnums = wave.mobMix.names;
 
         // Compute default spawnRates
         float[] defaultSpawnRates = new float[mobEnums.Length];
@@ -38,7 +36,7 @@ public class SpawnInstantiator : MonoBehaviour
 
                 return sum;
             }
-            float mobProbability = wave.mobMix.mobOdds[i] / SumIntArray(wave.mobMix.mobOdds);
+            float mobProbability = wave.mobMix.odds[i] / SumIntArray(wave.mobMix.odds);
             float mobCount = (int)(mobProbability * wave.scale);
             float spawnRate = mobCount / wave.duration;
             defaultSpawnRates[i] = spawnRate;
@@ -72,7 +70,7 @@ public class SpawnInstantiator : MonoBehaviour
             // Adding mob part
             mobParts += mobParts_perSpawnStep * difficultyMultiplier;
             yield return new WaitForSeconds(SPAWN_STEP);
-        }
+        } 
     }
     private void SpawnMobs(MobEnum mobEnum, int count)
     {
@@ -91,7 +89,7 @@ public class SpawnInstantiator : MonoBehaviour
         SpawnField spawnField = RandomizeSpawnField();
 
         Vector2 spawnPoint = spawnField.RequestViableSpawnPoint();
-        GameObject mobPrefab = MobPrefabManager.main.GetMobPrefab(mobEnum);
+        GameObject mobPrefab = MobPrefabManager.main.GetPrefab(mobEnum);
 
         StartCoroutine(DoSpawnEntity(mobPrefab, spawnPoint));
     }
