@@ -22,14 +22,14 @@ public class ScoreSystem : MonoBehaviour
     }
 
     [HideInInspector] public static ScoreSystem main;
-    private SpawnManager[] spawnManagers;
+    private SpawnerManager[] spawnManagers;
 
 
     private void Start()
     {
         main = this;
 
-        spawnManagers = FindObjectsOfType<SpawnManager>();
+        spawnManagers = FindObjectsOfType<SpawnerManager>();
     }
 
 
