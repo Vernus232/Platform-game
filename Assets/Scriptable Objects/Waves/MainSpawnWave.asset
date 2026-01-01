@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MainSpawnWave
   m_EditorClassIdentifier: 
   offset: 0
-  duration: 100
-  scale: 1500
-  mobMix: {fileID: 11400000, guid: 78ac483050c8bf34e87ec55e2dab9294, type: 2}
+  duration: 60
+  count: 120
+  spawnMix: {fileID: 11400000, guid: 78ac483050c8bf34e87ec55e2dab9294, type: 2}

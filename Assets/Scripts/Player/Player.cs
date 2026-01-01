@@ -125,7 +125,7 @@ public class Player : FragileEntity
 
 
     //�� ������
-    private void Start()
+    private new void Start()
     {
         main = this;
         rb = GetComponent<Rigidbody2D>();
@@ -133,8 +133,6 @@ public class Player : FragileEntity
         deathscreenView = FindObjectOfType<DeathscreenView>(true);
         flyAbility = GetComponent<FlyAbility>();
         movementArmatureComponent = GetComponentInChildren<UnityArmatureComponent>();
-
-        Hp = maxHp;
     }
 
     //����������� � ��� ������ (50 fps)

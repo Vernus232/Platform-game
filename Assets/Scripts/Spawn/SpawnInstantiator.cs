@@ -1,6 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using System.Diagnostics.Tracing;
 
 public class SpawnInstantiator : MonoBehaviour
 {
@@ -19,11 +20,28 @@ public class SpawnInstantiator : MonoBehaviour
 
     public void InstantiateWave(SpawnWave wave)
     {
-        // Get mob names
-        MobEnum[] mobEnums = wave.mobMix.names;
+        // Cast the spawnMix to the appropriate type
+        if (wave.spawnMix is SpawnMix<ItemEnum> itemMix)
+        {
+            // Convert ItemEnum[] to System.Enum[]
+            System.Enum[] systemEnums = Array.ConvertAll(itemMix.names, item => (System.Enum)item);
+            print(wave.spawnMix);
+            print(systemEnums);
+        }
+        else if (wave.spawnMix is SpawnMix<MobEnum> mobMix)
+        {
+            // Convert MobEnum[] to System.Enum[]
+            System.Enum[] systemEnums = Array.ConvertAll(mobMix.names, mob => (System.Enum)mob);
+            print(wave.spawnMix);
+            print(systemEnums);
+        }
+        else
+        {
+            Debug.LogError("Unknown spawn mix type");
+        }
 
         // Compute default spawnRates
-        float[] defaultSpawnRates = new float[mobEnums.Length];
+        float[] defaultSpawnRates = new float[systemEnums.Length];
         for (int i = 0; i < defaultSpawnRates.Length; i++)
         {
             float SumIntArray(int[] arr)
@@ -36,50 +54,50 @@ public class SpawnInstantiator : MonoBehaviour
 
                 return sum;
             }
-            float mobProbability = wave.mobMix.odds[i] / SumIntArray(wave.mobMix.odds);
-            float mobCount = (int)(mobProbability * wave.scale);
+            float mobProbability = wave.spawnMix.odds[i] / SumIntArray(wave.spawnMix.odds);
+            float mobCount = (int)(mobProbability * wave.count);
             float spawnRate = mobCount / wave.duration;
             defaultSpawnRates[i] = spawnRate;
         }
 
         // Spawn all the mob enums in separate coroutines
-        for (int i = 0; i < mobEnums.Length; i++)
+        for (int i = 0; i < systemEnums.Length; i++)
         {
             float modifiedSpawnRate = defaultSpawnRates[i];
-            StartCoroutine(Spawning(mobEnums[i], modifiedSpawnRate, wave.duration));   
+            StartCoroutine(Spawning(systemEnums[i], modifiedSpawnRate, wave.duration));   
         }
     }
 
 
-    private IEnumerator Spawning(MobEnum mobEnum, float mobs_perMinute, float durationInMinutes)
+    private IEnumerator Spawning(System.Enum systemEnum, float mobs_perMinute, float durationInMinutes)
     {
         float SPAWN_STEP = 1f;
-        float mobParts_perSpawnStep = mobs_perMinute / 60 * SPAWN_STEP;
+        float spawnParts_perSpawnStep = mobs_perMinute / 60 * SPAWN_STEP;
         
-        float mobParts = 0;
+        float spawnParts = 0;
         for (float t = 0; t < durationInMinutes * 60; t += SPAWN_STEP)
         {
             // If we can spawn one whole mob
-            if (mobParts >= 1)
+            if (spawnParts >= 1)
             {
-                int wholeMobs = (int) mobParts;
-                mobParts -= wholeMobs;
-                SpawnMobs(mobEnum, wholeMobs);
+                int wholeMobs = (int) spawnParts;
+                spawnParts -= wholeMobs;
+                SpawnMobs(systemEnum, wholeMobs);
             }
 
             // Adding mob part
-            mobParts += mobParts_perSpawnStep * difficultyMultiplier;
+            spawnParts += spawnParts_perSpawnStep * difficultyMultiplier;
             yield return new WaitForSeconds(SPAWN_STEP);
         } 
     }
-    private void SpawnMobs(MobEnum mobEnum, int count)
+    private void SpawnMobs(System.Enum systemEnum, int count)
     {
         for (int i = 0; i < count; i++)
         {
-            SpawnMob(mobEnum);
+            SpawnMob(systemEnum);
         }
     }
-    private void SpawnMob(MobEnum mobEnum)
+    private void SpawnMob(System.Enum systemEnum)
     {
         SpawnField RandomizeSpawnField()
         {
@@ -89,12 +107,12 @@ public class SpawnInstantiator : MonoBehaviour
         SpawnField spawnField = RandomizeSpawnField();
 
         Vector2 spawnPoint = spawnField.RequestViableSpawnPoint();
-        GameObject mobPrefab = MobPrefabManager.main.GetPrefab(mobEnum);
+        GameObject mobPrefab = SpawnPrefabManager.main.GetPrefab(systemEnum);
 
         StartCoroutine(DoSpawnEntity(mobPrefab, spawnPoint));
     }
 
-    
+
     private IEnumerator DoSpawnEntity(GameObject prefab, Vector2 randomPoint)
     {
         if (GameOptions.Particles)

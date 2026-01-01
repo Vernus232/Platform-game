@@ -1,29 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Item : MonoBehaviour
+public abstract class Item : BaseEntity
 {
-    public ItemEnum type;
-    [SerializeField] private float timeToLive = 30;
+    public ItemEnum Type { get; set; }
+    [SerializeField] private float timeToLive = 30f;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         if (timeToLive > 0)
+        {
             Destroy(gameObject, timeToLive);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && TryDoActionOnPlayer())
         {
-            if (TryDoActionOnPlayer() == true)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
 
     protected abstract bool TryDoActionOnPlayer();
-
 }

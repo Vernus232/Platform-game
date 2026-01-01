@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MainHpWave
   m_EditorClassIdentifier: 
   offset: 0
-  duration: 100
-  scale: 60
-  mobMix: {fileID: 11400000, guid: 8d9f4875b6eb41f4e86bf536b7527267, type: 2}
+  duration: 5
+  count: 10
+  spawnMix: {fileID: 11400000, guid: 1db270a077084a449bc46794bf038ad2, type: 2}

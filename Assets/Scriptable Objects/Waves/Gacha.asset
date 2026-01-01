@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cca9293b4f436c44a171145ec731268, type: 3}
   m_Name: Gacha
   m_EditorClassIdentifier: 
-  offset: 3
-  duration: 3
-  scale: 10
-  mobMix: {fileID: 11400000, guid: 16e95c2e293be7f43b93748baa45ae26, type: 2}
+  offset: 2
+  duration: 0.1
+  count: 5
+  spawnMix: {fileID: 11400000, guid: 16e95c2e293be7f43b93748baa45ae26, type: 2}
